@@ -1,0 +1,769 @@
+{% extends "base_sub_menu.html" %}
+{% block content %}
+
+
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+
+ 
+ 
+  
+<div class="paginaCompleta container">
+			 
+             
+  <!--<h3> Nuestra Metodología </h3> -->
+           
+<p style="float:none; height: 30px;"><a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-success" style="float: right;"> Descargar nuestra metodología completa </a></p>
+
+      
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <span class="asterisco">*</span> Metodología del Estudio
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Los datos que se presentan en este sitio web tienen como objetivo ofrecer a la ciudadanía un panorama de la situación de su comuna en diferentes áreas, de tal forma que se pueda realizar una evaluación de la gestión del municipio y detectar los principales problemas que, comparativamente, afectan a la comuna. <br/><br/>
+
+        A pesar de la importancia y de la influencia que los alcaldes logran tener en la vida de las personas, en nuestro país existen pocas instancias de fácil acceso para que la ciudadanía conozca y evalúe la gestión de sus municipios; menos todavía para que pueda comparar en base a datos objetivos la situación en la que su alcalde deja el municipio al final de su período, o que obligue a los nuevos candidatos a asumir determinadas posturas y presentar programas específicos que recojan los temas más relevantes para cada localidad. <br/><br/>
+
+        La diferencia de esta propuesta en relación a otros estudios de este tipo, es mostrar la información de una forma más comprensible. Muchas veces un número o un porcentaje no es suficiente para comprender un determinado resultado, por lo que utilizamos constantemente los Rankings para la ubicación de la comuna en relación al total nacional. En otros casos se muestran porcentajes, los cuales también se contraponen a un promedio nacional para hacerlo comparable. De esta forma, el ciudadano puede realizar comparaciones para dimensionar los principales desafíos de su comuna.
+      </div>
+    </div>
+  </div>
+  <a name="Top"></a>
+  <div class="accordion-group">
+   <div class="accordion-heading tituloAcordion">
+     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+       <span class="asterisco">*</span> ¿Qué son estos datos?
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Los datos que se presentan aquí son una recopilación de algunas de las principales estadísticas a nivel municipal, con énfasis en los temas de salud, educación, infraestructura, transparencia, participación ciudadana y presupuestos. Es información que pretende diferenciarse de las actuales estadísticas disponibles a través de una propuesta más sencilla, que invite a los ciudadanos a informarse y participar de estas elecciones municipales de forma más activa.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        <span class="asterisco">*</span> ¿Cómo se elaboraron los datos?
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        A partir de la revisión de la literatura sobre gestión municipal y el análisis de las atribuciones y responsabilidades legales del municipio se establecieron las áreas de mayor importancia de la gestión municipal. Luego, se entrevistó a expertos en cada una de estas materias, quienes hicieron sus recomendaciones acerca de las variables a considerar. Por último, se realizó un sondeo entre voluntarios de Ciudadano Inteligente y ciudadanos en general a través de las redes sociales, determinando así los datos que mayor interés podrían generar por parte de la ciudadanía.<br/><br/>
+
+        De esta forma, obtuvimos una larga lista de variables a estudiar, listado que se fue depurando hasta obtener las variables que aquí se encuentran representadas. 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+        <span class="asterisco">* </span> ¿Cómo se llegó al listado definitivo de datos?
+      </a>
+    </div>
+    <div id="collapseFour" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Para la selección de los datos que publicamos en este sitio web plateamos tres criterios:<br/>
+        1. Los datos a publicar debían ser de responsabilidad de la gestión municipal, es decir, que el municipio tenga responsabilidad absoluta o parcial en los resultados mostrados y, por lo tanto, responsabilidad en su mejoría.<br/><br/>
+        2. Los datos a publicar debían estar disponibles a nivel comunal, puesto que la mayor cantidad de información se encuentra agregada a nivel regional.<br/><br/>
+        3. Los datos a publicar debían tener relevancia para la ciudadanía, para así cumplir con el objetivo del estudio de facilitar a la ciudadanía informarse y exigir a sus candidatos propuestas concretas en los temas más deficientes.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+        <span class="asterisco">*</span> ¿Cuáles fueron las principales fuentes de información?
+      </a>
+    </div>
+    <div id="collapseFive" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+             <div class="paginaCompleta container">          
+             <div class="flechaMetodologia"> <a name="Top "href="#Top" rel="tooltip" title="Volver a la Lista"> <img src="{{ STATIC_URL }}./images/flechaArriba.png"/></a></div> 
+             <h5> Descripción de los datos publicados:</h5>
+             <p> A continuación revisaremos en detalle cada uno de los datos publicados, qué significa cada dato, qué fuentes de información utilizamos para calcularlos y cómo los calculamos.</p>
+             <h5> Listado de índicadores </h5>
+             
+             <ul class="listaMetodologia well">
+              <li class="itemListaMetodologia"><a href="#Pobreza"> Pobreza</a></li>
+              <li class="itemListaMetodologia"><a href="#Desigualdad"> Desigualdad </a></li>
+              <li class="itemListaMetodologia"><a href="#Funcionarios"> Funcionarios </a></li>
+              <li class="itemListaMetodologia"><a href="#Simce"> Simce </a></li>
+              <li class="itemListaMetodologia"><a href="#ServiciosSalud"> Servicios de Salud </a></li>
+              <li class="itemListaMetodologia"><a href="#ObesidadMedia"> Obesidad </a></li>
+              <li class="itemListaMetodologia"><a href="#Delitos"> Delitos</a></li>
+              <li class="itemListaMetodologia"><a href="#AreasVerdes"> Áreas Verdes	</a></li>
+              <li class="itemListaMetodologia"><a href="#TransparenciaActiva"> Trasparencia Activa	</a></li>
+              <li class="itemListaMetodologia"><a href="#Organizaciones"> Organizaciones	</a></li>
+              <li class="itemListaMetodologia"><a href="#Semaforos"> Informes Contraloria </a></li>
+              <li class="itemListaMetodologia"><a href="#Ingreso"> Ingreso </a></li>
+              <li class="itemListaMetodologia"><a href="#Profesionalizacion"> Profesionalización </a></li>
+              <li class="itemListaMetodologia"><a href="#Vulnerabilidad"> Vulnerabilidad </a></li>
+              <li class="itemListaMetodologia"><a href="#AVPP"> AVPP </a></li>
+              <li class="itemListaMetodologia"><a href="#Matricula"> Matrícula </a></li>
+              <li class="itemListaMetodologia"><a href="#EvaluacionDocente"> Evaluación Docente </a></li>
+              <li class="itemListaMetodologia"><a href="#ProgramasSeguridad"> Programas de Seguridad </a></li>
+              <li class="itemListaMetodologia"><a href="#NotaSeguridad"> Nota Seguridad </a></li>
+              <li class="itemListaMetodologia"><a href="#PercepcionSeguridad"> Percepción de Seguridad </a></li>
+              <li class="itemListaMetodologia"><a href="#Pladeco"> PLADECO </a></li>
+              <li class="itemListaMetodologia"><a href="#PRC"> PRC</a></li>
+              <li class="itemListaMetodologia"><a href="#Aseo"> Aseo</a></li>
+              <li class="itemListaMetodologia"><a href="#Solicitudes"> Solicitudes </a></li>
+              <li class="itemListaMetodologia"><a href="#Amparos"> Amparos & Reclamos </a></li>
+              <li class="itemListaMetodologia"><a href="#RecursosOrganizaciones"> Recursos para Organizaciones</a></li>
+              <li class="itemListaMetodologia"><a href="#CCOSC"> CCOSC</a></li>
+              <li class="itemListaMetodologia"><a href="#BalancePresupuesto"> Balance Presupuestario</a></li>
+              <li class="itemListaMetodologia"><a href="#FondoComun"> Ingresos Fondo Común Municipal</a></li>
+              <li class="itemListaMetodologia"><a href="#GastosEnPersonal"> Gastos en Personal Municipal</a></li>
+              <li class="itemListaMetodologia"><a href="#Inversion"> Gastos de Inversión</a></li>
+              </ul> 
+              </div>
+             
+             <br/>
+             
+             
+             
+            
+             <div class="container cat">
+              <a name="Pobreza"> </a>
+             <div class="categoriaPobreza">
+             <h4 class="sangriaIzquierda">Pobreza </h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+             </div>   
+             <h5> ¿Qué entendemos por pobreza? </h5>
+<p>La pobreza puede ser entendida en función de los hogares cuyo ingreso por persona se encuentra por debajo del nivel de ingreso mínimo necesario para adquirir un determinado estándar o calidad de vida. La línea de la pobreza se calcula en función del ingreso y su capacidad de satisfacer las necesidades básicas, definidas a través de una canasta de alimentos por persona. En zonas urbanas, el cálculo de la línea de pobreza se realiza según el valor de 2 canastas básicas de alimentos, y en zonas rurales,  1,75 veces. A partir de ello, todos quienes posean un ingreso per cápita menor a 2 o 1,75 veces el precio de la canasta básica, se encuentran bajo la línea de la pobreza.
+</p>
+
+        <h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>A partir de la Encuesta de Caracterización Socioeconómica (CASEN 2009), se extrajo el porcentaje de pobreza total de cada comuna (personas en situación de pobreza e indigencia).</p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Los datos provistos por la CASEN 2009 no necesitaron realizar ningún cálculo para presentar la información.
+Para la creación del ranking, se ordenaron las comunas con datos disponibles, siendo el número 1 del ranking la comuna con mayor porcentaje de habitantes en situación de pobreza.
+</p>
+
+     </div>
+                
+             
+             <div class="container cat">
+              <a name="Desigualdad"></a>
+             <div class="categoriaDesigualdad">
+             <h4 class="sangriaIzquierda">  Desigualdad</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+           <h5>¿Qué entendemos por desigualdad?</h5>
+<p>La desigualdad la entendemos según el Coeficiente de Gini, el cual toma valores entre 0 y 1, donde 0 corresponde a la perfecta igualdad (todos tienen los mismos ingresos) y 1 corresponde a la perfecta desigualdad (una persona tiene todos los ingresos y los demás ninguno). </p>
+
+<h5>¿Quién calculó el Gini que estamos usando? </h5>
+<p>El Ministerio de Salud cuenta con estudios comunales de Diagnósticos Regionales de Salud con enfoque DSS (Determinantes Sociales en Salud), en los cuales no solamente se presentan los datos de salud, sino también otras variables demográficas y socioeconómicas. En ellos se encuentra calculado el Gini, disponible <a href="http://www.diagnosticoregional.cl/">aquí </a></p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Para el dato de desigualdad elaboramos un ranking de acuerdo al Coeficiente de Gini de cada comuna, donde el número 1 significa mayor desigualdad.
+Luego, para ilustrar el nivel de desigualdad de cada comuna, hicimos un paralelo entre el coeficiente de Gini de cada comuna y el país con que más se asemeja, para lo cual se tomaron los datos disponibles <a href="http://datos.bancomundial.org/indicador/SI.POV.GINI?display=default">aquí </a> </p>
+
+            </div>
+     		
+            
+             <div class="container cat">
+              <a name="Funcionarios"> </a>
+             <div class="categoriaFuncionarios">
+             <h4 class="sangriaIzquierda"> Funcionarios Municipales</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por funcionarios municipales? </h5>
+<p>En las municipalidades existen tres tipos de funcionarios según el tipo de contrato: planta, contrata y honorarios. Los funcionarios de planta conforman la organización estable de la municipalidad; los funcionarios a contrata corresponden a cargos transitorios hasta el 31 de diciembre de cada año; y los funcionarios a honorarios representan el personal fuera de la dotación, contratado para la realización de funciones transitorias.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos sobre el número de funcionarios de planta y contrata de cada municipio fueron extraídos del Sistema Nacional de Información Municipal (SINIM) disponibles <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí</a>
+Los datos sobre el número de habitantes de cada comuna fueron extraídos de las proyecciones de población para el 2012 del Instituto Nacional de Estadísticas, descargables <a href="http://palma.ine.cl/demografia/menu/EstadisticasDemograficas/proyecciones.aspx">aquí </a> </p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Se hicieron dos cálculos. En primer lugar, se dividió el número de habitantes de la comuna por el número de funcionarios de planta y a contrata, vale decir, el personal estable de la municipalidad, puesto que los funcionarios a honorarios son contratados para funciones extraordinarias, y por lo mismo, la dotación es variable. Con esto obtuvimos el número de habitantes que existe en la comuna por cada funcionario municipal. En segundo lugar, en base al primer cálculo se estableció un promedio nacional de habitantes por funcionario municipal. </p>
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="Simce"></a>
+             <div class="categoriaEducacion">
+             <h4 class="sangriaIzquierda">  Puntaje SIMCE</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             
+<h5>¿Qué entendemos por variación en el puntaje SIMCE? </h5>
+<p>Este dato muestra la variación porcentual entre el 2008 y el 2011, lo que refleja cómo ha evolucionado el desempeño de los establecimientos municipales en esta prueba. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Los datos fueron extraídos del <a href="http://www.simce.cl/">sitio web </a> del Sistema de Medición de Calidad de la Educación   </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Para hacer comparables a todos los municipios del país, fue necesario corregir el puntaje SIMCE según el nivel socioeconómico, para lo cual se calculó la diferencia del SIMCE de cada establecimiento con respecto a la media de su nivel socioeconómico, y luego se promedió este puntaje corregido con el de los establecimientos municipales de cada comuna. </p>
+
+<p>Con el valor corregido o estandarizado, fue posible calcular la variación porcentual de los puntajes  entre los años 2008 y 2011, y el nivel SIMCE de la comuna que se estableció ordenando los puntajes y clasificándolos en tres tercios: el tercio inferior corresponde al nivel bajo, el tercio siguiente al nivel medio, y el tercio superior al nivel alto. </p>
+
+            <p> <em>*** Datos elaborados por Educación 2020 </em> </p>
+            
+            </div>
+     		
+             
+             <div class="container cat">
+              <a name="ServiciosSalud"> </a>
+             <div class="categoriaServiciosSalud">
+             <h4 class="sangriaIzquierda"> Servicios de Salud por habitante</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por Servicio de Salud por habitante? </h5>
+<p>Entre los servicios de salud traspasados a las municipalidades, o servicios de atención primaria de salud municipal, se encuentran: Centros Comunitarios de Salud Familiar (CESCOF), Centros de Salud Familiar (CESFAM), Centro General Rural (CGR), Consultorio de Salud Mental (COSAM), Centro de Referencia de Salud (CRS), Centro de Salud Rural (CSR), Centro de Salud Urbano (CSU), Posta de Salud Rural (PSR) y Servicios de Atención Primaria de Urgencia (SAPU). </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Los datos sobre el número de servicios de salud de cada comuna fueron extraídos del Departamento de Estadísticas e Información de Salud (DEIS), válidos al año 2012, y disponibles <a href="http://webdeis.minsal.cl/estadisticas-recursossalud/">aquí </a>  </p>
+
+<p>Los datos sobre la población inscrita en establecimiento de atención primaria municipal al año 2012 fueron extraídos del mismo sitio, según datos entregados por el Fondo Nacional de Salud (FONASA), disponibles <a href="http://webdeis.minsal.cl/estadisticas-poblacion/">aquí </a> </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Se hicieron dos cálculos. En primer lugar, se dividió el número de habitantes de la comuna inscritos en establecimientos de atención primaria por el número de servicios de salud, con esto obtuvimos el número de habitantes que existe en la comuna por cada servicio de salud. En segundo lugar, en base al primer cálculo se estableció un promedio nacional de habitantes por servicio de salud. </p>
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="ObesidadMedia"></a>
+             <div class="categoriaObesidad">
+             <h4 class="sangriaIzquierda">  Obesidad en Enseñanza Media y Básica</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5>¿Qué es la obesidad en niños de enseñanza básica y enseñanza media? </h5>
+<p>La Junta Nacional de Auxilio Escolar y Becas (JUNAEB) anualmente aplica una encuesta a los niños(a) y jóvenes de 1º Medio y 1° Básico de los establecimientos Municipalizados y Particulares Subvencionados, en donde se levantan datos para el análisis de la situación nutricional de la población escolar del país. Los datos recolectados constituyen aproximadamente el 93% del total del sistema educacional. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Los datos utilizados en este estudio fueron solicitados a través de transparencia a la Junta Nacional de Auxilio Escolar y Becas (JUNAEB), y se encuentran disponibles <a href="http://bpt.junaeb.cl:8080/MapaNutricionalGx/"> aquí </a>. </p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>De los porcentajes obtenidos de esta encuesta, se confeccionó un Ranking nacional de obesidad infantil en enseñanza media y básica que va aumentando en relación directa al incremento de dicho porcentaje. El número 1 del Ranking indica mayor porcentaje de obesidad infantil  y el número 345 menor. </p>
+
+            </div>
+            
+             
+             <div class="container cat">
+              <a name="Delitos"></a>
+             <div class="categoriaSeguridad">
+             <h4 class="sangriaIzquierda"> Delitos de Mayor Connotación Social</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+              
+            <h5> ¿Qué entendemos por delitos de mayor connotación social?</h5>
+<p>Los Delitos de Mayor Connotación Social (DMCS), son todos aquellos delitos que implican robo con violencia, robo con intimidación, robo por sorpresa, robo con fuerza, hurto, lesiones, homicidio y violación. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron obtenidos a partir del Informe Anual de Carabineros de Chile de los años 2007 y 2010, disponibles <a href="http://www.ine.cl/canales/chile_estadistico/estadisticas_sociales_culturales/policiales/carabineros/carabineros.php"> aquí.</a>  </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Se calculó el porcentaje de crecimiento de los DMCS de cada comuna según la fórmula de crecimiento utilizada por la CEPAL, disponible <a href="http://www.cepal.org/cgi-bin/getprod.asp?xml=/comercio/noticias/paginas/1/34401/P34401.xml&xsl=/comercio/tpl/p18f.xsl&base=/comercio/tpl/top-bottom.xsl">aquí. </a> Con ello fue posible determinar las comunas en las que los DMCS habían aumentado, mantenido o disminuido. </p>
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="AreasVerdes"> </a>
+             <div class="categoriaAreasPublicas">
+             <h4 class="sangriaIzquierda"> Áreas Verdes</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por Mantención de Áreas Verdes? </h5>
+<p>Según la Comisión Nacional de Medio Ambiente (CONAMA), las áreas verdes son  espacios urbanos, o de periferia a éstos, predominantemente ocupados con árboles, arbustos o plantas, que pueden tener diferentes usos, ya sea para cumplir funciones de esparcimiento, recreación, ecológicas, ornamentación, protección, recuperación y rehabilitación del entorno, o similares. </p>
+
+<p>A su vez, la Organización Mundial de la Salud (OMS) recomienda 9 metros cuadrados de áreas verdes por habitante como las cantidades necesarias para la realización de actividades de recreación y esparcimiento de las personas. Para asegurar las buenas condiciones de este espacio, cada municipalidad debe realizar en forma directa o indirecta (a través de contratación de servicios), las labores de aseo y mantenimiento de las áreas verdes y del arbolado urbano ubicado en espacios públicos o en  bienes nacionales de uso público.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+
+<p>Los datos sobre las áreas verdes con mantenimiento por habitante de cada municipio fueron extraídos del Sistema Nacional de Información Municipal (SINIM) disponibles <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí. </a> </p>
+
+<p>Los datos sobre el número de habitantes de cada comuna fueron extraídos de las proyecciones de población para el 2011 del Instituto Nacional de Estadísticas, descargables <a href="http://palma.ine.cl/demografia/menu/EstadisticasDemograficas/proyecciones.aspx">aquí. </a></p>
+
+<p>La información respectiva al gasto municipal por este concepto, fue extraída de los informes presupuestarios de Contraloría General de la República, particularmente del gasto 22.08.003 (Subtítulo 22: Bienes y Servicios de Consumo, Ítem 08: Servicios Generales, Asignación 003: Servicios de Mantención de Jardines), disponibles <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111"> aquí. </a>
+</p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+
+<p>Las áreas verdes con mantenimiento están calculadas en el sitio de SINIM como metro cuadrado por habitante de la comuna, por lo tanto, para encontrar el total de metros cuadrados de cada comuna, multiplicamos el dato por el total de habitantes para el año 2011.  </p>
+
+<p> Luego, a partir del gasto en mantención de jardines para los años 2008 al 2011, se calculó un promedio de recursos destinados a esta función, los cuales se dividieron por el total de metros cuadrados de áreas verdes de la comuna, para establecer un promedio de gasto por metro cuadrado. Con ello se elaboró un ranking, donde el número 1 indica la mayor cantidad de recursos destinados a la mantención de áreas verdes.</p>
+
+
+            </div>
+    
+    
+             <div class="container cat">
+              <a name="TransparenciaActiva"> </a>
+             <div class="categoriaRankingConsejo">
+             <h4 class="sangriaIzquierda"> Trasparencia Activa</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por Transparencia Activa? </h5>
+<p>Es deber de los órganos de la administración del Estado poner a disposición del público  información relevante de su gestión, sin que ésta sea previamente solicitada, a través de los sitios web, según lo establecido en la Ley 20.285 de Acceso a la Información Pública. Entre los temas que es obligatorio publicar por parte de los municipios están: 1) actos y documentos publicados en el diario oficial, 2) marco normativo, 3) organigrama de la institución, junto a facultades funciones y atribuciones, 4) nombre, grado y remuneraciones de funcionarios de planta, contrata y honorarios, 5) información de compras mediante Mercado Público, y de contratación de bienes inmuebles, 6) información actualizada sobre transferencias, 7) actos y resoluciones con efectos sobre terceros, 8) información actualizada sobre trámites y requisitos, 9) información sobre programas de  subsidios y beneficios, 10) mecanismos de participación ciudadana; 11) presupuesto municipal; 12) auditorías; y finalmente 13) información sobre terceros con participación en la municipalidad. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>El Consejo para la Transparencia elaboró un Ranking de Transparencia Activa según el porcentaje de cumplimiento de cada municipio con respecto a las obligaciones de transparencia activa. En nuestro sitio replicamos los datos publicados por el Consejo para la Transparencia el 2011, disponibles <a href="http://www.consejotransparencia.cl/cplt-presenta-primer-estudio-sobre-transparencia-municipal/consejo/2011-08-23/180348.html"> aquí</a>.</p>
+            
+            </div>
+    			
+    
+             <div class="container cat">
+              <a name="Organizaciones"> </a>
+             <div class="categoriaOrganizaciones">
+             <h4 class="sangriaIzquierda"> Organizaciones Sociales</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué medimos en Organizaciones Sociales?</h5>
+<p>Según la Ley 20.500 sobre Asociaciones y Participación Ciudadana en la Gestión Pública, todas las personas tienen derecho a asociarse libremente para la consecución de fines lícitos, y este derecho comprende la facultad de crear asociaciones que expresen la diversidad de intereses sociales e identidades culturales. Entre las Organizaciones Comunitarias comunales es posible encontrar Clubes Deportivos, Centros de Madres, Centro u Organizaciones del Adulto Mayor, Centro de Padres y Apoderados, Juntas de Vecinos u otras organizaciones funcionales. </p>
+
+<p>Con estos datos pretendemos mostrar la cantidad de organizaciones sociales presentes en la comuna según el número de sus habitantes.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>La cantidad de Organizaciones Sociales por comuna fue extraída del Sistema Nacional de Información Municipal (SINIM) para el año 2011, disponible <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí. </a> </p>
+
+<p>El número de habitantes de cada comuna se refiere a los habitantes mayores de 18 años según las proyecciones de población del Instituto Nacional de Estadísticas para el año 2011, descargables <a href="http://palma.ine.cl/demografia/menu/EstadisticasDemograficas/proyecciones.aspx">aquí. </a> </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>En primer lugar se dividió el número de organizaciones sociales comunales por el número de habitantes mayores de 18 años. En segundo lugar, se construyó un ranking, donde el número 1 refleja la comuna que menos habitantes tiene por cada organización social, es decir, la comuna que más organizaciones tiene en relación a sus habitantes.</p>
+
+            </div>
+    		
+               
+             <div class="container cat">
+              <a name="Semaforos"> </a>
+             <div class="categoriaSemaforoAmarillo">
+             <h4 class="sangriaIzquierda"> Informes Contraloría</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+
+             
+<h5>¿Qué son los Informes a Contraloría? </h5>
+<p>Las instrucciones entregadas por la Contraloría General de la República a los municipios, plantean la obligatoriedad del envío de los informes contables y presupuestarios que dan inicio al ejercicio contable, los que rinden cuenta de la situación mensual del municipio, y finalmente los que dan cierre al ejercicio contable. Pese a la normativa existente, no todos los municipios se encuentran al día con el envío de los informes, por lo que Contraloría desarrolló un sistema de semáforos para ilustrar el cumplimiento. De esta forma, el semáforo verde muestra un 100% de cumplimiento en el envío de informes; los semáforos amarillos, muestran que existen informes que están en proceso; y finalmente los semáforos en rojo, muestran que existen informes que aun no han sido enviados. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p><em>*** Los datos extraídos de <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111">Contraloría</a> comprenden los meses entre enero y julio de 2012. </em></p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Le asignamos puntaje 1 a los meses en que Contraloría informó la entrega total de los informes de cada comuna, 0,5 puntos cuando el informe está en proceso de tramitación, y 0 puntos cuando no hubo entrega de informes. Esto nos permitió sacar un promedio de cumplimiento de entrega de informes correspondiente a los meses de enero a julio del 2011. Cuando este promedio fue de 100%, se asignó el color verde al semáforo de la comuna, cuando fue menor a 100% pero mayor al 49%, se asignó color amarillo, y cuando fue igual o menor al 49% se asignó color rojo. </p>
+
+            </div>
+                
+    		 
+             <div class="container cat">
+             <a name="Ingreso"> </a> 
+             <div class="categoriaIngreso">
+             <h4 class="sangriaIzquierda">  Ingreso por Persona en la Comuna</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <a name="Ingreso"> <h5>¿Qué medimos en ‘Ingreso por persona’?</h5></a>
+<p>La Encuesta de Caracterización Socioeconómica (CASEN 2009) mide el ingreso monetario, que se define como todos los ingresos autónomos del hogar (sueldos y salarios, ganancias provenientes del trabajo independiente, autoprovisión de bienes producidos por el hogar, bonificaciones, gratificaciones, rentas, intereses, así como jubilaciones, pensiones, montepíos y transferencias entre privados) más los aportes en efectivo que distribuye el Estado a las personas y los hogares a través de sus programas sociales (bonos y subsidios). </p>
+
+<h5>¿Quién calculó el Ingreso Monetario per cápita que estamos usando? </h5>
+<p>El Ministerio de Salud cuenta con estudios comunales de Diagnósticos Regionales de Salud con enfoque DSS (Determinantes Sociales en Salud), en los cuales no solamente se presentan los datos de salud, sino también otras variables demográficas y socioeconómicas. En ellos se encuentra calculado el Ingreso Monetario per cápita, disponible <a href="http://www.diagnosticoregional.cl/">aquí. </a></p> 
+
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>De acuerdo a los datos extraídos por el Ministerio de Salud de la CASEN 2009, se calculó un promedio nacional y se construyó un ranking de ingresos, donde el número 1 es la comuna en la que existe un ingreso monetario por persona más alto. </p>
+
+            </div>           
+                
+ 			
+             <div class="container cat">
+              <a name="Profesionalizacion"> </a>
+             <div class="categoriaProfesionalizacion">
+             <h4 class="sangriaIzquierda"> Profesionalización</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+
+             <h5>¿Qué queremos medir en ‘Profesionalización’? </h5>
+<p>Este es el porcentaje de funcionarios de planta y a contrata de cada municipalidad que cuentan con un título profesional. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>La información fue extraída del Sistema Nacional de Información Municipal (SINIM), para el año 2011, disponible <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí.</a></p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Se calculó el porcentaje de funcionarios que tienen título profesional del total de funcionarios de planta y a contrata del municipio. Del mismo modo, se construyó un ranking, el que ordena a los municipios a partir del que mayor porcentaje de personal calificado posee, hasta el que menos profesionales tiene. </p>
+
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="Vulnerabilidad"> </a>
+             <div class="categoriaSalud">
+             <h4 class="sangriaIzquierda"> Vulnerabilidad</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+  
+<h5>¿Qué entendemos por vulnerabilidad?</h5>
+
+<p>El Índice de Vulnerabilidad Social y Condiciones de Vida fue elaborado por el Ministerio de Salud a motivo de los Diagnósticos Regionales de Salud con enfoque DSS (Determinantes Sociales en Salud) utilizando una metodología adaptada del Índice de Desarrollo Humano. El índice está calculado  en cuanto a cuatro áreas:
+•	Educación, considerando nivel educacional (alfabetismo y promedio de años de escolaridad en personas de 25 años y más) y cobertura educacional
+•	Ingreso, en relación al nivel de ingresos monetarios, población en situación de pobreza, y desigualdad en la distribución de los ingresos (coeficiente de Gini)
+•	Ocupación, según tipo de ocupación y situación contractual de los asalariados
+•	Vivienda, incluyendo saneamiento, calidad de la materialidad de las viviendas y grado de hacinamiento de los hogares. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+
+
+<p>Se utilizaron los datos del Índice de Vulnerabilidad Social y Condiciones de Vida elaborado por el Ministerio de Salud el año 2009, disponible <a href="http://www.diagnosticoregional.cl/ ">aquí</a></p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p> <em>Se construyeron dos rankings de vulnerabilidad, uno nacional y otro regional. En ambos, el número 1 del ranking indica mayor vulnerabilidad en salud. </em></p>
+
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="AVPP"> </a>
+             <div class="categoriaSalud">
+             <h4 class="sangriaIzquierda"> Años de Vida Potencialmente Perdidos </h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+
+            <h5> ¿Qué son los años de vida potencialmente perdidos? </h5>
+<p>Los Años de Vida Potencialmente Perdidos (AVPP) representan la cantidad de años perdidos por las muertes prematuras respecto de un parámetro de sobrevivencia o esperanza de vida, que en el caso chileno es de 80 años. Se calcula sumando la diferencia de años entre la edad de muerte registrada y la esperanza de vida. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Los datos fueron obtenidos del Departamento de Estadísticas e Información de Salud del Ministerio de Salud, válidos para el año 2009, disponibles <a href="http://www.deis.cl/indicadores-basicos-de-salud/anos-de-vida-potencial-perdidos-avpp/">aquí </a>  </p>
+
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>El indicador presentado muestra una relación entre AVPP y habitantes de la comuna, a modo de establecer un promedio de años de vida perdidos para cada comuna, así como un Ranking que muestra en qué comunas del país existe una mayor proporción de años de vidas perdidos, donde el número 1 es la comuna en la que más años de vida potencialmente perdidos hay. </p>
+
+            </div>
+                
+       		 
+             <div class="container cat">
+             <a name="Matricula"> </a>
+             <div class="categoriaEducacion">
+             <h4 class="sangriaIzquierda"> Matrícula</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+<p>Evolución de la Matrícula Municipal entre el 2008 y el 2011, a partir de los datos del Ministerio de Educación. Para calcularlo se utilizó el total de matrículas escolares de la comuna, y se separó a las que correspondían al sector municipal, para poder calcular el porcentaje de éstas sobre el total. El objetivo es analizar, para cada comuna, si la matrícula municipal ha aumentado o disminuido.
+        	</p>
+            
+            <em>*** Datos elaborados por Educación 2020 </em> 
+            </div>
+            
+             
+             <div class="container cat">
+              <a name="EvaluacionDocente"> </a>
+             <div class="categoriaEducacion">
+             <h4 class="sangriaIzquierda"> Evaluación Docente</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <p>El Sistema de Evaluación del Desempeño Profesional Docente, llevado a cabo por el Ministerio de Educación, es una evaluación para profesores de establecimientos municipales a lo largo del país, cuyo objetivo es fortalecer la profesión y contribuir a mejorar la calidad de la educación. </p>
+             
+<p>En base a los datos recolectados de esta evaluación, se calculó el porcentaje de docentes en los niveles de desempeño básico e insatisfactorio del 2011 con respecto al total de profesores evaluados. A su vez, el porcentaje de variación corresponde al aumento o disminución del número de profesores ubicados en los niveles básico e insatisfactorio entre los años 2008, 2009, 2010 y 2011. Es importante considerar que no todos los años son evaluados la misma cantidad de profesores ni los mismos profesores. </p>
+
+            
+            <em>*** Datos elaborados por Educación 2020 </em> 
+            </div>
+           
+           
+            
+             <div class="container cat">
+              <a name="ProgramasSeguridad"> </a>
+             <div class="categoriaSeguridad">
+             <h4 class="sangriaIzquierda"> Programas de Seguridad</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5>¿Qué queremos medir en ‘Programas de Seguridad’? </h5>
+<p>Existen tres programas de seguridad que tienen que ver con el ámbito de gestión municipal: El Plan Cuadrante, el Programa Barrio en Paz Residencial y el Programa Barrio en Paz Comercial. Buscamos medir la presencia de estos programas en cada comuna.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>La información sobre planes cuadrantes fue solicitada a Carabineros de Chile y se encuentra actualizada a enero del 2012. </p>
+
+<p>La información sobre el Programa Barrio en Paz, fue solicitada a la Subsecretaría de Prevención del Delito del Ministerio del Interior y Seguridad Pública y actualizada a agosto del 2012. </p>
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="NotaSeguridad"> </a>
+             <div class="categoriaSeguridad">
+             <h4 class="sangriaIzquierda"> Nota a la Seguridad</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué es la nota a la seguridad? </h5>
+<p>La Encuesta Nacional de Seguridad Ciudadana (ENUSC) del 2011, elaborada por la Subsecretaría de Prevención del Delito del Ministerio del Interior y Seguridad Pública, en la pregunta n° 8 señala: “En una escala de 1 a 7, donde 1= muy inseguro y 7= muy seguro, ¿Qué nota le pondría a la seguridad en su comuna?”</p>
+
+<p>Las respuestas a esta pregunta nos permitieron establecer la nota a la seguridad que la población le pone a su comuna. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Los datos fueron extraídos de la Encuesta Nacional de Seguridad Ciudadana (ENUSC) del 2011, elaborada por la Subsecretaría de Prevención del Delito del Ministerio del Interior y Seguridad Pública, disponible <a href="http://www.ine.cl/canales/chile_estadistico/encuestas_seguridadciudadana/encuestaseguridad.php">aquí  </a></p>
+<p><em>***La encuesta sólo abarca comunas urbanas, por lo que existe un gran número de comunas en las que ésta no se realizó, y en consecuencia no existen datos. </em></p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>A partir de los datos extraídos de esta encuesta, se estableció un promedio de nota a nivel comunal y nacional, además de un Ranking que ubica a los municipios desde el mejor hasta el peor evaluado en materia de seguridad. Se excluyó del promedio final a las respuestas “No Sabe” y “No Contesta”.
+</p>
+            </div>
+            
+              
+             <div class="container cat">
+              <a name="PercepcionSeguridad"> </a>
+             <div class="categoriaSeguridad">
+             <h4 class="sangriaIzquierda"> Percepción de Seguridad</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por percepción de delincuencia?</h5>
+<p>La Encuesta Nacional de Seguridad Ciudadana (ENUSC) del 2011, elaborada por la Subsecretaría de Prevención del Delito del Ministerio del Interior y Seguridad Pública, en la pregunta n° 4, señala: “Usted diría que durante los últimos doce meses la delincuencia de su país, su comuna y su barrio respectivamente: 1) Aumentó, 2) Se Mantuvo, 3) Disminuyo, 4) No Sabe, o 5) No Responde". A partir del dato relativo a comunas, se estableció la percepción de delincuencia en la comuna.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron extraídos de la Encuesta Nacional de Seguridad Ciudadana (ENUSC) del 2011, elaborada por la Subsecretaría de Prevención del Delito del Ministerio del Interior y Seguridad Pública, disponible <a href="http://www.ine.cl/canales/chile_estadistico/encuestas_seguridadciudadana/encuestaseguridad.php ">aquí </a></p>
+
+<p><em>***La encuesta sólo abarca comunas urbanas, por lo que existe un gran número de comunas en las que ésta no se realizó, y en consecuencia no existen datos.</em></p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Se extrajeron los porcentajes de las respuestas para cada una de las opciones señaladas anteriormente. </p>
+
+            </div>
+            
+              
+             <div class="container cat">
+              <a name="Pladeco"> </a>
+             <div class="categoriaUrbanismo">
+             <h4 class="sangriaIzquierda"> Plan de Desarrollo Comunal</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>Qué es el Plan de Desarrollo Comunal?</h5>
+<p>El Plan de Desarrollo Comunal (PLADECO) es el instrumento que contempla las acciones que el municipio debe emprender para satisfacer las necesidades de la comunidad local y promover el avance social, económico y cultural. </p>
+
+<p>Su elaboración y ejecución es responsabilidad del Alcalde y del Concejo, tomando en consideración un nivel de participación ciudadana además de la  coordinación que sea necesaria con otros servicios públicos que posean competencias en el ámbito comunal. Su duración es de 4 años, por lo que cada alcalde debe impulsar el desarrollo de un nuevo PLADECO durante su gestión.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>La información se obtuvo del Sistema Nacional de Información Municipal (SINIM) actualizada al 2011, disponible <a href=" http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí</a></p>
+
+            </div>
+            
+              
+             <div class="container cat">
+               <a name="PRC"> </a>
+             <div class="categoriaUrbanismo">
+             <h4 class="sangriaIzquierda">Plan Regulador Comunal </h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por Plan Regulador Comunal?</h5>
+<p>El Plan Regulador Comunal (PRC), es un instrumento esencialmente técnico, orientador y regulador del desarrollo urbano en el territorio respectivo, y representa un instrumento planificador destinado a establecer las proyecciones sobre el desarrollo urbanístico y de construcción para la comuna. Todas las comunas que estén sujetas a Planificación Urbana-Regional o Urbana-Intercomunal, las que tengan una población de 7.000 habitantes o más, los centros poblados afectados por una destrucción total o parcial, y las comuna que la Secretaría Regional Ministerial de Vivienda y Urbanismo disponga mediante resolución, deberán poseer dicho plan.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>La información se obtuvo del Sistema Nacional de Información Municipal (SINIM) actualizada al 2011, , disponible <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí </a>  </p>
+
+            </div>
+            
+             
+             <div class="container cat">
+              <a name="Aseo"> </a>
+             <div class="categoriaUrbanismo">
+             <h4 class="sangriaIzquierda"> Gastos en Aseo</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por gasto en aseo?</h5>
+<p>La Ley Orgánica de Municipalidades, atribuye como una función exclusiva de cada municipio del país el aseo y ornato en el ámbito de su territorio. Para este estudio, consideramos el gasto promedio que, entre los años 2008 y 2011, la municipalidad hizo por el aseo, la recolección de basura y la mantención de vertederos.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>La información respectiva al gasto municipal por este concepto, fue extraída de los informes presupuestarios de Contraloría General de la República, particularmente del gasto 22.08.001 (Subtítulo 22: Bienes y Servicios de Consumo, Ítem 08: Servicios Generales, Asignación 001: Servicios de Aseo), y se calculó un promedio de éste según los presupuestos 2008 al 2011. Los informes presupuestarios municipales, pueden ser revisados <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111">aquí </a> </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Se calculó un ranking donde el número 1 indica mayor cantidad de recursos destinados al aseo comunal. Del mismo modo, se calculó el promedio nacional. </p>
+            </div>
+            
+          
+             <div class="container cat">
+              <a name="Solicitudes"> </a>
+             <div class="categoriaTransparencia">
+             <h4 class="sangriaIzquierda"> Solicitudes de Acceso a la Información pública</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué medimos a través de las ‘Solicitudes de Acceso a Información Pública?</h5>
+<p>La transparencia pasiva es el deber de los órganos de la administración del Estado de responder a la solicitud de información efectuada por cualquier persona, proveyendo la información requerida en forma exacta, oportuna y completa, según lo establece la Ley 20.285 de Acceso a Información Pública. Utilizando este derecho, la Fundación Ciudadano Inteligente envió solicitudes de información a los municipios de todo Chile, y logró analizar los mecanismos para el envío de solicitudes que posee cada municipalidad, el nivel de cumplimiento en el envío de respuestas y trabajar en otras áreas de investigación con la información recopilada. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato? </h5>
+<p>Las solicitudes se enviaron entre marzo y junio de 2012 a través de los sistemas de gestión de solicitudes online o por correo electrónico a cada municipio. En el caso de las comunas que no contaban con ninguna de las opciones anteriores, no pudieron ser enviadas las solicitudes. En total se enviaron 7 solicitudes de información pública, relativas a información de alcaldes y concejales, dotación de personal, las organizaciones sociales de la comuna, la conformación de los Consejos Comunales de las Organizaciones de la Sociedad Civil (CCOSC), los mecanismos de participación ciudadana, la infraestructura comunal (plazas, multicanchas, piscinas, gimnasios, etc.), y datos sobre educación municipal. </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>El porcentaje de respuesta se obtuvo a partir del total de solicitudes recibidas por la Fundación Ciudadano Inteligente en relación al total de enviadas.</p>
+
+            </div>
+            
+            
+             <div class="container cat">
+              <a name="Amparos"> </a>
+             <div class="categoriaTransparencia">
+             <h4 class="sangriaIzquierda"> Amparos y Reclamos</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5> ¿Qué son los amparos y reclamos ante el Consejo para la Transparencia?</h5>
+<p>Puesto que el acceso a la información pública es un derecho que tienen todos los ciudadanos, existen mecanismos para que se respete ese derecho, como son los amparos y reclamos que se pueden presentar al Consejo para la Transparencia. Los amparos se realizan en el caso de que un requerimiento de información pública no reciba respuesta, sea denegada, contenga información incompleta o tarde más de lo que la ley permite en ser respondido; mientras que los reclamos surgen cuando se observa que el organismo no ha publicado información relativa a la transparencia activa, ésta no ha sido actualizada, es incompleta, no se puede acceder a ella o se observan errores. 
+Una vez presentado el amparo o reclamo ante el Consejo, éste resuelve si es acogido total, parcialmente, o rechazado. Este set de datos consideró los amparos y reclamos que fueron acogidos total o parcialmente por el Consejo para la Transparencia.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron solicitados al Consejo para la Transparencia, y corresponden a la totalidad de amparos y reclamos declarados como admisibles por el Consejo para la Transparencia entre julio de 2009 y julio de 2012.</p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Tomando la cantidad de amparos y reclamos acogidos (ya sea total o parcialmente) en relación al total de amparos y reclamos declarados como admisibles por el Consejo para la Transparencia e interpuestos en contra de cada Municipalidad, se calculó un porcentaje de amparos y reclamos acogidos, es decir, reclamos que fueron validados por el órgano competente.</p>
+
+            </div>
+            
+            
+               
+             <div class="container cat">
+              <a name="RecursosOrganizaciones"> </a>
+             <div class="categoriaParticipacion">
+             <h4 class="sangriaIzquierda"> Recursos para Organizaciones Sociales</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5>¿Qué entendemos por Recursos para Organizaciones Sociales?</h5>
+<p>Corresponde al gasto por concepto de transferencias corrientes al sector privado, cuya finalidad es financiar programas de funcionamiento de las Organizaciones Comunitarias de la comuna. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>La cantidad de Organizaciones Sociales por comuna fue extraída del Sistema Nacional de Información Municipal (SINIM) para el año 2011, disponible <a href=" http://www.sinim.gov.cl/indicadores/busq_serie.php">aquí</a> </p>
+
+<p>La información respectiva al gasto municipal por este concepto, fue extraída de los informes presupuestarios de Contraloría General de la República, particularmente del gasto 24.01.004 (Subtítulo 24: Transferencias Corrientes, Ítem 01: al Sector Privado, Asignación 004: Organizaciones Comunitarias), y se calculó un promedio de éste según los presupuestos 2008 al 2011, disponible <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111">aquí </a>  </p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>El promedio de gasto por este concepto, entre los años 2008 al 2011, se dividió  por el número de organizaciones de cada comuna, para obtener así un promedio de gasto por organización. A partir de estos datos se elaboró un ranking que permite determinar cuales son los municipios que otorgan una mayor cantidad de recursos económicos a las Organizaciones Sociales de su comuna. Finalmente, en el ranking el número 1 indica mayor cantidad de recursos destinados a Organizaciones Sociales.</p>
+
+            </div>
+            
+                     
+             <div class="container cat">
+              <a name="CCOSC"> </a>
+             <div class="categoriaParticipacion">
+             <h4 class="sangriaIzquierda"> Consejo Comunal de Organizaciones de la Sociedad Civil</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por CCOSC?</h5>
+<p>El Consejo Comunal de Organizaciones de la Sociedad Civil (CCOSC) es un órgano asesor que tiene como objetivo asegurar la participación de la comunidad local en el progreso económico, social y cultural de la comuna. Con la promulgación de la Ley 20.500 sobre asociaciones y participación ciudadana en la gestión pública, las comunas debieron sustituir los antiguos CESCO (Consejo Económico y Social Comunal) por los CCOSC, siendo éstos elegidos y conformados por las organizaciones comunitarias de carácter territorial (juntas de vecinos), funcional (organizaciones culturales, deportivas, centros de madres, centros del adulto mayor, etc.), y por otras organizaciones de interés público de la comuna. </p>
+
+<h5>¿Qué fuentes utilizamos para este dato?</h5>
+<p>La información fue recopilada a partir del envío de solicitudes de información pública a cada municipio, y la ausencia de información, por tanto, indica que el municipio no respondió. La solicitud de información se envió entre abril y mayo del 2012, y se solicitó el envío del acta de constitución de los Consejos.</p>
+
+<p>Se declaró ‘En Proceso de conformación’ a aquellos municipios que informaron que el Consejo aún no estaba conformado pero que el proceso ya se había iniciado.</p>
+            </div>
+            
+            
+            
+            
+             <div class="container cat">
+              <a name="BalancePresupuesto"> </a>
+             <div class="categoriaPresupuesto">
+             <h4 class="sangriaIzquierda"> Balance Presupuestario Municipal</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5>¿Qué entendemos por Balance Presupuestario Municipal?</h5>
+<p>El balance presupuestario es la diferencia entre los ingresos y los gastos presupuestados para un determinado período. Cuando el resultado es positivo, el ejercicio financiero tiene como resultado un superávit presupuestario, es decir, que hubo mayores ingresos de lo presupuestado. Cuando el resultado es negativo, en cambio, el ejercicio financiero tiene como resultado un déficit presupuestario, es decir, que se gastó más de lo presupuestado.</p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron extraídos de los informes presupuestarios de Contraloría General de la República para los años 2008 al 2011, disponibles <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111">aquí,</a> de los cuales se calculó un promedio de ingreso y de gasto total.</p>
+
+<h5>¿Qué cálculos hicimos? </h5>
+<p>Al restar el promedio de gastos al promedio de ingresos, obtuvimos si el municipio al final del período muestra déficit o superávit presupuestario, y el porcentaje de éste en relación al ingreso total.</p>
+
+            </div>
+            
+            
+            
+                        
+             <div class="container cat">
+              <a name="FondoComun"> </a>
+             <div class="categoriaPresupuesto">
+             <h4 class="sangriaIzquierda"> Ingresos Fondo Común Municipal</h4>
+              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+             <h5>¿Qué entendemos por Ingresos provenientes del Fondo Común Municipal?</h5>
+<p>El Fondo Común Municipal (FCM) es un mecanismo de redistribución de recursos financieros entre las municipalidades del país, ideado para beneficiar a las municipalidades de menores recursos, en especial, aquellas que tienen escasas posibilidades de acceder a otros ingresos, para las cuales constituye la fuente esencial de ingresos. Es decir, el FCM es un mecanismo de redistribución de los recursos, en donde todas las Municipalidades del país aportan un porcentaje de sus ingresos permanentes, y luego son repartidos entre todos según criterios redistributivos que benefician a los municipios más pobres, mitigando los problemas de inequidad. Se reparte 25% en partes iguales entre las comunas; 10% en relación a la pobreza relativa de las comunas; 30% en proporción directa al número de predios exentos de impuesto territorial de cada comuna con respecto al número de predios exentos del país; y 35% en proporción directa a los menores ingresos propios permanentes del año anterior. </p>
+
+<h5>Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron extraídos de los informes presupuestarios de Contraloría General de la República para los años 2008 al 2011, disponibles <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P1820023968128622626511">aquí </a> 1 </p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Se calculó el promedio para todo el período de ingresos por concepto de FCM y de ingreso total. A partir de éstos se obtuvo el porcentaje de ingresos por FCM respecto al ingreso total municipal, el cual muestra el porcentaje de dependencia que posee cada municipio a este fondo si el porcentaje es elevado, o por el contrario, la capacidad de autofinanciamiento que posee el municipio si el porcentaje de ingreso por esta vía es bajo. Finalmente se estableció un promedio nacional de ingreso proveniente del FCM.</p>
+
+            </div>
+            
+            
+               
+             <div class="container cat">
+              <a name="GastosEnPersonal"> </a>
+             <div class="categoriaPresupuesto">
+             <h4 class="sangriaIzquierda"> Gasto en Personal Municipal</h4>
+               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5> ¿Qué entendemos por gasto en personal municipal?</h5>
+<p>Corresponden a aquellos recursos destinados a pagar las remuneraciones del personal municipal y los gastos derivados de la misma actividad, que incluye todas las asignaciones relativas a remuneraciones, viáticos, bonificaciones por desempeño, etc. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron extraídos de los informes presupuestarios de Contraloría General de la República para los años 2008 al 2011, disponibles <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111 ">aquí</a> </p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Se calculó el promedio para todo el período de gasto en personal y de gasto total. A partir de éstos, se calculó el porcentaje de gasto en personal respecto al gasto total municipal. Según el criterio impuesto por la Subsecretaría de Desarrollo Regional, éste gasto no debe sobrepasar el 35% del presupuesto total. Finalmente se estableció un promedio nacional de gasto en personal.</p>
+
+            </div>
+            
+                
+             <div class="container cat">
+              <a name="Inversion"> </a>
+             <div class="categoriaPresupuesto">
+             <h4 class="sangriaIzquierda"> Gastos de Inversión</h4>
+             <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -25px;"> Descargar nuestra metodología completa </a>
+              </div> 
+            <h5> ¿Qué entendemos por desigualdad?</h5>
+<p>Según la Subsecretaría de Desarrollo Regional, son los gastos destinados a invertir en proyectos que promuevan el adelanto y el desarrollo local. Estos permiten analizar el grado en que las actividades y la administración municipal aportan al desarrollo de la comunidad. </p>
+
+<h5>¿Qué fuentes utilizamos para calcular este dato?</h5>
+<p>Los datos fueron extraídos de los informes presupuestarios de Contraloría General de la República para los años 2008 al 2011, disponibles <a href="http://www.contraloria.cl/NewPortal2/portal2/appmanager/portalCGR/v3ESP?_nfpb=true&_pageLabel=P18200239681286226265111">aquí</a></p>
+
+<h5>¿Qué cálculos hicimos?</h5>
+<p>Se calculó el promedio para todo el período de gasto en inversión y de gasto total. A partir de éstos, se calculó el porcentaje de gasto en inversión respecto al gasto total municipal, y se elaboró un ranking en donde el número 1 representa la comuna con mayor porcentaje de inversión. Finalmente se estableció un promedio nacional de gasto en inversión.</p>
+
+            </div>
+            
+            
+            
+ 
+ 
+        	
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+     		
+    	
+        
+       
+
+    	  
+       
+       
+       
+        
+        
+        </div>
+        
+          {% endblock content %}

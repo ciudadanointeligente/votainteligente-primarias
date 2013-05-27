@@ -1,0 +1,44 @@
+{% extends "base_sub_menu.html" %}
+{% load twitter_tags %}
+{% block content %}
+<div class="paginaCompleta container">
+<div class="row-fluid">
+
+<div class="span6">
+<div class="thumbnail tituloRanking" style="background-color: #F2F2F2; padding-left: 20px; color: rgb(70, 136, 71); border-color: #E2E2E2;">
+	<img src="{{ STATIC_URL }}images/angel.png" alt="">
+	Estos son los candidatos que <strong>MÁS</strong> responden a los ciudadanos</div>
+<ul class="listadoCandidatos">
+	{% for bueno in buenos|slice:":15" %}
+	<li class="itemListadoCandidatos">
+		<div class="contenedorTwitter">{% if bueno.candidato.twitter %}{{ bueno|si_responde }}{% endif %} </div>
+		<strong>{{bueno.candidato}}</strong> de <a href="{% url eleccion-overview bueno.candidato.eleccion.slug %}">{{bueno.candidato.eleccion}}</a> <br/>ha respondido {{bueno.preguntas_respondidas}} de {{bueno.pregunta_count}} <a href="{% url eleccion-preguntales bueno.candidato.eleccion.slug %}">preguntas</a>
+	</li>
+
+<br/>
+	{% endfor %}
+
+
+</ul>
+</div>
+
+<div class="span6">
+<div class="thumbnail tituloRanking" style="padding-left: 20px; background-color: #F2F2F2; color: rgb(185, 74, 72); border-color: #E2E2E2;"> <img src="{{ STATIC_URL }}images/diablo.png" alt="">Estos son los candidatos que <strong>MENOS</strong> responden a los ciudadanos</div>
+<ul class="listadoCandidatos">
+	{% for malo in malos|slice:":15" %}
+	<li class="itemListadoCandidatos">
+		<div class="contenedorTwitter">{% if malo.candidato.twitter %}{{ malo|no_responde }}{% endif %}</div>
+		<strong>{{malo.candidato}}</strong> de  <a href="{% url eleccion-overview malo.candidato.eleccion.slug %}">{{malo.candidato.eleccion}}</a><br/> no ha respondido {{malo.preguntas_no_respondidas}} de {{malo.pregunta_count}} <a href="{% url eleccion-preguntales malo.candidato.eleccion.slug %}">preguntas</a>
+</li>
+	
+<br/>
+	{% endfor %}
+
+
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "base_sub_menu.html" %}
+{% load estrellitas %}
+{% block content %}
+{% load twitter_tags %}
+ 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+<script>
+$(function () {
+    $('body').off('click.collapse.data-api', '[data-toggle=collapse]');
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+      if($this.parentsUntil('.dropdown-menu').length!==0){
+          return false;
+      }
+    });
+});
+</script>
+             
+             
+
+<div class="container paginaCompleta">
+
+	 <h3>Preguntas a los candidatos de <span><a href="{% url eleccion-overview slug=eleccion.slug %}"> {{eleccion.nombre}} </a></span> </h3>
+
+	 <h2>El período de preguntas aún no da comienzo, muchas gracias por tu interés</h2>
+	 <h3>¡Vuelve a visitarnos, pronto tendremos más novedades!</h3>
+	
+
+
+</div>
+{% endblock %}

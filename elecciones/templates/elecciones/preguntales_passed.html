@@ -1,0 +1,70 @@
+{% extends "base_sub_menu.html" %}
+{% load estrellitas %}
+{% block content %}
+{% load twitter_tags %}
+ 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+<script>
+$(function () {
+    $('body').off('click.collapse.data-api', '[data-toggle=collapse]');
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+      if($this.parentsUntil('.dropdown-menu').length!==0){
+          return false;
+      }
+    });
+});
+</script>
+             
+             
+
+<div class="container paginaCompleta">
+
+	 <h3>Preguntas a los candidatos de <span><a href="{% url eleccion-overview slug=eleccion.slug %}"> {{eleccion.nombre}} </a></span> </h3>
+
+	 <h2>El período de preguntas se ha terminado muchas gracias por preguntar y responder</h2>
+	 <h3>¡Vuelve a visitarnos, pronto tendremos más novedades!</h3>
+	<div class="container">
+		<h4 class="tituloPreguntale"> Preguntas Recientes</h4>
+		<div class="accordion" id="accordion2">
+			{% for pregunta in preguntas %}
+<div class="accordion-groupPreguntale">
+	<div class="accordion-heading tituloAcordion">
+					
+			<div id="{{pregunta.id}}"class="preguntaPreguntale">{{pregunta}} <br/>
+				<div class="preguntadoPor"> <small><strong>Preguntado por:</strong> <em>{{pregunta.remitente}}</em></small></div>
+				<br/> <br/>
+			</div>
+		</div>
+			<div class="accordion-body">
+			{% for respuesta in pregunta.respuesta_set.all %}
+					<div class="nombreRespuestaPreguntale"> 
+						<div class="headerRespuesta">
+							<h5 class="nombreCandidato">{{respuesta.candidato}}</h5> 
+							<div class="twitteales">{{ respuesta|twittrespuesta }}</div> 
+						</div>
+						<br/>
+						<div class="separacionTwitter">
+							<div class="respuestaPreguntale"id="{{respuesta.pk}}">{{respuesta.texto_respuesta}}</div>
+							
+							
+						</div>
+						<br/>
+					</div>
+			{% endfor %}
+			</div>
+	</div>
+{% endfor %}
+		</div>
+	</div>
+
+
+</div>
+{% endblock %}

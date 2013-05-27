@@ -1,0 +1,20 @@
+{% load i18n %}
+{% autoescape off %}
+<p>{{ data.name }},</p>
+
+<p>{% blocktrans %}Tu has enviado un mensaje de contacto en el sitio {{ site }}.{% endblocktrans %}</p>
+
+<p>El mensaje es:<br/>
+<i>{{ data.message }}</i>
+<hr/>
+
+<p>{% blocktrans %}Por favor hacé click en el siguiente link para confirmar el mensaje. Si vos no has escrito este mail podés ignorarlo o reportar un incidente en {{ support_email }}.{% endblocktrans %}</p>
+
+<p><a href="http://{{ site.domain }}{{ confirmation_url }}">http://{{ site.domain }}{{ confirmation_url|slice:":40" }}...</a></p>
+
+<p>{% trans "Si el click no funciona, copiá el link y pegalo en una ventana de tu navegador." %}</p>
+
+<p>--<br/>
+{% trans "Saludos" %},<br/>
+{{ site }}</p>
+{% endautoescape %}

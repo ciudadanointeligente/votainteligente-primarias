@@ -1,0 +1,107 @@
+{% extends "base_sub_menu.html" %}
+{% block content %}
+
+<meta property="og:description" content="A quienes elegimos - Conocé, compará, consultá a tus candidatos. Todo lo que necesitas saber para votar en las elecciones generales de abril próximo."/>
+<meta name="description" content="Todo lo que necesitas saber para votar informado en las elecciones 2013">
+<meta name="keywords" content="elecciones, parlasur, senador, diputados, presidente, paraguay,  2013">
+<meta property="og:image" content="{{ STATIC_URL }}images/portadaFacebook.png"/>
+
+
+<div class="container paginaCompleta">
+  <div class="row-fluid">
+    <div class="span12 thumbnail" style="padding: 8px; text-align:center">
+      <div> <img src="{{ STATIC_URL }}images/01-jpg.jpg" alt="Candidatos 2013" width="922" height="402" /> </div>
+
+<div class="container"><br />
+      <div class="row-fluid">
+        <ul class="thumbnails home-py">
+          <li class="span3"><a href="presidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/02-png.png" alt="Presidentes" name="over1" onmouseover="document.over1.src='{{ STATIC_URL }}images/13-png.png'"
+onmouseout="document.over1.src='{{ STATIC_URL }}images/02-png.png'"></a>
+            <h5>Presidente</h5>
+          </li>
+          <li class="span3"><a href="vicepresidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/03-png.png" alt="Vice-Presidente" name="over2" onmouseover="document.over2.src='{{ STATIC_URL }}images/14-png.png'"
+onmouseout="document.over2.src='{{ STATIC_URL }}images/03-png.png'"> </a>
+            <h5>Vice-Presidente</h5>
+          </li>
+          <li class="span3"><a href="{% url senadores %}" class="thumbnail" ><img src="{{ STATIC_URL }}images/04-png.png" alt="Senadores" name="over3" onmouseover="document.over3.src='{{ STATIC_URL }}images/15-png.png'"
+onmouseout="document.over3.src='{{ STATIC_URL }}images/04-png.png'"> </a>
+            <h5>Senadores</h5>
+          </li>
+          <!-- <li class="span2"><a href="#" class="thumbnail" style="width:168px;"><img src="{{ STATIC_URL }}images/05-png.png"  alt="Diputados" name="over4" onmouseover="document.over4.src='{{ STATIC_URL }}images/16-png.png'"
+onmouseout="document.over4.src='{{ STATIC_URL }}images/05-png.png'"> </a>
+            <h5>Diputados</h5>
+          </li> -->
+          <li class="span3"><a href="parlasur" class="thumbnail" ><img src="{{ STATIC_URL }}images/06-png.png" alt="Parlasur" name="over5" onmouseover="document.over5.src='{{ STATIC_URL }}images/17-png.png'"
+onmouseout="document.over5.src='{{ STATIC_URL }}images/06-png.png'"> </a>
+            <h5>Parlasur</h5>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+      <!-- Searchable elections Block -->
+      <div class="buscadorPpal"> <img class="candidatos" src="{{ STATIC_URL }}images/candidatos.png" alt="">
+        <h3>
+          <center>
+            Revisa los candidatos a Diputado por Departamento
+          </center>
+        </h3>
+        <center>
+          <form class="form-search form-search-eleccion">
+            <p> Busca el Departamento de tu interés </p>
+            <input type="text" id="elecciones-search" class="input-xxlarge search-query elecciones-search">
+            <p class="eleccion-search-error">Ej: Alto Paraná </p>
+            <br/>
+            <br/>
+            <p> <em> Preguntale a tu candidato | Compará | Elegí a tu media naranja </em></p>
+          </form>
+        </center>
+      </div>
+      <div class="row-fluid">
+            <li class="span6" style="width:480px;"><a href="{% url ranking %}" class="thumbnail"> <img src="{{ STATIC_URL }}images/07-png.png" alt="Ranking de candidatos"> </a> </li>
+            <li class="span4" style="width:200px;"><a href="presidentea" class="thumbnail"> <img src="{{ STATIC_URL }}images/12-png.png" alt="Encontrá a tu candidato ideal"> </a> </li>
+            <li class="span3 thumbnail" style="width:200px;">
+              <ul class ="listadoMenuHome">
+                <li class="itemListaServel"><a href="presidentea/preguntales" class="btn btn-block">Preguntale a tu candidato</a></li>
+                <li class="itemListaServel"><a href="{% url voluntarios %}" class="btn btn-block">Encuestadores voluntarios</a></li>
+                <li class="itemListaServel"><a href="{% url contactme-get-contact-form %}" class="btn btn-block">¿Sos candidato? ¡Contactanos!</a></li>
+                <li class="itemListaServel"><a href="https://docs.google.com/file/d/0BxKInCm998RfcGhYbEFUX2lOd3M/edit?usp=sharing" class="btn btn-block">Cuestionario para Candidatos/as</a></li>
+                <li class="itemListaServel"><a href="http://tsje.gov.py/e2013/#!/consulta-al-rcp.html" target="_blank" class="btn btn-block">¿D&oacute;nde voto?</a></li>
+              </ul>
+            </li>
+          </div>
+    
+    <!-- ticker ultimas preguntas y respuestas --> 
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.barra_noticias').easyTicker({
+            visible: 1,
+            interval: 5000
+        });
+    });
+    </script> 
+    
+  </div>
+</div>
+</div>
+<div class="row-fluid">
+{% endblock content %}
+
+  {% block extra_js %}
+<style type="text/css">
+    .barra_noticias{
+        border: 3px solid #CE00CE;
+        margin-top: 12px;
+        font-size: 12px;
+        max-height: 60px;
+        background:#663399 url('{{ STATIC_URL }}images/signoInterrogacion.png') no-repeat 20px 0px ;
+        color: white;
+        border-radius: 10px;
+    }
+    .barra_noticias ul li{
+        padding: 5px 10px 5px 80px;
+    }
+
+</style>
+{% endblock extra_js %} 

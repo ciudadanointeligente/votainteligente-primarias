@@ -1,0 +1,1 @@
+{% for eleccion_destacada in elecciones_destacadas %}{% if eleccion_destacada.featured_caption %}{label:"{{eleccion_destacada.nombre}}",value:"{{eleccion_destacada.slug}}",text:"{{eleccion_destacada.featured_caption}}"}{% else %}{label:"{{eleccion_destacada.nombre}}",value:"{{eleccion_destacada.slug}}"}{% endif %}{% if not forloop.last %},{% endif %}{% endfor %}

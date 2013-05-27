@@ -1,0 +1,1 @@
+{% for eleccion_buscable in elecciones_buscables %}{label:"{{eleccion_buscable.nombre}}",value:"{{eleccion_buscable.slug}}"}{% if not forloop.last %},{% endif %}{% endfor %}

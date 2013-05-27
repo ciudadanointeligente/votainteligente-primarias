@@ -1,0 +1,136 @@
+
+{% extends "base_sub_menu.html" %}
+{% load estrellitas %}
+{% block content %}
+{% load twitter_tags %}
+{% load settingsvars_tags %}
+ 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+<script>
+$(function () {
+    $('body').off('click.collapse.data-api', '[data-toggle=collapse]');
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+      if($this.parentsUntil('.dropdown-menu').length!==0){
+          return false;
+      }
+    });
+});
+</script>
+             
+             
+
+<div class="container paginaCompleta">
+
+	 <h3>Preguntas a los candidatos de <span><a href="{% url eleccion-overview slug=eleccion.slug %}"> {{eleccion.nombre}} </a></span> </h3>
+
+
+
+
+
+	<h4 class="tituloPreguntale"> ¡Preguntales!       Ellos Responden...</h4>
+
+	{% if messages %} 
+	<div class="alert alert-success">
+		{% for message in messages %}    
+			{{ message }}
+		{% endfor %}    
+	</div>
+	{% endif %}
+
+	<form class="preguntaCandidatos" action="" method="post">{% csrf_token %}
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="candidatosPreguntale span4">
+					<h5> Candidatos </h5>
+					<label>Marcá sólo los candidatos a los que querés preguntar</label>
+{% for pk, candidato in form.candidato.field.choices %}
+					<label class="checkbox {{ pk|estrellitas_tachado }}">
+					<input type="checkbox" name="candidato" {{ pk|estrellitas_disabled }} class="" value={{pk}}>{{candidato}} {{ pk|estrellitas }}
+					 </input> </label>
+{% endfor %}
+				No tenemos los contactos de muchos de estos candidatos, si tenés alguno, mandános un mail a {% candidate_info_contact_mail %}
+						<br />
+						<br />
+					<span class="help-block"> <small> <em> <strong>
+						
+						* Tu pregunta será enviada al mail del candidato
+						<br/>
+						** Tu pregunta será enviada al mail del partido del candidato
+						<br/>
+						*** No tenemos el mail del candidato 
+						<br />
+						
+					</strong></em> </small></span>
+
+					{{form.candidato.errors}}
+				</div>
+				<div class="span8">
+					<label> <strong>Yo soy</strong></label>
+					{{form.remitente}}
+					<span class="help-block"> <small> <em> <strong>*Identifícate como quieras* </strong> </em> </small></span>
+					{{form.remitente.errors}}
+					<label> <strong>Correo (Opcional)</strong></label>
+					{{form.email_sender}}
+					<span class="help-block"> <small> <em> <strong>Dejá tu correo si querés que te avisemos cuando respondan </strong> </em> </small></span>
+					{{form.email_sender.errors}}
+
+					<label> <strong>Escribe tu pregunta</strong></label>
+					{{form.texto_pregunta}}
+					
+					{{form.texto_pregunta.errors}}
+					<br/>
+					<p>
+						{{form.captcha}}	
+					</p>
+					{{form.captcha.errors}}
+					<p> Acepto que mis preguntas y respuestas sean publicadas en este mismo medio. <br/>Confirmo que lo que aquí dice no atenta contra el candidato.</p>
+					<button type="submit" class="btn btn-info btnDerecha">He dicho</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="container">
+		<h4 class="tituloPreguntale"> Preguntas Recientes</h4>
+		<div class="accordion" id="accordion2">
+			{% for pregunta in preguntas %}
+<div class="accordion-groupPreguntale">
+	<div class="accordion-heading tituloAcordion">
+					
+			<div id="{{pregunta.id}}"class="preguntaPreguntale">{{pregunta}} <br/>
+				<div class="preguntadoPor"> <small><strong>Preguntado por:</strong> <em>{{pregunta.remitente}}</em></small></div>
+				<br/> <br/>
+			</div>
+		</div>
+			<div class="accordion-body">
+			{% for respuesta in pregunta.respuesta_set.all %}
+					<div class="nombreRespuestaPreguntale"> 
+						<div class="headerRespuesta">
+							<h5 class="nombreCandidato">{{respuesta.candidato}}</h5> 
+							<div class="twitteales">{{ respuesta|twittrespuesta }}</div> 
+						</div>
+						<br/>
+						<div class="separacionTwitter">
+							<div class="respuestaPreguntale"id="{{respuesta.pk}}">{{respuesta.texto_respuesta}}</div>
+							
+							
+						</div>
+						<br/>
+					</div>
+			{% endfor %}
+			</div>
+	</div>
+{% endfor %}
+		</div>
+	</div>
+
+
+</div>
+{% endblock %}

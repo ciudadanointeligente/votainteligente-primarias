@@ -1,0 +1,28 @@
+Ayúdanos a conseguir los datos de los siguientes contactos,
+si tienes alguno de estos datos mandanos un mail a candidatos@votainteligente.cl
+
+<table>
+	<tr>
+		<th>Eleccion</th>
+	    <th>Candidato</th>
+	    <th>Nos falta</th>
+  	</tr>
+  	{% for candidato in candidatos %}
+  	<tr>
+  		<th>{{candidato.eleccion.nombre}}</th>
+	    <th>{{candidato}}</th>
+	    <th>
+	    	{% if not candidato.has_twitter %}
+	    	<div>
+	    		Twitter
+	    	</div>
+	    	{% endif %}
+	    	{% if not candidato.has_contacto %}
+	    	<div>
+	    		Mail
+	    	</div>
+	    	{% endif %}
+	    </th>
+  	</tr>
+  	{% endfor %}
+</table>

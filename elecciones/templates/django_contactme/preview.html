@@ -1,0 +1,18 @@
+{% extends "base_sub_menu.html" %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;Previsualización{% endblock %}
+
+{% block content %}
+  <H4>Contactános</H4>
+
+  {% if not form.errors %}
+  <div>
+    <h4>Previsualización</h4>
+    <div style="background:#eef">
+      {{ message|linebreaks }}
+    </div>
+  </div>
+  {% endif %}
+
+  {% include "django_contactme/form.html" %}
+{% endblock %}

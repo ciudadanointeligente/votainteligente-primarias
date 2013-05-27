@@ -1,0 +1,14 @@
+Django==1.4.1
+argparse==1.2.1
+#distribute==0.6.24
+django-extensions==0.9
+django-grappelli==2.4.0
+wsgiref==0.1.2
+django-recaptcha==0.0.6
+django-mailer==0.1.0
+django_mobile==0.2.4
+python-memcached==1.48
+django-markdown-deux==1.0.4
+ludibrio==3.0.3
+slumber==0.5.2
+django-contactme==1.0a2

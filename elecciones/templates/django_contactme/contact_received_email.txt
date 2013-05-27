@@ -1,0 +1,12 @@
+{% autoescape off %}
+Hola,
+
+Tienes un nuevo mensaje enviado por: {{ contact_msg.name }}
+El mensaje es:
+
+{{ contact_msg.message }}
+
+--
+Eso es todo,
+{{ site }}
+{% endautoescape %}

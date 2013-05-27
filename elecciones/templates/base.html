@@ -1,0 +1,203 @@
+{% load elecciones_templatetags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!--[if lt IE 9]>
+    <script src="http://d25m5ercbv4o2x.cloudfront.net/js/html5shiv.js"></script>
+    <![endif]-->
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta property="og:description" content="A quienes elegimos - Conocé, compará, consultá a tus candidatos. Todo lo que necesitas saber para votar en las elecciones generales de abril próximo."/>
+<meta name="description" content="A quienes elegimos - Conocé, compará, consultá a tus candidatos. Todo lo que necesitas saber para votar en las elecciones generales de abril próximo.">
+<meta name="keywords" content="elecciones, presidenciales, 2013, paraguay">
+<meta property="og:image" content="{{ STATIC_URL }}images/portadaFacebook.png"/>
+<title>Candidatos 2013 - A quienes elegimos</title>
+<link rel="shortcut icon" href="{{ STATIC_URL }}./images/favicon.ico"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.23.css" rel="stylesheet">
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.purr.js"></script>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "77f6404a-fa4a-4dd0-b303-3eb69851a513"}); </script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10694322-1']);
+  _gaq.push(['_setDomainName', 'votainteligente.cl']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<link href="{{ STATIC_URL }}kathe.css" rel="stylesheet">
+</head>
+<body class="bodySubmenu">
+<!--[If lte IE 9]>  <div class="ielte9"><![endif]--> 
+
+<!--[If IE]>
+<div class="bulb_container">
+<div class="fci-ampolleta-light"><iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="140px" height="220" frameborder="0"></iframe></div>
+</div>
+<![endif]-->
+
+<div class="navbarSub navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner navSubMenu" style="background-color:black;">
+    <div class="container">
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right" style="width:922px;">
+          <li class"itemLogo" style="width:400px; margin-left:-20px;"><a href="{% url home %}"><img src="{{ STATIC_URL }}images/00-logo-cird-top-png.png" alt="CIRD - Centro de Información y Recursos para el Desarrollo"></a></li>
+          <li class="itemSubMenu"> <a href="http://www.aquieneselegimos.org.py/">Inicio</a></li>
+          <li class="itemSubMenu"> <a href="http://www.aquieneselegimos.org.py/index.php?sec=quienes_somos">¿Quiénes Somos?</a></li>
+          <li class="itemSubMenu"><a href="http://www.aquieneselegimos.org.py/autoridades.php">Autoridades</a></li>
+          <li class="itemSubMenu"><a href="http://www.aquieneselegimos.org.py/index.php?sec=enlaces/">Enlaces</a></li>
+          <li class="itemSubMenu"><a href="http://www.aquieneselegimos.org.py/index.php?sec=contactenos">Cont&aacute;ctenos</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navbarMenu navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner menuSuperior">
+    <div class="container">
+      <div class="nav-collapse collapse" style="clear:both;">
+        <ul class="menuPpal nav">
+          <li class="pull-left"><a href="{% url home %}"><img alt="" src="{{ STATIC_URL }}images/00-logo-aqe-top-png.png" style=""></a> </li>
+          <li class="pull-right rightMenu">
+            <div class="buscadorMenu">
+              <form class="navbar-search pull-right form-search-eleccion">
+                <input type="text" class="search-query elecciones-search" placeholder="Busca candidaturas">
+                <p class="eleccion-search-error">Debes seleccionar una eleccion</p>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row-fluid">
+                 <div class="span8 well"> Caracterización 
+                 </div>  
+                 <div class="span4 well"> Caracterización 
+                 </div> 
+             </div>
+             -->
+
+<div class="container"> 
+  <!--[If IE]> <div class="alert alert-error">
+              <p> Este sitio no esta optimizado para Internet Explorer, te recomendamos usar Firefox o Chrome en sus últimas versiones para una mejor experiencia. </p> </div>
+              <![endif]--> 
+  {% block content %}
+  {% endblock content %} </div>
+<footer class="footer"> 
+  <!--[If lte IE 9]> <div class="footer">
+                    <![endif]-->
+  
+  <div class="container">
+    <div class="row-fluid">
+      <ul>
+        <li class="span3">
+          <ul>
+            <li>El contenido de este sitio es exclusiva responsabilidad de sus autores y no refleja necesariamente las opiniones o puntos de vista del CIRD, NED, Ciudadano Inteligente, o la Justicia Electoral.<br>
+              <br>
+            </li>
+            <li><a href="{% url contactme-get-contact-form %}">¿Sos candidato? contactanos</a></li>
+            <li style="list-style:none;"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Conocé y Preguntá a tus Candidatos 2013 en la web de @AQEpy http://www.aquieneselegimos.org.py/ #votapy" data-via="aqepy" data-lang="es" data-hashtags="votapy">Twitter</a></li>
+            <li style="list-style:none;">
+              <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Faquieneselegimos.org.py&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=167673216633674" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+            </li>
+          </ul>
+        </li>
+        <li class="span4" style="border-left: 1px solid #333;">
+          <ul style="">
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;">Una iniciativa de</span></small><br>
+            </li>
+            <li style="list-style:none;"><a href="http://www.cird.org.py" target="_blank"><img src="{{ STATIC_URL }}images/logo-cird.png" border="0"></a><a href="http://www.aquieneselegimos.org.py" target="_blank"><img src="{{ STATIC_URL }}images/logo-aqe.png" alt="AQE" border="0"></a><br>
+              <br>
+            </li>
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;">Con el apoyo de</span></small><br>
+            </li>
+            <li style="list-style:none;"><a href="http://www.jqm.org.py" target="_blank"><img src="{{ STATIC_URL }}images/logo-jqm.png" border="0"></a><a href="http://www.asuncionnosune.org.py" target="_blank"><img src="{{ STATIC_URL }}images/logo-asunosune.png" border="0"></a></li>
+          </ul>
+        </li>
+        <li class="span3" style="margin-left:0px;">
+          <ul style="margin-left:-4px;">
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;">Con la cooperación de</span></small><br>
+            </li>
+            <li style="list-style:none;"><a href="http://www.ned.org" target="_blank"><img src="{{ STATIC_URL }}images/logo-ned.png" border="0"></a><br>
+              <br>
+            </li>
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;"> </span></small><br>
+            </li>
+            <li style="list-style:none; "><a href="http://www.somosvoluntariospy.org" target="_blank"><img src="{{ STATIC_URL }}images/logo-red.png" border="0"></a><a href="https://www.facebook.com/RedEncarnacenaDeVoluntariado" target="_blank"><img src="{{ STATIC_URL }}/images/logo-rev.png" border="0"></a></li>
+          </ul>
+        </li>
+        <li class="span3">
+          <ul>
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;"></span></small><br>
+            </li>
+            <li style="list-style:none;"><a href="http://www.ciudadanointeligente.org"><img src="{{ STATIC_URL }}images/logo-ciudadanoi.png" border="0"></a><a href="http://www.tsje.gov.py"><img src="{{ STATIC_URL }}images/logo-tsje.png" border="0"></a><br>
+              dd<br>
+              <br>
+            </li>
+            <li style="list-style:none;"><small><span style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;"> </span></small><br>
+            </li>
+            <li style="list-style:none;"><a href="https://www.facebook.com/reaccionpy" target="_blank"><img src="{{ STATIC_URL }}images/logo-rjc.png" border="0"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--[If lte IE 9]> </div>
+                    <![endif]--> 
+</footer>
+<script>
+
+$(function() {
+  var availableTags = [{% elecciones_search %}];
+  $( ".elecciones-search" ).autocomplete({
+    delay:0,
+    source: availableTags,
+    autoFocus: true
+  });
+
+  $( ".elecciones-search" ).autocomplete({
+     select: function(event, ui) { 
+      
+      $( "#elecciones-search" ).val( ui.item.label );
+        window.location = '/'+ui.item.value; 
+        return false;
+     }
+
+  });
+  $('.form-search').submit(function(){
+    
+    return false;
+  })
+});
+</script> 
+{% block extra_js %}
+{% endblock extra_js %} 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script> 
+<script type="text/javascript"> 
+var $buoop = {vs:{i:8,f:3.6,o:10.6,s:4,n:9}} 
+$buoop.ol = window.onload; 
+window.onload=function(){ 
+ try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+ var e = document.createElement("script"); 
+ e.setAttribute("type", "text/javascript"); 
+ e.setAttribute("src", "http://browser-update.org/update.js"); 
+ document.body.appendChild(e); 
+} 
+</script>
+</body>
+</html>
