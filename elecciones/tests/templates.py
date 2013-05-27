@@ -84,12 +84,14 @@ class TemplatesViewsTestCase(TestCase):
 		self.assertTrue('title' in response.context)
 		self.assertEquals(response.context['title'],u"Gracias a TODOS")
 
-	def test_get_senadores(self):
-		url = reverse('senadores')
+	def test_get_perfil_intereses(self):
+		url = reverse('intereses', kwargs={'slug':self.eleccion1.slug})
 		response = self.client.get(url)
 
-		self.assertTemplateUsed(response, 'todos_los_senadores.html')
+		self.assertTemplateUsed(response, 'elecciones/perfiles_intereses.html')
 		self.assertEquals(response.status_code, 200)
 		self.assertTrue('title' in response.context)
-		self.assertEquals(response.context['title'],u"Todos los Senadores")
+		self.assertEquals(response.context['title'],u"Perfil de intereses")
+
+	
 
