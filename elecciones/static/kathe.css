@@ -858,6 +858,188 @@ div.navi a.active {
     
 	}
 
+/*  ------------PERFILES INTERESES-------------   */
+
+.listaPerfiles {
+	height: 225px;
+    list-style: none outside none;
+    margin-left: -1px;
+    width: 900px;
+	}	
+
+.itemListaPerfiles{
+	color: grey;
+    float: left;
+    font-family: georgia;
+    font-style: italic;
+    list-style: none;
+    margin-right: 17px;
+    text-decoration: none;
+    width: 283px;
+    height: 60px;
+	}
+
+.listaPerfiles li{
+	line-height: 45px;
+}
+
+.itemListaPerfiles a{
+	color:grey;
+	text-decoration:none;
+	padding-left: 60px;
+}
+
+
+.itemListaPerfiles a:hover {
+	color:black;
+	text-decoration:none;
+}
+
+.prueba {
+	
+	height: 150px;
+	width: 910px;
+
+}
+
+
+#Allamand {
+	background-image: url(./images/Allamand.png);
+	background-repeat:no-repeat;
+}
+
+#Bachelet {
+	background-image: url(./images/Bachelet.png);
+	background-repeat:no-repeat;
+}
+
+#Claude {
+	background-image: url(./images/Claude.png);
+	background-repeat:no-repeat;
+}
+
+#Enriquez {
+	background-image: url(./images/Enriquez.png);
+	background-repeat:no-repeat;
+}
+
+#Gomez {
+	background-image: url(./images/Gomez.png);
+	background-repeat:no-repeat;
+}
+
+#Holt{
+	background-image: url(./images/Holt.png);
+	background-repeat:no-repeat;
+}
+
+#Longueira{
+	background-image: url(./images/Longueira.png);
+	background-repeat:no-repeat;
+}
+
+#Miranda{
+	background-image: url(./images/Miranda.png);
+	background-repeat:no-repeat;
+}
+
+#Orrego {
+	background-image: url(./images/Orrego.png);
+	background-repeat:no-repeat;
+}
+
+#Parisi {
+	background-image: url(./images/Parisi.png);
+	background-repeat:no-repeat;
+}
+
+#Sfeir {
+	background-image: url(./images/Sfeir.png);
+	background-repeat:no-repeat;
+}
+
+#Velasco {
+	background-image: url(./images/Velasco.png);
+	background-repeat:no-repeat;
+}
+
+
+
+.categoriaAllamand{
+	background-image: url(./images/categoriaAllamand.png);
+    background-repeat: no-repeat;
+    box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+	}
+
+
+
+.categoriaBachelet{
+	background-image: url(./images/categoriaBachelet.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}		
+
+.categoriaClaude{
+	background-image: url(./images/categoriaClaude.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaEnriquez{
+	background-image: url(./images/categoriaEnriquez.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaGomez{
+	background-image: url(./images/categoriaGomez.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaHolt{
+	background-image: url(./images/categoriaHolt.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaLongueira{
+	background-image: url(./images/categoriaLongueira.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaMiranda{
+	background-image: url(./images/categoriaMiranda.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaOrrego{
+	background-image: url(./images/categoriaOrrego.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaParisi{
+	background-image: url(./images/categoriaParisi.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaSfeir{
+	background-image: url(./images/categoriaSfeir.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
+
+.categoriaVelasco{
+	background-image: url(./images/categoriaVelasco.png);
+	background-repeat:no-repeat;
+	height: 150px;
+	}	
 
 
 /*  ------------METODOLOGÍA-------------   */
@@ -1108,9 +1290,9 @@ div.navi a.active {
 
 /*-------- METODOLOGIA---------*/
 .sangriaIzquierda {
-	 height: 41px;
-    line-height: 57px;
-    padding-left: 78px;
+	height: 35px;
+    line-height: 40px;
+    padding-left: 135px;
 	}
 
 
