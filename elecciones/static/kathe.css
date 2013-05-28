@@ -900,7 +900,7 @@ div.navi a.active {
 	float: left;
     height: 160px;
     margin-left: 20px;
-    margin-top: 125px;
+    margin-top: -25px;
     width: 765px;
 
 }
@@ -910,6 +910,9 @@ div.navi a.active {
     padding-bottom: 50px;
     width: 900px;
 }
+
+
+
 
 .tablaIntereses {
 	margin-left: 1px;
@@ -1108,7 +1111,7 @@ tr.alt td{
 
 /*  ------------METODOLOGÍA-------------   */
 
-.cat [class*="categoria"]{margin-top: 120px;}
+.cat [class*="categoria"]{margin-top: -30px;}
 
 .categoria {
 	font-family: 'bebas_neueregular';
@@ -1951,7 +1954,7 @@ span.gracias {
 /* vi-py */
 .navbar-inverse .navbar-inner{
 	background-image:none;
-	background-color:#2a97d1; 
+	background-color:#1C1C1C; 
 }
 
 .navbar .navbar-inverse .navbar-fixed-top {
