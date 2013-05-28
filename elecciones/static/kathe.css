@@ -240,6 +240,8 @@ span .casa{
     position: relative;
 	overflow: visible;
 	color: white;
+	border-right: 1px solid #252525;
+	margin: 40px 0 0 auto;
 }
 
 .dentroFooter{
