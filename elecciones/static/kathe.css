@@ -899,10 +899,16 @@ div.navi a.active {
 	
 	float: left;
     height: 160px;
-    margin-left: 11px;
+    margin-left: 20px;
     margin-top: 125px;
-    width: 816px;
+    width: 765px;
 
+}
+
+.contenedorPerfiles {
+	border-bottom: 1px dashed black;
+    padding-bottom: 50px;
+    width: 900px;
 }
 
 .tablaIntereses {
@@ -921,6 +927,9 @@ tr.alt td{
 	background-color: #969696;
     color: white;
 }
+
+.cat [class*="categoria"]{margin-top: 120px;}
+
 
 #Allamand {
 	background-image: url(./images/Allamand.png);
@@ -998,67 +1007,100 @@ tr.alt td{
 .categoriaBachelet{
 	background-image: url(./images/categoriaBachelet.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}		
 
 .categoriaClaude{
 	background-image: url(./images/categoriaClaude.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaEnriquez{
 	background-image: url(./images/categoriaEnriquez.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaGomez{
 	background-image: url(./images/categoriaGomez.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaHolt{
 	background-image: url(./images/categoriaHolt.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaLongueira{
 	background-image: url(./images/categoriaLongueira.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaMiranda{
 	background-image: url(./images/categoriaMiranda.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaOrrego{
 	background-image: url(./images/categoriaOrrego.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaParisi{
 	background-image: url(./images/categoriaParisi.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaSfeir{
 	background-image: url(./images/categoriaSfeir.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 
 .categoriaVelasco{
 	background-image: url(./images/categoriaVelasco.png);
 	background-repeat:no-repeat;
-	height: 150px;
+	 box-shadow: 1px 1px 1px 1px grey;
+    height: 140px;
+    width: 114px;
+    float: left;
 	}	
 .contenedorCandidato {
 	width: 950px;
