@@ -895,13 +895,32 @@ div.navi a.active {
 	text-decoration:none;
 }
 
-.prueba {
+.fichaCandidato {
 	
-	height: 150px;
-	width: 910px;
+	float: left;
+    height: 160px;
+    margin-left: 11px;
+    margin-top: 125px;
+    width: 816px;
 
 }
 
+.tablaIntereses {
+	margin-left: 1px;
+    width: 899px;
+
+}
+
+.tablaIntereses td{
+	border: 1px solid grey;
+	padding: 5px 7px 2px;
+	
+}
+
+tr.alt td{
+	background-color: #969696;
+    color: white;
+}
 
 #Allamand {
 	background-image: url(./images/Allamand.png);
@@ -971,6 +990,7 @@ div.navi a.active {
     box-shadow: 1px 1px 1px 1px grey;
     height: 140px;
     width: 114px;
+    float: left;
 	}
 
 
@@ -1040,7 +1060,9 @@ div.navi a.active {
 	background-repeat:no-repeat;
 	height: 150px;
 	}	
-
+.contenedorCandidato {
+	width: 950px;
+}
 
 /*  ------------METODOLOGÍA-------------   */
 
