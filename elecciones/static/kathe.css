@@ -21,7 +21,15 @@
 
 /*-----HOME  -----------*/
 .bodySubmenu{margin-top: 130px;}
-.bodyRegular{margin-top: 90px;}
+
+
+.bodyRegular{
+	max-width: 940px;
+	left: 50%;
+    margin: 66px auto;
+}
+
+
 iframe {
 	border:none;
 	}
@@ -45,7 +53,7 @@ iframe {
 
 
 .menuPpal {
-	width:940px;
+	width:100%;
 	}
 
 .subTitulosHome{
@@ -866,11 +874,17 @@ div.navi a.active {
 
 /*  ------------PERFILES INTERESES-------------   */
 
+.menuCandidatos {
+
+}
+
+
+
 .listaPerfiles {
 	height: 225px;
     list-style: none outside none;
     margin-left: -1px;
-    width: 900px;
+    width: 100%;
 	}	
 
 .itemListaPerfiles{
@@ -881,12 +895,12 @@ div.navi a.active {
     list-style: none;
     margin-right: 17px;
     text-decoration: none;
-    width: 283px;
+    width: 30%;
     height: 60px;
 	}
 
 .listaPerfiles li{
-	line-height: 45px;
+	line-height: 18px;
 }
 
 .itemListaPerfiles a{
@@ -907,14 +921,14 @@ div.navi a.active {
     height: 160px;
     margin-left: 20px;
     margin-top: -25px;
-    width: 765px;
+    width: 84%;
 
 }
 
 .contenedorPerfiles {
 	border-bottom: 1px dashed black;
     padding-bottom: 50px;
-    width: 900px;
+    min-height: 550px;
 }
 
 
@@ -922,7 +936,7 @@ div.navi a.active {
 
 .tablaIntereses {
 	margin-left: 1px;
-    width: 899px;
+    width: 100%;
 
 }
 
@@ -1007,7 +1021,7 @@ tr.alt td{
     background-repeat: no-repeat;
     box-shadow: 1px 1px 1px 1px grey;
     height: 140px;
-    width: 114px;
+    width: 12.8%;
     float: left;
 	}
 
@@ -1112,7 +1126,7 @@ tr.alt td{
     float: left;
 	}	
 .contenedorCandidato {
-	width: 950px;
+	width: 100%;
 }
 
 /*  ------------METODOLOGÍA-------------   */
@@ -1390,7 +1404,7 @@ tr.alt td{
 }
 
 .bulb_container {
-	width: 950px;
+	width: 60%;
 	margin: 0 auto;
 	position: relative;
 }

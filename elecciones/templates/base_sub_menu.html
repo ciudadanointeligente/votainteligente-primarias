@@ -25,95 +25,65 @@
 <script src="{{ STATIC_URL }}js/jquery.easy-ticker.js"></script>
 {% ga_script %}
 <link href="{{ STATIC_URL }}kathe.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
 <div class="bulb_container">
-<div class="fci-ampolleta-light"><iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="120px" height="220" frameborder="0"></iframe></div>
+    <div class="fci-ampolleta-light">
+      <iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="120px" height="220" frameborder="0">
+      </iframe>
+    </div>
 </div>
+</div>
+</div>
+</div>
+
+
+
 <body class="bodyRegular">
-<!--[If lte IE 9]>  <div class="ielte9"><![endif]--> 
-
-<!--[If IE]>
-<div class="bulb_container">
-<div class="fci-ampolleta-light"><iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="140px" height="220" frameborder="0"></iframe></div>
-</div>
-<![endif]-->
-
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-              <div class="container">
-                    <div class="nav-collapse collapse">
-                  
-                        <ul class="menuPpal nav">
-                        <li class="pull-left"><a href="{% url home %}"><img alt="" src="{{ STATIC_URL }}images/logoVotaPrimarias.png" style="margin-left: -16px; margin-right: 155px;"></a> </li>
-                        <li class="dentroMenu pull-right"><a href="{% url somos %}">¿Quiénes Somos?</a></li>
-                        <li class="dentroMenu pull-right"><a href="{% url metodologia %}">Metodología</a></li>
-                        
-                        <!-- <li class="dentroMenu pull-right"><form class="navbar-search pull-right">
-                            <input type="text" class="search-query comunas-search" placeholder="Buscar una comuna">
-                            </form></li> -->
-                        </ul>
-                            
-                    </div>
-               </div>
-             </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <div class="row-fluid">
+             
+              <div class="span12">
+                <tr>
+                  <td><a href="{% url home %}"><img alt="" src="{{ STATIC_URL }}images/logoVotaPrimarias.png"></a> </td>
+                  <td><a href="{% url somos %}">¿Quiénes Somos?</a></td>
+                  <td><a href="{% url metodologia %}">Metodología</a></td> 
+               </tr> 
+              
+            </div>         
+          </div>
         </div>
-
-
-<!-- <div class="navbarSub navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner navSubMenu" style="background-color:black;">
-    <div class="container">
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right" style="width:922px;">
-          <li class"itemLogo" style="width:400px; margin-left:-20px;"><a href="{% url home %}"><img src="{{ STATIC_URL }}images/00-logo-cird-top-png.png" alt="CIRD - Centro de Información y Recursos para el Desarrollo"></a></li>
-          <li class="itemSubMenu"> <a href="http://www.aquieneselegimos.org.py/">Inicio</a></li>
-          <li class="itemSubMenu"> <a href="{% url somos %}">¿Quiénes Somos?</a></li>
-          <li class="itemSubMenu"><a href="http://www.aquieneselegimos.org.py/autoridades.php">Autoridades</a></li>
-          <li class="itemSubMenu"><a href="{% url enlaces %}">Enlaces</a></li>
-          <li class="itemSubMenu"><a href="contact/">Cont&aacute;ctenos</a></li>
-        </ul>
-      </div>
     </div>
   </div>
-</div>
-<div class="navbarMenu navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner menuSuperior">
-    <div class="container">
-      <div class="nav-collapse collapse" style="clear:both;">
-        <ul class="menuPpal nav">
-          <li class="pull-left"><a href="{% url home %}"><img alt="" src="{{ STATIC_URL }}images/00-logo-aqe-top-png.png" style=""></a> </li>
-          <li class="pull-right rightMenu">
-            <div class="buscadorMenu">
-              <form class="navbar-search pull-right form-search-eleccion">
-                <input type="text" class="search-query elecciones-search" placeholder="Busca candidaturas">
-                <p class="eleccion-search-error">Debes seleccionar una eleccion</p>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div> -->
+</body>
 
-<!-- <div class="row-fluid">
-                 <div class="span8 well"> Caracterización 
-                 </div>  
-                 <div class="span4 well"> Caracterización 
-                 </div> 
-             </div>
-             -->
 
-<div class="container"> 
+<div class="container-fluid"> 
+  <div class="row-fluid">
+    <div class="span12">
  
   {% block content %}
-  {% endblock content %} </div>
+  {% endblock content %} 
+    </div>
+  </div>
+</div>
+
+
+
+
 <footer class="footer"> 
-  <!--[If lte IE 9]> <div class="footer">
-                    <![endif]-->
   
-  <div class="container paginaCompleta">
+  <div class="container-fluid">
+     <div class="row-fluid">
+      <div class="span12">
     <div class="pull-left">
    
                             <ul class="footer">
@@ -151,6 +121,8 @@
  
 </tbody>
 </table>
+</div>
+</div>
 </div>
 </footer>
 
@@ -197,5 +169,6 @@ window.onload=function(){
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <!--[If IE]>  </div><![endif]-->
 
+</div>
 </body>
 </html>

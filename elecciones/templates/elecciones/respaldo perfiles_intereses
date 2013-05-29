@@ -5,14 +5,100 @@
 
 
 <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
-<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
+ 
+ 
+  
 
-<body class="bodySubmenu">
-<div class="container-fluid">
+			 
+             
+  <!--<h3> Nuestra Metodología </h3> -->
+           
+<!-- <p style="float:none; height: 30px;"><a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-success" style="float: right;"> Descargar nuestra metodología completa </a></p> -->
+
+      
+<!-- <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        <span class="asterisco">*</span> Metodología del Estudio
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Los datos que se presentan en este sitio web tienen como objetivo ofrecer a la ciudadanía un panorama de la situación de su comuna en diferentes áreas, de tal forma que se pueda realizar una evaluación de la gestión del municipio y detectar los principales problemas que, comparativamente, afectan a la comuna. <br/><br/>
+
+        A pesar de la importancia y de la influencia que los alcaldes logran tener en la vida de las personas, en nuestro país existen pocas instancias de fácil acceso para que la ciudadanía conozca y evalúe la gestión de sus municipios; menos todavía para que pueda comparar en base a datos objetivos la situación en la que su alcalde deja el municipio al final de su período, o que obligue a los nuevos candidatos a asumir determinadas posturas y presentar programas específicos que recojan los temas más relevantes para cada localidad. <br/><br/>
+
+        La diferencia de esta propuesta en relación a otros estudios de este tipo, es mostrar la información de una forma más comprensible. Muchas veces un número o un porcentaje no es suficiente para comprender un determinado resultado, por lo que utilizamos constantemente los Rankings para la ubicación de la comuna en relación al total nacional. En otros casos se muestran porcentajes, los cuales también se contraponen a un promedio nacional para hacerlo comparable. De esta forma, el ciudadano puede realizar comparaciones para dimensionar los principales desafíos de su comuna.
+      </div>
+    </div>
+  </div>
+  <a name="Top"></a>
+  <div class="accordion-group">
+   <div class="accordion-heading tituloAcordion">
+     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+       <span class="asterisco">*</span> ¿Qué son estos datos?
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Los datos que se presentan aquí son una recopilación de algunas de las principales estadísticas a nivel municipal, con énfasis en los temas de salud, educación, infraestructura, transparencia, participación ciudadana y presupuestos. Es información que pretende diferenciarse de las actuales estadísticas disponibles a través de una propuesta más sencilla, que invite a los ciudadanos a informarse y participar de estas elecciones municipales de forma más activa.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        <span class="asterisco">*</span> ¿Cómo se elaboraron los datos?
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        A partir de la revisión de la literatura sobre gestión municipal y el análisis de las atribuciones y responsabilidades legales del municipio se establecieron las áreas de mayor importancia de la gestión municipal. Luego, se entrevistó a expertos en cada una de estas materias, quienes hicieron sus recomendaciones acerca de las variables a considerar. Por último, se realizó un sondeo entre voluntarios de Ciudadano Inteligente y ciudadanos en general a través de las redes sociales, determinando así los datos que mayor interés podrían generar por parte de la ciudadanía.<br/><br/>
+
+        De esta forma, obtuvimos una larga lista de variables a estudiar, listado que se fue depurando hasta obtener las variables que aquí se encuentran representadas. 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+        <span class="asterisco">* </span> ¿Cómo se llegó al listado definitivo de datos?
+      </a>
+    </div>
+    <div id="collapseFour" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Para la selección de los datos que publicamos en este sitio web plateamos tres criterios:<br/>
+        1. Los datos a publicar debían ser de responsabilidad de la gestión municipal, es decir, que el municipio tenga responsabilidad absoluta o parcial en los resultados mostrados y, por lo tanto, responsabilidad en su mejoría.<br/><br/>
+        2. Los datos a publicar debían estar disponibles a nivel comunal, puesto que la mayor cantidad de información se encuentra agregada a nivel regional.<br/><br/>
+        3. Los datos a publicar debían tener relevancia para la ciudadanía, para así cumplir con el objetivo del estudio de facilitar a la ciudadanía informarse y exigir a sus candidatos propuestas concretas en los temas más deficientes.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading tituloAcordion">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+        <span class="asterisco">*</span> ¿Cuáles fueron las principales fuentes de información?
+      </a>
+    </div>
+    <div id="collapseFive" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="paginaCompleta container"> -->
+ 
+ <div class="container-fluid">
            
           <div class="row-fluid">
              <div class="span12"> 
@@ -24,7 +110,7 @@
           </div>
       
           <div class="row-fluid">
-             <div class="span12 well menuCandidatos"> 
+             <div class="span12 well"> 
                  <ul class="listaPerfiles">
                   <li class="itemListaPerfiles" id="Allamand"><a href="#allamand"> Andrés Allamand</a></li>
                   <li class="itemListaPerfiles" id="Bachelet"><a href="#bachelet"> Michelle Bachelet </a></li>
@@ -32,10 +118,10 @@
                   <li class="itemListaPerfiles" id="Enriquez"><a href="#enriquez"> Marco Enriquez Ominami </a></li>
                   <li class="itemListaPerfiles" id="Gomez"><a href="#gomez"> José Antonio Gomez </a></li>
                   <li class="itemListaPerfiles" id="Holt"><a href="#holt"> Tomás Jocelyn-Holt </a></li>
-                  <li class="itemListaPerfiles" id="Longueira"><a href="#longueira"> Pablo Longueira</a></li>
-                  <li class="itemListaPerfiles" id="Miranda"><a href="#miranda"> Roxana Miranda </a></li>
-                  <li class="itemListaPerfiles" id="Orrego"><a href="#orrego"> Claudio Orrego </a></li>
-                  <li class="itemListaPerfiles" id="Parisi"><a href="#parisi"> Franco Parisi  </a></li>
+                  <li class="itemListaPerfiles" id="Longueira"><a href="#Longueira"> Pablo Longueira</a></li>
+                  <li class="itemListaPerfiles" id="Miranda"><a href="#miranda"> Roxana Miranda	</a></li>
+                  <li class="itemListaPerfiles" id="Orrego"><a href="#orrego"> Claudio Orrego	</a></li>
+                  <li class="itemListaPerfiles" id="Parisi"><a href="#parisi"> Franco Parisi	</a></li>
                   <li class="itemListaPerfiles" id="Sfeir"><a href="#sfeir"> Alfredo Sfeir </a></li>
                   <li class="itemListaPerfiles" id="Velasco"><a href="#velasco"> Andrés Velasco </a></li>
                   </ul> 
@@ -43,28 +129,31 @@
              
              <br/>
           </div> 
-
-
-          <div class="row-fluid">
+          
+             
+            <div class="row-fluid">
              <div class="span12 contenedorPerfiles">   
-                    <a name="allamand"> </a>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    <div class="contenedorCandidato">
+            <!--  <div class="container cat"> -->
+                     
+                     <a name="allamand"> </a>
+                     </br>
+                     </br>
+                     </br>
+                     </br>
+                      </br>
+                     </br>
+
+                          <div class="contenedorCandidato">
                             <div class="categoriaAllamand"></div> 
-                              <div class="fichaCandidato">
-                              <h4 class="">Andrés Allamand </h4>
-                              <h5>Estado Civil: Casado </h5>
-                              <h5>Grupo Familiar: Esposa + 4 hijos </h5>
-                              <h5>Profesión: Arquitecto</h5>
-                              <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -125px;"> Descargar declaración de intereses completa </a>
-                              </div>
+                                <div class="fichaCandidato">
+                                <h4 class="">Andrés Allamand </h4>
+                                <h5>Estado Civil: Casado </h5>
+                                <h5>Grupo Familiar: Esposa + 4 hijos </h5>
+                                <h5>Profesión: Arquitecto</h5>
+                               <a href="{{ STATIC_URL }}documentos/documentoMetodologico.pdf" class="btn btn-mini btn-primary" style="float: right; margin-top: -125px;"> Descargar declaración de intereses completa </a>
+                                </div>
                             </div>
-                        <div class="span12">
+                          <div class="span12">
                            <h5> Declaración de Patrimonio </h5>
                               <table class="tablaIntereses">
                                 <tbody>
@@ -76,7 +165,7 @@
                                     <td>Razón Social</td>
                                     <td>Constructora Comunidad El Aromo Limitada</td>
                                   </tr>
-                                  <tr>
+                                   <tr>
                                     <td>Fecha de Constitución de la Sociedad:</td>
                                     <td>12/08/1986</td>
                                   </tr>
@@ -92,7 +181,7 @@
                                     <td>Tipo de participación:  </td>
                                     <td>Participación directa</td>
                                   </tr>
-                                  <tr>
+                                     <tr>
                                     <td>Objeto:  </td>
                                     <td>Construcción viviendas económicas DFL 2 y actividades vinculadas</td>
                                   </tr>
@@ -100,18 +189,21 @@
                                     <td>Capital Inicial:  </td>
                                     <td>$12.159.588</td>
                                   </tr>
-                                  <tr>
+                                    <tr>
                                     <td>Aporte Capital del Candidato:   </td>
                                     <td>$1.737.084</td>
                                   </tr>
-                                </tbody>
+                                  </tbody>
                               </table> 
 
                         </div>
+                      
+         <!--  </div> -->
       </div>
     </div>
-
-     <div class="container cat">
+                
+             <!-- 
+              <div class="container cat">
                       <div class="contenedorPerfiles">
                      <a name="bachelet"> </a>
                      </br>
@@ -180,7 +272,7 @@
                       </div>
           </div>
     
-        
+     		
             
              <div class="container cat">
                      <div class="contenedorPerfiles">
@@ -318,7 +410,7 @@
                         </div>
                       </div>
           </div>
-        
+     		
              
              <div class="container cat">
                       <div class="contenedorPerfiles">
@@ -663,7 +755,7 @@
                         </div>
                       </div>
           </div>
-          
+    			
     
               <div class="container cat">
                      <div class="contenedorPerfiles">
@@ -732,7 +824,7 @@
                         </div>
                       </div>
           </div>
-        
+    		
                
              <div class="container cat">
                       <div class="contenedorPerfiles">
@@ -803,7 +895,7 @@
           </div>
             </div>
                 
-         
+    		 
               <div class="container cat">
                       <div class="contenedorPerfiles">
                      <a name="velasco"> </a>
@@ -871,9 +963,39 @@
                         </div>
                       </div>
           </div>   
-              
+                
+ 			
+            </br>
+          </br>
+            
+            
+ </div>      -->      
+ 
+ </div>
+        	
+            
+            
+            
+            
 
-</div>            
-</body>
+            
+            
+            
+            
+            
+            
+            
+     		
+    	
+        
+       
+
+    	  
+       
+       
+       
+        
+        
+        <!-- </div> -->
         
           {% endblock content %}
