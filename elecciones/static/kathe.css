@@ -20,13 +20,46 @@
 /* CSS Document */
 
 /*-----HOME  -----------*/
+
+.container-fluid.wraperContent
+{
+	padding: 0;
+	margin-top: 60px;
+}
+.contenedorCompleto {
+	width: 100%;
+	
+}
+
+.contenedorCentro {
+	margin: 0 auto !important;
+	max-width: 940px;
+}
+
 .bodySubmenu{margin-top: 130px;}
 
 
 .bodyRegular{
-	max-width: 940px;
-	left: 50%;
-    margin: 66px auto;
+	margin-top: 60px;
+	
+}
+
+.itemHeader a {
+	margin-left: 10px;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-style: italic;
+	color: white;
+	font-size: 13px;
+}
+
+.itemHeader  {
+	float: right;
+	margin-top: 30px;
+}
+
+.logoHeader{
+	float: left;
+	margin-top: 5px;
 }
 
 
@@ -238,22 +271,22 @@ span .casa{
 
 .footer {
     list-style: circle;
-    padding-right: 17px;
 	padding-bottom: 10px;
 	background-color: #1B1B1B;
-    border-color: #252525;
-	position:fixed;
-	bottom:0px;
-    margin-bottom: 0;
-    position: relative;
 	overflow: visible;
 	color: white;
-	border-right: 1px solid #252525;
-	margin: 40px 0 0 auto;
+	width: 100%;
+	margin: 30px 0 auto;
+}
+
+.header {
+	max-width: 910px;
+	margin: 0 auto;
+	clear: both;
 }
 
 .dentroFooter{
-	margin-left:50px;
+	
 	}
 
 .footer a{
@@ -273,7 +306,7 @@ span .casa{
 	}
 
 .itemFooter{
-	 margin-left:13px;
+	 margin-right:10px;
 	 margin-top: 21px;
 	}
 
@@ -281,16 +314,70 @@ span .casa{
 	float:left;
 	}
 
-.footerTexto {
+.footerOtro {
 	color: #FFFFFF;
     float: left;
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 10px;
     font-style: italic;
-    margin-left: 0;
-    margin-right: 45px;
-    margin-top: 12px;
+    width: 25%;
+    margin-top: 15px;
+    margin-bottom: 50px;
 	}
+
+.footerAyuda {
+	color: #FFFFFF;
+    float: left;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 10px;
+    font-style: italic;
+    width: 65%;
+    margin-top: 15px;
+	}
+
+.footerRedes {
+	color: #FFFFFF;
+    float: left;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 10px;
+    font-style: italic;
+    width: 10%;
+    margin-top: 15px;
+	}
+
+.dentroFooterOtro {
+	width: 20%;
+}
+
+.dentroFooterAyuda {
+	width: 70%;
+}
+
+.footerLinks {
+	color: #FFFFFF;
+    float: left;
+    font-size: 10px;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+     margin-bottom: 25px;
+	}
+
+.footerLinks a{
+	color:white;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    border-right: 1px solid white;
+    padding-right: 10px;
+    padding-left: 10px;
+	}
+
+.footerLinks a:last-child{
+
+    border-right: none;
+    	}
 
 .dentroMenu{
 	margin-top: 24px;
@@ -874,6 +961,12 @@ div.navi a.active {
 
 /*  ------------PERFILES INTERESES-------------   */
 
+
+.fichaCandidato h5 {
+    color: #7A7A7A;
+}
+
+
 .menuCandidatos {
 
 }
@@ -883,7 +976,7 @@ div.navi a.active {
 .listaPerfiles {
 	height: 225px;
     list-style: none outside none;
-    margin-left: -1px;
+    margin-left: 60px;
     width: 100%;
 	}	
 
@@ -892,21 +985,23 @@ div.navi a.active {
     float: left;
     font-family: georgia;
     font-style: italic;
-    list-style: none;
-    margin-right: 17px;
-    text-decoration: none;
-    width: 30%;
     height: 60px;
+    list-style: none outside none;
+    margin-right: 55px;
+    position: relative;
+    text-decoration: none;
+    width: 25%;
 	}
 
 .listaPerfiles li{
 	line-height: 18px;
+	 margin-top: 10px;
 }
 
 .itemListaPerfiles a{
 	color:grey;
 	text-decoration:none;
-	padding-left: 60px;
+	
 }
 
 
@@ -920,7 +1015,6 @@ div.navi a.active {
 	float: left;
     height: 160px;
     margin-left: 20px;
-    margin-top: -25px;
     width: 84%;
 
 }
@@ -929,6 +1023,7 @@ div.navi a.active {
 	border-bottom: 1px dashed black;
     padding-bottom: 50px;
     min-height: 550px;
+    margin-top: -80px;
 }
 
 
@@ -946,6 +1041,11 @@ div.navi a.active {
 	
 }
 
+.color {
+	color: black;
+	font-style: italic;
+}
+
 tr.alt td{
 	background-color: #969696;
     color: white;
@@ -954,76 +1054,100 @@ tr.alt td{
 .cat [class*="categoria"]{margin-top: 120px;}
 
 
-#Allamand {
-	background-image: url(./images/Allamand.png);
-	background-repeat:no-repeat;
+#Allamand:before {
+	content: url(./images/Allamand.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
+
 }
 
-#Bachelet {
-	background-image: url(./images/Bachelet.png);
-	background-repeat:no-repeat;
+#Bachelet:before {
+	content: url(./images/Bachelet.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Claude {
-	background-image: url(./images/Claude.png);
-	background-repeat:no-repeat;
+#Claude:before {
+	content: url(./images/Claude.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Enriquez {
-	background-image: url(./images/Enriquez.png);
-	background-repeat:no-repeat;
+#Enriquez:before {
+	content: url(./images/Enriquez.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Gomez {
-	background-image: url(./images/Gomez.png);
-	background-repeat:no-repeat;
+#Gomez:before {
+	content: url(./images/Gomez.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Holt{
-	background-image: url(./images/Holt.png);
-	background-repeat:no-repeat;
+#Holt:before {
+	content: url(./images/Holt.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Longueira{
-	background-image: url(./images/Longueira.png);
-	background-repeat:no-repeat;
+#Longueira:before {
+	content: url(./images/Longueira.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Miranda{
-	background-image: url(./images/Miranda.png);
-	background-repeat:no-repeat;
+#Miranda:before {
+	content: url(./images/Miranda.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Orrego {
-	background-image: url(./images/Orrego.png);
-	background-repeat:no-repeat;
+#Orrego:before {
+	content: url(./images/Orrego.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Parisi {
-	background-image: url(./images/Parisi.png);
-	background-repeat:no-repeat;
+#Parisi:before {
+	content: url(./images/Parisi.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Sfeir {
-	background-image: url(./images/Sfeir.png);
-	background-repeat:no-repeat;
+#Sfeir:before {
+	content: url(./images/Sfeir.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
 
-#Velasco {
-	background-image: url(./images/Velasco.png);
-	background-repeat:no-repeat;
+#Velasco:before {
+	content: url(./images/Velasco.png);
+	position: absolute;
+	top: -13px;
+	left: -60px;
 }
-
 
 
 .categoriaAllamand{
 	background-image: url(./images/categoriaAllamand.png);
-    background-repeat: no-repeat;
-    box-shadow: 1px 1px 1px 1px grey;
+	background-repeat:no-repeat;
+	 box-shadow: 1px 1px 1px 1px grey;
     height: 140px;
-    width: 12.8%;
+    width: 114px;
     float: left;
-	}
+	}	
 
 
 
@@ -1176,8 +1300,9 @@ tr.alt td{
 }
 
 .flechaMetodologia {
-	position: fixed;
-    right: 129px;
+	left: 280px;
+    margin: 0 auto;
+    position: fixed;
     top: 522px;
 	}
 
@@ -1398,9 +1523,9 @@ tr.alt td{
 
 .fci-ampolleta-light {
 	position: absolute;
-	top: 0px;
-	z-index: 10;
-	right: -135px;
+    right: -302px;
+    top: -7px;
+    z-index: 10;
 }
 
 .bulb_container {
@@ -2010,3 +2135,9 @@ margin-left: 0;
     text-decoration: line-through;
 }
 
+
+@media screen and (max-width: 940px) { 
+	.header {
+    	padding: 0 20px;
+	}
+}
