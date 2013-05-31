@@ -335,7 +335,7 @@ span .casa{
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 10px;
     font-style: italic;
-    width: 65%;
+    width: 60%;
     margin-top: 15px;
 	}
 
@@ -345,7 +345,7 @@ span .casa{
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 10px;
     font-style: italic;
-    width: 10%;
+    width: 15%;
     min-width: 118px;
     margin-top: 15px;
     margin-bottom: 50px;
@@ -388,6 +388,45 @@ span .casa{
 .dentroMenu{
 	margin-top: 24px;
 }
+
+.bannerInspector {
+	background-color: black;
+	height: 120px;
+	border-radius: 4px 4px 4px 4px;
+	width: 100%;
+}
+
+.contenedorInfoBannerInsp {
+	max-width: 55%;
+	clear: both;
+	margin: 0 auto;
+
+}
+
+.contenidoBannerInspector {
+	float: left;
+    margin-top: 38px;
+    width: 30%;
+
+}
+
+.logoInspector {
+	margin-top: 1%;
+    width: 70%;
+}
+
+.logoInspector a {
+	padding-right: 20%;
+}
+
+.textoInspector {
+	font-size: 17px;
+	font-family: georgia;
+	color: white;
+	font-style: italic;
+}
+
+
 
 /* -------- MUNICIPALIDADES ---------- */	
 
@@ -1051,6 +1090,11 @@ div.navi a.active {
 
 tr.alt td{
 	background-color: #969696;
+    color: white;
+}
+
+tr.primeraFila td{
+	background-color: #002054 !important;
     color: white;
 }
 
@@ -2157,16 +2201,29 @@ margin-left: 0;
 	.fichaCandidato {
     	width: 79%;
 	}
-
 	.listaPerfiles li {
     	width: 40%;
 	}
-
 	.footerAyuda, .footerLinks, .footerRedes {
     width: 100%;
 	}
+	.contenidoBannerInspector p{
+		font-size: 14px;
+	}
+	.logoInspector {
+    margin-top: 3%;
+	}
+	.bannerInspector {
+    height: 107px;
+	}
+
 }
 
+@media screen and (max-width: 800px) { 
+	.contenidoBannerInspector p {
+		font-size: 13px;
+	}
+}
 
 
 @media screen and (max-width: 650px) { 
@@ -2191,13 +2248,36 @@ margin-left: 0;
 		margin-top: 0px;
 		margin-bottom: 20px;
 	}
+	.contenidoBannerInspector p {
+		font-size: 11px;
+	}
+	.contenidoBannerInspector {
+    width: 32%;
+	}
+	.logoInspector {
+    width: 66%;
+	}
+	.logoInspector {
+    margin-top: 8%;
+	}
 }
 
 @media screen and (max-width: 550px) {
 	.btn.btn-mini.btn-primary.pull-right {
 	max-width: 120px;	
 	}
-
+	.contenidoBannerInspector {
+    display: none;
+	}
+	.logoInspector {
+    width: 100%;
+	}
+	.logoInspector {
+    margin-top: 3%;
+	}
+	.bannerInspector {
+    height: 95px;
+	}
 }
 
 @media screen and (max-width: 400px) {
@@ -2239,6 +2319,9 @@ margin-left: 0;
 		width: 100%;
 		margin-bottom: 10px;
 	}
+	.contenedorInfoBannerInsp {
+    max-width: 88%;
+	}
 }
 
 @media screen and (max-width: 350px) {
@@ -2253,5 +2336,5 @@ margin-left: 0;
 	width: 100%;
 	max-width: 95%;
 	}
-
 }
+
