@@ -21,10 +21,21 @@
 
 /*-----HOME  -----------*/
 
+
+.bodySubmenu{margin-top: 130px;}
+
+
+.bodyRegular{
+	margin-top: 60px;
+	min-width: 320px;
+	
+}
+
 .container-fluid.wraperContent
 {
 	padding: 0;
 	margin-top: 60px;
+	
 }
 .contenedorCompleto {
 	width: 100%;
@@ -36,13 +47,7 @@
 	max-width: 940px;
 }
 
-.bodySubmenu{margin-top: 130px;}
 
-
-.bodyRegular{
-	margin-top: 60px;
-	
-}
 
 .itemHeader a {
 	margin-left: 10px;
@@ -322,7 +327,6 @@ span .casa{
     font-style: italic;
     width: 25%;
     margin-top: 15px;
-    margin-bottom: 50px;
 	}
 
 .footerAyuda {
@@ -342,7 +346,9 @@ span .casa{
     font-size: 10px;
     font-style: italic;
     width: 10%;
+    min-width: 118px;
     margin-top: 15px;
+    margin-bottom: 50px;
 	}
 
 .dentroFooterOtro {
@@ -360,7 +366,7 @@ span .casa{
     margin-top: 20px;
     width: 100%;
     text-align: center;
-     margin-bottom: 25px;
+    margin-bottom: 25px;
 	}
 
 .footerLinks a{
@@ -977,7 +983,6 @@ div.navi a.active {
 	height: 225px;
     list-style: none outside none;
     margin-left: 60px;
-    width: 100%;
 	}	
 
 .itemListaPerfiles{
@@ -990,12 +995,12 @@ div.navi a.active {
     margin-right: 55px;
     position: relative;
     text-decoration: none;
-    width: 25%;
 	}
 
 .listaPerfiles li{
 	line-height: 18px;
 	 margin-top: 10px;
+	 width: 24%;
 }
 
 .itemListaPerfiles a{
@@ -1011,10 +1016,8 @@ div.navi a.active {
 }
 
 .fichaCandidato {
-	
-	float: left;
+	float: right;
     height: 160px;
-    margin-left: 20px;
     width: 84%;
 
 }
@@ -1023,7 +1026,7 @@ div.navi a.active {
 	border-bottom: 1px dashed black;
     padding-bottom: 50px;
     min-height: 550px;
-    margin-top: -80px;
+    margin-top: 15px;
 }
 
 
@@ -1251,7 +1254,9 @@ tr.alt td{
 	}	
 .contenedorCandidato {
 	width: 100%;
+	margin-top: 25px;
 }
+
 
 /*  ------------METODOLOGÍA-------------   */
 
@@ -1300,10 +1305,9 @@ tr.alt td{
 }
 
 .flechaMetodologia {
-	left: 280px;
     margin: 0 auto;
-    position: fixed;
-    top: 522px;
+    position: relative;
+    float: right;
 	}
 
 .categoriaPobreza h4, .carruselItem .categoriaPobreza, .infoCompletaMunicipalidades .categoriaPobreza{
@@ -2135,9 +2139,119 @@ margin-left: 0;
     text-decoration: line-through;
 }
 
+.tablaInteresesTablet {
+    	margin-left: 0px !important;
+	}
+
+.fichaCandidato .btn.btn-mini.btn-primary.pull-right{
+		margin-top: -125px;
+	}
 
 @media screen and (max-width: 940px) { 
 	.header {
     	padding: 0 20px;
 	}
+}
+
+@media screen and (max-width: 850px) { 
+	.fichaCandidato {
+    	width: 79%;
+	}
+
+	.listaPerfiles li {
+    	width: 40%;
+	}
+
+	.footerAyuda, .footerLinks, .footerRedes {
+    width: 100%;
+	}
+}
+
+
+
+@media screen and (max-width: 650px) { 
+	.categoriaAllamand, .categoriaBachelet, .categoriaClaude, .categoriaSfeir, .categoriaEnriquez, .categoriaGomez, .categoriaHolt, .categoriaMiranda, .categoriaLongueira, .categoriaVelasco, .categoriaOrrego, .categoriaParisi {
+	background-size: 90px auto;
+    height: 109px;
+    width: 90px;
+	}
+
+	.btn.btn-mini.btn-primary.pull-right {
+	max-width: 170px;	
+	}
+
+	.fichaCandidato h5 {
+		line-height: 15px;
+	}
+
+	.fichaCandidato .btn.btn-mini.btn-primary.pull-right{
+		margin-top: -110px;
+	}
+	.itemHeader {
+		margin-top: 0px;
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.btn.btn-mini.btn-primary.pull-right {
+	max-width: 120px;	
+	}
+
+}
+
+@media screen and (max-width: 400px) {
+	.fichaCandidato h5 {
+		font-size: 12px;
+		line-height: 9px;
+	}
+
+	.fichaCandidato h4 {
+		font-size: 14px;
+	}
+
+	.fichaCandidato {
+    	width: 65%;
+	}
+
+	.fichaCandidato .btn.btn-mini.btn-primary.pull-right{
+		margin-top: 0px;
+	}
+
+	.tablaInteresesTablet .table tr th, .tablaInteresesTablet .table tr td{
+		font-size: 12px;
+		line-height: 14px;
+	}
+
+	.footerLinks a {
+		font-size: 12px;
+	}
+
+	.footerAyuda {
+		display: none;
+	}
+
+	.footerRedes {
+		display: none;
+	}
+
+	.footerOtro {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	.categoriaAllamand, .categoriaBachelet, .categoriaClaude, .categoriaSfeir, .categoriaEnriquez, .categoriaGomez, .categoriaHolt, .categoriaMiranda, .categoriaLongueira, .categoriaVelasco, .categoriaOrrego, .categoriaParisi {
+	display: none;
+	}
+
+	.fichaCandidato{
+		width: 100%;
+	}
+	.btn.btn-mini.btn-primary.pull-right {
+	width: 100%;
+	max-width: 95%;
+	}
+
 }
