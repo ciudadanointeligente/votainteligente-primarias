@@ -52,6 +52,8 @@ class InteresesView(DetailView):
 		context['elecciones'] = elecciones
 		return context
 
+
+
 class EleccionIndices(DetailView):
 	model = Eleccion
 
