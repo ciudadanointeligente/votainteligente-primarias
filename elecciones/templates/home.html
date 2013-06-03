@@ -22,8 +22,8 @@
 
 
   <div class="row-fluid">
-    <div class="span12" style="padding: 8px; text-align:center">
-      <div class=""> 
+    <div class="span12" style="text-align:center">
+      <div class="thumbnail candideitorgPrimarias"> 
         <iframe src="http://192.168.1.32:8000/admin/eleccion-de-mas-de-8-candidatos/embeded" style="width:920px;" height="522" frameborder="0" scrolling="no"> </iframe>
       </div>
 
@@ -55,10 +55,10 @@ onmouseout="document.over5.src='{{ STATIC_URL }}images/bannerQuientefinancia.jpg
       </div>
     </div>
 
-    <div class="container">
+    <div class="container contenedorCentro">
       <div class="row-fluid">
-        <div class="span12"> 
-        <div class="thumbnail"> <h3> + Info | Todo lo que necesitas saber sobre estas elecciones primarias</h3> </div>
+        <div class="span12 thumbnail"> 
+        <div class="bannerMasInfo"> <a href="{% url mas_info %}"><h3> <span class="masInfo">+ info | </span> <span class="masInfo2"> Todo lo que necesitas saber sobre estas elecciones primarias </span></h3> </a></div>
       </div>
       </div>
     </div>

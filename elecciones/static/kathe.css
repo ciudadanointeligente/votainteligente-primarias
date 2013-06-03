@@ -72,6 +72,36 @@ iframe {
 	border:none;
 	}
 
+.candideitorgPrimarias{
+	margin-top: 20px;
+}
+
+.bannerMasInfo {
+	background-color: #D8D8D8;
+    height: 50px;
+    padding-bottom: 10px;
+    padding-top: 1px;
+}
+
+.masInfo {
+	font-size: 30px;
+	font-variant: small-caps;
+}
+
+.masInfo2 {
+	font-family: georgia;
+	font-style: italic;
+	font-weight: 100;
+}
+
+.bannerMasInfo a{
+	color: black;
+}
+
+.bannerMasInfo a:hover{
+	color: #001577;
+}
+
 .jumptarget:before {
   content:"";
   display:block;
@@ -1089,8 +1119,9 @@ div.navi a.active {
 }
 
 tr.alt td{
-	background-color: #969696;
-    color: white;
+	background-color: #E8E8E8;
+    color: black;
+    width: 50%;
 }
 
 tr.primeraFila td{
@@ -2173,7 +2204,7 @@ input.search-query.elecciones-search.ui-autocomplete-input {
 	border-bottom-color: #1082be;
 }
 .row-fluid .home-py [class*="span"] {
-margin-left: 1.4%;
+margin-left: 2.1%;
 }
 .row-fluid .home-py [class*="span"]:first-child {
 margin-left: 0;
