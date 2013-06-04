@@ -2,9 +2,192 @@
 {% extends "base_sub_menu.html" %}
 {% block content %}
 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+
+<body class="bodySubmenu">
+	<div class="container-fluid wraperContent">    
+		<div class="row-fluid">
+			<div class="span12"> 
+				<h3>  <span class="masInfo">+ Info |</span> <span class="masInfo2">Todo lo que necesias saber </span></h3>
+			</br>
+			</br>
+					<div class="accordion" id="accordion2">
+					  <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+					        <span class="asterisco">*</span> Metodología del Estudio
+					      </a>
+					    </div>
+					    <div id="collapseOne" class="accordion-body collapse in">
+					      <div class="accordion-inner">
+					        Los datos que se presentan en este sitio web tienen como objetivo ofrecer a la ciudadanía un panorama de la situación de su comuna en diferentes áreas, de tal forma que se pueda realizar una evaluación de la gestión del municipio y detectar los principales problemas que, comparativamente, afectan a la comuna. <br/><br/>
+
+					        A pesar de la importancia y de la influencia que los alcaldes logran tener en la vida de las personas, en nuestro país existen pocas instancias de fácil acceso para que la ciudadanía conozca y evalúe la gestión de sus municipios; menos todavía para que pueda comparar en base a datos objetivos la situación en la que su alcalde deja el municipio al final de su período, o que obligue a los nuevos candidatos a asumir determinadas posturas y presentar programas específicos que recojan los temas más relevantes para cada localidad. <br/><br/>
+
+					        La diferencia de esta propuesta en relación a otros estudios de este tipo, es mostrar la información de una forma más comprensible. Muchas veces un número o un porcentaje no es suficiente para comprender un determinado resultado, por lo que utilizamos constantemente los Rankings para la ubicación de la comuna en relación al total nacional. En otros casos se muestran porcentajes, los cuales también se contraponen a un promedio nacional para hacerlo comparable. De esta forma, el ciudadano puede realizar comparaciones para dimensionar los principales desafíos de su comuna.
+					      </div>
+					    </div>
+					  </div>
+					<a name="Top"></a>
+
+					</br>
+
+					  <div class="accordion-group">
+					   <div class="accordion-heading tituloAcordion">
+					     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					       <span class="asterisco">*</span> ¿Qué son estos datos?
+					      </a>
+					    </div>
+					    <div id="collapseTwo" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Los datos que se presentan aquí son una recopilación de algunas de las principales estadísticas a nivel municipal, con énfasis en los temas de salud, educación, infraestructura, transparencia, participación ciudadana y presupuestos. Es información que pretende diferenciarse de las actuales estadísticas disponibles a través de una propuesta más sencilla, que invite a los ciudadanos a informarse y participar de estas elecciones municipales de forma más activa.
+					      </div>
+					    </div>
+					  </div>
+					  </br>
+
+					  <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+					        <span class="asterisco">*</span> ¿Cómo se elaboraron los datos?
+					      </a>
+					    </div>
+					    <div id="collapseThree" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        A partir de la revisión de la literatura sobre gestión municipal y el análisis de las atribuciones y responsabilidades legales del municipio se establecieron las áreas de mayor importancia de la gestión municipal. Luego, se entrevistó a expertos en cada una de estas materias, quienes hicieron sus recomendaciones acerca de las variables a considerar. Por último, se realizó un sondeo entre voluntarios de Ciudadano Inteligente y ciudadanos en general a través de las redes sociales, determinando así los datos que mayor interés podrían generar por parte de la ciudadanía.<br/><br/>
+
+					        De esta forma, obtuvimos una larga lista de variables a estudiar, listado que se fue depurando hasta obtener las variables que aquí se encuentran representadas. 
+					      </div>
+					    </div>
+					  </div>
+					  </br>
 
 
+					  <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+					        <span class="asterisco">* </span> ¿Cómo se llegó al listado definitivo de datos?
+					      </a>
+					    </div>
+					    <div id="collapseFour" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Para la selección de los datos que publicamos en este sitio web plateamos tres criterios:<br/>
+					        1. Los datos a publicar debían ser de responsabilidad de la gestión municipal, es decir, que el municipio tenga responsabilidad absoluta o parcial en los resultados mostrados y, por lo tanto, responsabilidad en su mejoría.<br/><br/>
+					        2. Los datos a publicar debían estar disponibles a nivel comunal, puesto que la mayor cantidad de información se encuentra agregada a nivel regional.<br/><br/>
+					        3. Los datos a publicar debían tener relevancia para la ciudadanía, para así cumplir con el objetivo del estudio de facilitar a la ciudadanía informarse y exigir a sus candidatos propuestas concretas en los temas más deficientes.
+					      </div>
+					    </div>
+					  </div>
+					  </br>
 
+					  <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+					        <span class="asterisco">*</span> ¿Cuáles fueron las principales fuentes de información?
+					      </a>
+					    </div>
+					    <div id="collapseFive" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+
+
+					 <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+					        <span class="asterisco">*</span> Prueba nº6
+					      </a>
+					    </div>
+					    <div id="collapseSix" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+
+					 <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+					        <span class="asterisco">*</span> Prueba nº6
+					      </a>
+					    </div>
+					    <div id="collapseSeven" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+
+					 <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseEight">
+					        <span class="asterisco">*</span> Prueba nº6
+					      </a>
+					    </div>
+					    <div id="collapseEight" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+
+					 <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseNine">
+					        <span class="asterisco">*</span> Prueba nº6
+					      </a>
+					    </div>
+					    <div id="collapseNine" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+
+					 <div class="accordion-group">
+					    <div class="accordion-heading tituloAcordion">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTen">
+					        <span class="asterisco">*</span> Prueba nº6
+					      </a>
+					    </div>
+					    <div id="collapseTen" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        Las principales fuentes de información son sitios web gubernamentales (Ministerio de Salud, Ministerio de Educación, Subsecretaría de Desarrollo Regional, Subsecretaría de Prevención del Delito, Contraloría General de la República, Instituto Nacional de Estadísticas, Ministerio de Desarrollo Social) de los cuales se extrajeron diversos estudios y estadísticas publicadas. Además, se realizaron solicitudes de información pública a través de la Ley de Transparencia, tanto a organismos centrales como a los mismos municipios. 
+
+					        Otros lugares en donde puedes obtener información municipal de este tipo es en los <a href="http://reportescomunales.bcn.cl/index.php/Categor%C3%ADa:Comunas">Reportes Estadísticos Comunales de la Biblioteca del Congreso Nacional</a> y en el <a href="http://www.sinim.gov.cl/indicadores/busq_serie.php">Sistema Nacional  de Información Municipal (SINIM).</a>
+					      
+					    </div>
+					  </div>
+					</div>
+					</br>
+</div>
+</div>
+</div>
+</body>
 
 
 
