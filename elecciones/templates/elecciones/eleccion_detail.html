@@ -16,7 +16,7 @@
             <div class="paginaCompleta">
                 <div class="container-fluid">
                     <div class="row-fluid">
-                        <div class="span8">
+                        <div class="span8 spanCompleto12">
                             <h2>Candidatos/as a <span>{{eleccion}} </span>
                                 
                                 </h2>
@@ -43,25 +43,9 @@
                         
                         <div class="span4">  
                                                 <div class="sidebar-nav sidebarDerecha">  
-                                                <a href="http://www.slideshare.net/fullscreen/FundacionCIRD/encuesta-qu-quiere-la-gente-2013" target="blank"><img alt="Presentación de resultados de la Encuesta Ciudadana: Qué quiere la gente" src="{{ STATIC_URL }}images/logo-loquequierelagente.jpg" width="280" height="137" /></a><br /><br />
+                                              
                                                    <ul class="thumbnails">
-                                                    <li class="span12" style="margin-bottom: 10px;">
-                                                        <div>
-                                                       <a href="{% url todos %}" target="_blank" class="btn btn-block btn-vota">Lista completa de candidatos</a>
-                                                       
-                                                        </div>
-                                                    </li>
-                                                    {% if eleccion.extra_info_title %}
-                                                        <li class="span12" style="margin-bottom: 10px;">
-                                                            <div>
-
-                                                           <a href="{% url eleccion-extra-info slug=eleccion.slug %}" target="_blank" class="btn btn-block btn-vota">{{eleccion.extra_info_title}}</a>
-                                                           
-                                                            </div>
-                                                        </li>
-                                                        {% endif %}
-
-                                                            <li class="span6" style="margin-left: 0px;">
+                                                            <li class="span6">
                                                             <div class="well thumbnail">
                                                           <a href="{% url eleccion-preguntales eleccion.slug %}" target="_blank" class="btn btn-block btn-success btnMunicipales">¡Pregúntales!</a>
                                                            <p class="textoBTN"> Hay <strong>{{eleccion.numero_preguntas}}</strong> pregunta(s), haz la tuya.</p>
@@ -83,11 +67,11 @@
  
                                                     </ul>
                                                 </div>
-                            <!-- espacio para banners begin -->
-                            <div>
-                                <a href="http://www.votoinformado.org.py" target="blank"><img class="thumbnail"alt="Voto Informado" src="{{ STATIC_URL }}images/vasoBanner.png" width="275" height="175" /></a><br /><br />
-                                <a href="http://www.paraguaydebate.org.py" target="blank"><img alt="Paraguay Debate" src="{{ STATIC_URL }}images/logo-pydebate.jpg" width="280" height="78" /></a><br /><br />
+                           
 
+                            <!-- espacio para banners begin -->
+                            <div class="bannerElVaso">
+                                <a href="http://www.elvaso.cl/" target="blank"><img class="thumbnail"alt="Voto Informado" src="{{ STATIC_URL }}images/vasoBanner.png" width="100%" height="175" /></a><br /><br />
                             </div>
 
                              <!-- espacio para banners end -->
