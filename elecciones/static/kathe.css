@@ -291,8 +291,13 @@ span .casa{
 }
 
 .sidebarDerecha {
-	margin-top:23px;
+	margin-top: 98px;
 	}
+
+.bannerElVaso {
+	margin-top: 10px;
+	width: 100%;
+}
 
 .btnMunicipales {
 	color:white;
@@ -1602,8 +1607,8 @@ tr.primeraFila td{
 
 .fci-ampolleta-light {
 	position: absolute;
-    right: -302px;
-    top: -7px;
+    right: -308px;
+    top: 12px;
     z-index: 10;
 }
 
@@ -2175,6 +2180,8 @@ span.gracias {
 	font-size: 18pt;
 }
 
+
+
 /* vi-py */
 .navbar-inverse .navbar-inner{
 	background-image:none;
@@ -2222,6 +2229,17 @@ margin-left: 0;
 		margin-top: -125px;
 	}
 
+
+
+/*Mediaquery Responsive */
+
+@media screen and (max-width: 1100px) { 
+	.fci-ampolleta-light {
+    right: -220px;
+    top: 12px;
+	}
+}
+
 @media screen and (max-width: 940px) { 
 	.header {
     	padding: 0 20px;
@@ -2247,12 +2265,58 @@ margin-left: 0;
 	.bannerInspector {
     height: 107px;
 	}
-
+	.fci-ampolleta-light {
+    right: -170px;
+    top: 12px;
+	}
+	.bannerMasInfo {
+    height: 90px;
+	}
+	.tt-wrapper li .tt-preguntales span{
+	display: none;
+	}
+	.tt-wrapper li .tt-preguntales:hover span{
+    display: none;
+	}
+	.tt-wrapper li .tt-preguntales span:before,
+	.tt-wrapper li .tt-preguntales span:after{
+    display: none;
+	}
+	.tt-wrapper li a span:before{
+    display: none;
+	}
+	.tt-wrapper li a:hover span{
+    display: none;
+	}
+	.row-fluid .span6  {
+	width: 174%;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	}
+	.sidebarDerecha {
+	margin-top: 0px;
+	}
+	.flotarAbajoCompleto {
+	width: 100%;
+	}
+	.row-fluid .span8  {
+		width: 100%;
+	}
+	.row-fluid .span4 {
+		width: 50%;
+	}
+	.row-fluid [class*="span"] {
+		margin-left: 0px;
+	}
 }
 
 @media screen and (max-width: 800px) { 
 	.contenidoBannerInspector p {
 		font-size: 13px;
+	}
+	.bannerMasInfo {
+	padding-right: 10px;
+	padding-left: 10px;
 	}
 }
 
@@ -2290,6 +2354,22 @@ margin-left: 0;
 	}
 	.logoInspector {
     margin-top: 8%;
+	}
+	.fci-ampolleta-light {
+    display: none;
+	}
+	.bannerMasInfo {
+	padding-right: 10px;
+	padding-left: 10px;
+	}
+}
+
+@media screen and (max-width: 600px) { 
+	.row-fluid .span3 {
+	width: 50%;
+	}
+	.row-fluid .home-py [class*="span"] {
+	margin-left: 0;
 	}
 }
 
@@ -2353,6 +2433,19 @@ margin-left: 0;
 	.contenedorInfoBannerInsp {
     max-width: 88%;
 	}
+	.bannerMasInfo {
+	padding-right: 5px;
+	padding-left: 5px;
+	height: 75px;
+	}
+	.masInfo {
+	font-size: 20px;
+	}
+	.bannerMasInfo h3 {
+	font-size: 17px;
+	line-height: 30px;
+	}
+
 }
 
 @media screen and (max-width: 350px) {
@@ -2367,5 +2460,22 @@ margin-left: 0;
 	width: 100%;
 	max-width: 95%;
 	}
+	.bannerMasInfo {
+	height: 60px;
+	}
+	.masInfo {
+	font-size: 15px;
+	}
+	.bannerMasInfo h3 {
+	font-size: 15px;
+	line-height: 23px;
+	}
+	.row-fluid .span3 {
+	width: 100%;
+	}
+	.bannerElVaso {
+		display: none;
+	}
+	
 }
 

@@ -7,96 +7,62 @@
 <meta property="og:image" content="{{ STATIC_URL }}images/portadaFacebook.png"/>
 
 
-<div class="container paginaCompleta">
 
 
-                 
-                  
-                       <div class="bulb_container">
+
+
+                      <div class="bulb_container">
                         <div class="fci-ampolleta-light">
-                        <iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="120px" height="220" frameborder="0">
-                        </iframe>
+                          <iframe src="http://ciudadanointeligente.org/assets/bulb_light.html?wmode=transparent" width="120px" height="220" frameborder="0">
+                          </iframe>
                         </div>
                       </div>
                   
 
+<body class="bodySubmenu">
+<div class="container-fluid wraperContent">
 
   <div class="row-fluid">
     <div class="span12" style="text-align:center">
-      <div class="thumbnail candideitorgPrimarias"> 
-        <iframe src="http://192.168.1.32:8000/admin/eleccion-de-mas-de-8-candidatos/embeded" style="width:920px;" height="522" frameborder="0" scrolling="no"> </iframe>
+      <div class="candideitorgPrimarias"> 
+        <iframe src="http://www.candideit.org/kmalis/primarias/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
       </div>
+      </br>
+      </br>
 
-<div class="container"><br />
       <div class="row-fluid">
-        <ul class="thumbnails home-py">
-          <li class="span3"><a href="presidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg" alt="Presidentes" name="over1" onmouseover="document.over1.src='{{ STATIC_URL }}images/13-png.png'"
-onmouseout="document.over1.src='{{ STATIC_URL }}images/bannerPreguntales.jpg'"></a>
+        <ul class="thumbnails home-py tt-wrapper">
+          <li class="span3"><a class="tt-preguntales thumbnail" href="#"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg" alt="Presidentes" name="over1"><span>Ingresa en el buscador el nombre de tu comuna y ahí podrás hacer tus preguntas.</span></a>
             <h5>¡Pregúntales!</h5>
           </li>
-          <li class="span3"><a href="vicepresidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2" onmouseover="document.over2.src='{{ STATIC_URL }}images/14-png.png'"
-onmouseout="document.over2.src='{{ STATIC_URL }}images/bannerCompara.jpg'"> </a>
+
+
+          <li class="span3"><a href="vicepresidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2"> </a>
             <h5>Compara</h5>
           </li>
-          <li class="span3"><a href="{% url senadores %}" class="thumbnail" ><img src="{{ STATIC_URL }}images/bannerPerfiles.jpg" alt="Senadores" name="over3" onmouseover="document.over3.src='{{ STATIC_URL }}images/15-png.png'"
-onmouseout="document.over3.src='{{ STATIC_URL }}images/bannerPerfiles.jpg'"> </a>
+
+
+          <li class="span3"><a href="{% url senadores %}" class="thumbnail" ><img src="{{ STATIC_URL }}images/bannerPerfiles.jpg" alt="Senadores" name="over3"> </a>
             <h5>Perfiles de Interés</h5>
           </li>
-          <!-- <li class="span2"><a href="#" class="thumbnail" style="width:168px;"><img src="{{ STATIC_URL }}images/05-png.png"  alt="Diputados" name="over4" onmouseover="document.over4.src='{{ STATIC_URL }}images/16-png.png'"
-onmouseout="document.over4.src='{{ STATIC_URL }}images/05-png.png'"> </a>
-            <h5>Diputados</h5>
-          </li> -->
-          <li class="span3"><a href="parlasur" class="thumbnail" ><img src="{{ STATIC_URL }}images/bannerQuientefinancia.jpg" alt="Parlasur" name="over5" onmouseover="document.over5.src='{{ STATIC_URL }}images/17-png.png'"
-onmouseout="document.over5.src='{{ STATIC_URL }}images/bannerQuientefinancia.jpg'"> </a>
+          
+          <li class="span3"><a href="parlasur" class="thumbnail" ><img src="{{ STATIC_URL }}images/bannerQuientefinancia.jpg" alt="Parlasur" name="over5"> </a>
             <h5>¿Quién te Financia?</h5>
           </li>
           
         </ul>
       </div>
-    </div>
+      
 
-    <div class="container contenedorCentro">
+    <div class="contenedorCentro">
       <div class="row-fluid">
         <div class="span12 thumbnail"> 
         <div class="bannerMasInfo"> <a href="{% url mas_info %}"><h3> <span class="masInfo">+ info | </span> <span class="masInfo2"> Todo lo que necesitas saber sobre estas elecciones primarias </span></h3> </a></div>
       </div>
       </div>
-    </div>
     
-      <!-- Searchable elections Block -->
-     <!--  <div class="buscadorPpal"> <img class="candidatos" src="{{ STATIC_URL }}images/candidatos.png" alt="">
-        <h3>
-          <center>
-            Revisa los candidatos a Diputado por Departamento
-          </center>
-        </h3>
-        <center>
-          <form class="form-search form-search-eleccion">
-            <p> Busca el Departamento de tu interés </p>
-            <input type="text" id="elecciones-search" class="input-xxlarge search-query elecciones-search">
-            <p class="eleccion-search-error">Ej: Alto Paraná </p>
-            <br/>
-            <br/>
-            <p> <em> Preguntale a tu candidato | Compará | Elegí a tu media naranja </em></p>
-          </form>
-        </center>
-      </div> -->
-
-
-      <!-- botoncitos con links -->
-     <!--  <div class="row-fluid">
-            <li class="span6" style="width:480px;"><a href="{% url ranking %}" class="thumbnail"> <img src="{{ STATIC_URL }}images/07-png.png" alt="Ranking de candidatos"> </a> </li>
-            <li class="span4" style="width:200px;"><a href="presidentea" class="thumbnail"> <img src="{{ STATIC_URL }}images/12-png.png" alt="Encontrá a tu candidato ideal"> </a> </li>
-            <li class="span3 thumbnail" style="width:200px;">
-              <ul class ="listadoMenuHome">
-                <li class="itemListaServel"><a href="presidentea/preguntales" class="btn btn-block">Preguntale a tu candidato</a></li>
-                <li class="itemListaServel"><a href="{% url voluntarios %}" class="btn btn-block">Encuestadores voluntarios</a></li>
-                <li class="itemListaServel"><a href="{% url contactme-get-contact-form %}" class="btn btn-block">¿Sos candidato? ¡Contactanos!</a></li>
-                <li class="itemListaServel"><a href="https://docs.google.com/file/d/0BxKInCm998RfcGhYbEFUX2lOd3M/edit?usp=sharing" class="btn btn-block">Cuestionario para Candidatos/as</a></li>
-                <li class="itemListaServel"><a href="http://tsje.gov.py/e2013/#!/consulta-al-rcp.html" target="_blank" class="btn btn-block">¿D&oacute;nde voto?</a></li>
-              </ul>
-            </li>
-          </div> -->
+    
+  
     
     <!-- ticker ultimas preguntas y respuestas --> 
     <script type="text/javascript">
@@ -132,10 +98,15 @@ onmouseout="document.over5.src='{{ STATIC_URL }}images/bannerQuientefinancia.jpg
         padding: 5px 10px 5px 80px;
     }
 
+
 </style>
+
+
 {% endblock extra_js %} 
 
 </div>
 
+</div>
+</body>
 
 
