@@ -21,6 +21,8 @@ urlpatterns = patterns('',
 	url(r'^todos/?$', TemplateView.as_view(template_name="todos_los_candidatos.html"), name="todos"),
 	url(r'^ranking/?$', cache_page(Ranking.as_view(), 60 * settings.CACHE_MINUTES), name="ranking"),
 	url(r'^mas_info/?$', TemplateView.as_view(template_name='elecciones/mas_info.html'), name="mas_info"),
+	url(r'^queremos/?$', TemplateView.as_view(template_name='elecciones/queremos.html'), name="queremos"),
+
 
 
  	url(r'^contact/', include('django_contactme.urls'))	,
