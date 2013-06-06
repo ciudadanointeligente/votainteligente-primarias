@@ -12,12 +12,15 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 class CandidatosEstrellitas(TestCase):
 	def setUp(self):
 		self.colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
 		self.eleccion = Eleccion.objects.create(nombre=u"La eleccion", slug="la-eleccion")
-		self.candidato = Candidato.objects.create(nombre=u"Un candidato mala onda", 
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.candidato = Candidato.objects.create(api_instance=self.popit_api_instance,
+													nombre=u"Un candidato mala onda", 
 													partido=u"RN", 
 													eleccion=self.eleccion, 
 													colectivo=self.colectivo1)

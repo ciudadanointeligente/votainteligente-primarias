@@ -15,6 +15,7 @@ from django.template import Template, Context
 from urllib2 import quote
 from django.contrib import messages
 import os
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 class MessageTestCase(TestCase):
 
@@ -54,9 +55,10 @@ class MessageTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': self.eleccion1, 'partido':self.colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': self.eleccion2, 'partido': self.colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': self.eleccion3, 'partido':self.colectivo2}]
-		self.candidato1 = Candidato.objects.create(nombre=self.data_candidato[0]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
-		self.candidato2 = Candidato.objects.create(nombre=self.data_candidato[1]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		self.candidato3 = Candidato.objects.create(nombre=self.data_candidato[2]['nombre'], eleccion = self.eleccion2, colectivo = self.data_candidato[2]['partido'])
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.candidato1 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=self.data_candidato[0]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
+		self.candidato2 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=self.data_candidato[1]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		self.candidato3 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=self.data_candidato[2]['nombre'], eleccion = self.eleccion2, colectivo = self.data_candidato[2]['partido'])
 		self.question1 = "Why can't we be friends?"
 		self.answer1 = "I'd kinda like to be the President, so I can show you how your money's spent"
 		self.question2 = 'Who let the dogs out?'

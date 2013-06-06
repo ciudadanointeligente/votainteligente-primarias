@@ -12,6 +12,7 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 
 class TemplateTagsTesting(TestCase):
@@ -39,11 +40,13 @@ class TemplateTagsTesting(TestCase):
 			numero_pie_pagina_3 = u"3",
 			en_carrusel = True
 			)
-		self.candidato = Candidato.objects.create(eleccion=self.eleccion,\
-															 nombre=u"el candidato",\
-															 partido=u"API",\
-															 web=u"http://unaurl.cl",\
-															 twitter=u"candidato")
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.candidato = Candidato.objects.create(api_instance=self.popit_api_instance,
+															eleccion=self.eleccion,\
+															nombre=u"el candidato",\
+															partido=u"API",\
+															web=u"http://unaurl.cl",\
+															twitter=u"candidato")
 	@skip('no tenemos domain')
 	def test_no_responden_diles_algo(self):
 		expected_html = '<a href="https://twitter.com/intent/tweet" data-text="1 preguntas de ciudadanos no han sido respondidas por @candidato, revisalas en {% url index %}/la-eleccion/preguntales" class="twitter-mention-button" data-lang="es" data-related="ciudadanoi">Tweet to @candidato</a>'

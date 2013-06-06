@@ -13,23 +13,27 @@ from django.utils.unittest import skip
 from django.template import Template, Context, RequestContext
 from urllib2 import quote
 from django.contrib.sites.models import Site
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 class MolestaAUnCandidato(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
 		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.candidato_con_twitter = Candidato.objects.create(eleccion=self.eleccion1,\
-												 nombre=u"el candidato con twitter",\
-												 partido=u"API",\
-												 web=u"http://unaurl.cl",\
-												 twitter=u"candidato",\
-												 colectivo=colectivo1)
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.candidato_con_twitter = Candidato.objects.create(api_instance=self.popit_api_instance,
+												eleccion=self.eleccion1,\
+												nombre=u"el candidato con twitter",\
+												partido=u"API",\
+												web=u"http://unaurl.cl",\
+												twitter=u"candidato",\
+												colectivo=colectivo1)
 
-		self.candidato_sin_twitter = Candidato.objects.create(eleccion=self.eleccion1,\
-												 nombre=u"el candidato sin twitter",\
-												 partido=u"API",\
-												 web=u"http://votainteURLligente.cl",\
-												 colectivo=colectivo1)
+		self.candidato_sin_twitter = Candidato.objects.create(api_instance=self.popit_api_instance,
+												eleccion=self.eleccion1,\
+												nombre=u"el candidato sin twitter",\
+												partido=u"API",\
+												web=u"http://votainteURLligente.cl",\
+												colectivo=colectivo1)
 
 		self.pregunta1 = Pregunta.objects.create(
 											remitente='remitente1', 

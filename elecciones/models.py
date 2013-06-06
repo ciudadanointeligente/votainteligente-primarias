@@ -11,6 +11,7 @@ from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from popit.models import Person
 # Create your models here.
 
 
@@ -102,7 +103,7 @@ class Colectivo(models.Model):
 	def __unicode__(self):
 		return self.sigla
 
-class Candidato(models.Model):
+class Candidato(Person):
 	nombre = models.CharField(max_length=255)
 	#mail = models.CharField(max_length=255)
 	eleccion = models.ForeignKey(Eleccion)

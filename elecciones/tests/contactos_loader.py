@@ -12,6 +12,8 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from django.conf import settings
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 class ContactosLoaderTestCase(TestCase):
 	def setUp(self):
@@ -23,6 +25,16 @@ class ContactosLoaderTestCase(TestCase):
 
 		self.algarrobo = Eleccion.objects.create(nombre=u"Algarrobo", slug=u"algarrobo")
 		self.candidateloader = ContactosLoader()
+		self.popit_api_instance, created = PopitApiInstance.objects.get_or_create(url=settings.POPIT_API_URL)
+
+
+	def test_get_popit_api_instance(self):
+		api_instance = self.candidateloader.getPopitApiInstance()
+		self.assertEquals(api_instance.url, settings.POPIT_API_URL)
+
+		self.assertEquals(self.candidateloader.popit_api_instance.url, settings.POPIT_API_URL)
+
+
 
 	def test_create_detect_candidate(self):
 		
@@ -47,7 +59,8 @@ class ContactosLoaderTestCase(TestCase):
 		self.assertEquals(self.candidateloader.failed[0],{u"Algarrobo",u"FIERA FEROZ INTELIGENTE",u"este no es el mail de la Fiera"})
 
 	def test_does_not_create_two_candidates(self):
-		previous_candidate = Candidato.objects.create(nombre=u"FIERA FEROZ", 
+		previous_candidate = Candidato.objects.create(api_instance=self.popit_api_instance, 
+			nombre=u"FIERA FEROZ", 
 			eleccion=self.algarrobo, 
 			partido=u"Partido Feroz", 
 			colectivo=self.colectivo1)

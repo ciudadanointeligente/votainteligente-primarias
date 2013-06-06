@@ -12,6 +12,7 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 from elecciones.views import Ranking
 
@@ -40,23 +41,24 @@ class RankingTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': self.eleccion1, 'partido':self.colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': self.eleccion2, 'partido': self.colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': self.eleccion3, 'partido':self.colectivo2}]
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 		
 
-		self.candidato1 = Candidato.objects.create(nombre=u"candidato1", eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
-		self.candidato2 = Candidato.objects.create(nombre=u"candidato2", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		self.candidato3 = Candidato.objects.create(nombre=u"candidato3", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
-		self.candidato4 = Candidato.objects.create(nombre=u"candidato4", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
+		self.candidato1 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato1", eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
+		self.candidato2 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato2", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		self.candidato3 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato3", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
+		self.candidato4 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato4", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
 		
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(api_instance=self.popit_api_instance, nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 
 		self.pregunta1 = Pregunta.objects.create(
 											remitente='remitente1', 

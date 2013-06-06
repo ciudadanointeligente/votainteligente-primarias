@@ -12,6 +12,7 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 
 class HomeTestCase(TestCase):
@@ -57,8 +58,9 @@ class HomeTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': eleccion1, 'partido':colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': eleccion2, 'partido': colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': eleccion2, 'partido':colectivo2}]
-		candidato1 = Candidato.objects.create(nombre=data_candidato[0]['nombre'], eleccion = eleccion1, colectivo = data_candidato[0]['partido'], web = data_candidato[0]['web'])
-		candidato2 = Candidato.objects.create(nombre=data_candidato[1]['nombre'], eleccion = eleccion1, colectivo = data_candidato[1]['partido'])
+		self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
+		candidato1 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=data_candidato[0]['nombre'], eleccion = eleccion1, colectivo = data_candidato[0]['partido'], web = data_candidato[0]['web'])
+		candidato2 = Candidato.objects.create(api_instance=self.popit_api_instance, nombre=data_candidato[1]['nombre'], eleccion = eleccion1, colectivo = data_candidato[1]['partido'])
 		#crea muchas preguntas y respuestas
 		for i in range(7):
 			texto_pregunta='texto pregunta '+ str(i)

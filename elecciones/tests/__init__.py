@@ -16,4 +16,4 @@ from templates import *
 from templatetags import *
 from ranking import *
 from settings_variables import *
-from candideit_loader import *
+#from candideit_loader import *

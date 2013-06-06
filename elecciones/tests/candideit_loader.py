@@ -10,6 +10,7 @@ import slumber
 from slumber import Resource
 import encodings.idna
 from ludibrio.matcher import *
+from popit.models import ApiInstance as PopitApiInstance, Person
 
 
 class CandideitLoaderTestCase(TestCase):
@@ -32,6 +33,7 @@ class CandideitLoaderTestCase(TestCase):
 
         #Here is where I mock the api
         self.syncronizer.api = api
+        self.popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
 
 
 
@@ -66,7 +68,7 @@ class CandideitLoaderTestCase(TestCase):
 
     def test_it_loads_candidate_twitter(self):
         election = Eleccion.objects.create(nombre="laeleccion")
-        candidate = Candidato.objects.create(nombre="Fiera", eleccion=election)
+        candidate = Candidato.objects.create(api_instance=self.popit_api_instance, nombre="Fiera", eleccion=election)
         self.syncronizer.sync_twitter(candidate, self.parsed_elections["objects"][0]["candidates"][0]["id"])
         fiera = Candidato.objects.get(nombre="Fiera")
         self.assertEquals(fiera.twitter, "Fiera")
@@ -89,7 +91,7 @@ class CandideitLoaderTestCase(TestCase):
 
         self.syncronizer.api = api
         election = Eleccion.objects.create(nombre="laeleccion")
-        candidate = Candidato.objects.create(nombre="Fiera", eleccion=election)
+        candidate = Candidato.objects.create(api_instance=self.popit_api_instance, nombre="Fiera", eleccion=election)
         self.syncronizer.sync_twitter(candidate, 178)
         fiera = Candidato.objects.get(nombre="Fiera")
         self.assertTrue(fiera.twitter is None)

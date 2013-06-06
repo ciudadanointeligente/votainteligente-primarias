@@ -147,7 +147,10 @@ INSTALLED_APPS = (
     'captcha',
     'mailer',
     'markdown_deux',
-    'django_contactme'
+    'django_contactme',
+    'south',
+    'writeit',
+    'popit',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -211,6 +214,13 @@ GOOGLE_ANALYTICS_TRACKER_ID = ['THETRACKERID']
 
 
 NO_ANSWER_DEFAULT_MESSAGE = u"No pasa naipe aún loco"
+
+WRITEIT_USERNAME = 'falvarez'
+WRITEIT_KEY = 'd4ebfdd0ba67b79006d1763ace28ad8aece423b3'
+
+
+POPIT_API_URL = 'http://popit.org/api/v2'
+
 
 try:
     from local_settings import *

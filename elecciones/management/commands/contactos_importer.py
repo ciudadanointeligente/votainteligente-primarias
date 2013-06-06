@@ -2,6 +2,8 @@
 from django.core.management.base import BaseCommand, CommandError
 from elecciones.models import Candidato, Eleccion, Contacto
 from django.core.validators import email_re
+from popit.models import ApiInstance as PopitApiInstance
+from django.conf import settings
 import csv
 
 
@@ -9,12 +11,24 @@ class ContactosLoader:
 	def __init__(self):
 		self.failed = []
 		self.empty = []
+		self.popit_api_instance = None
+
+	def getPopitApiInstance(self):
+		if self.popit_api_instance is None:
+			api_instance, created = PopitApiInstance.objects.get_or_create(url=settings.POPIT_API_URL)
+			self.popit_api_instance = api_instance
+		return self.popit_api_instance
+
 
 	def detectCandidate(self, line):
 		nombre_candidato = line[0].decode('utf-8').strip()
 		nombre_eleccion = line[1].decode('utf-8').strip()
 		eleccion, created = Eleccion.objects.get_or_create(nombre=nombre_eleccion)
-		candidato, created = Candidato.objects.get_or_create(nombre=nombre_candidato, eleccion=eleccion)
+		
+		candidato, created = Candidato.objects.get_or_create(
+			api_instance= self.getPopitApiInstance(),
+			nombre=nombre_candidato, 
+			eleccion=eleccion)
 		return candidato
 
 	def detectContacto(self, line):
