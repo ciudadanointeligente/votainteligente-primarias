@@ -15,3 +15,4 @@ django-contactme==1.0a2
 south
 -e git://github.com/mysociety/popit-django.git#egg=popit-django
 -e git://github.com/ciudadanointeligente/writeit-django.git#egg=writeit-django
+mock

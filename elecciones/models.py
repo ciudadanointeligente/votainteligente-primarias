@@ -117,6 +117,11 @@ class Candidato(Person):
 	objects = models.Manager()
 	sin_datos = SinDatos()
 
+	def __init__(self, *args, **kwargs):
+		super(Candidato, self).__init__(*args, **kwargs)
+		if not self.nombre:
+			self.nombre = self.name
+
 	def __unicode__(self):
 		return self.nombre
 
@@ -226,7 +231,6 @@ class Pregunta(models.Model):
 		subject= 'Un ciudadano está interesado en más información sobre tu candidatura [ID=#' + str(self.id) + ']'
 		candidatos = Candidato.objects.filter(pregunta=self)
 		current_site = Site.objects.get_current()
-
 
 		texto_introduccion = u'Estimado(a) ,\reste mensaje ha sido enviado desde '+current_site.domain+' por un ciudadano con el deseo de informarse sobre su candidatura:'
 		texto_cierre = u'\r\r--\r*para responder a esta pregunta responda este mismo correo sin cambiar el asunto/subject. Gracias.\rLa respuesta quedará publicada en http://'+current_site.domain

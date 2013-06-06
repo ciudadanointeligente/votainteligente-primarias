@@ -50,23 +50,15 @@ $(function () {
 			<div class="row-fluid">
 				<div class="candidatosPreguntale span4">
 					<h5> Candidatos </h5>
-					<label>Marcá sólo los candidatos a los que querés preguntar</label>
+					<label>Marca sólo los candidatos a los que quieres preguntar</label>
 {% for pk, candidato in form.candidato.field.choices %}
-					<label class="checkbox {{ pk|estrellitas_tachado }}">
-					<input type="checkbox" name="candidato" {{ pk|estrellitas_disabled }} class="" value={{pk}}>{{candidato}} {{ pk|estrellitas }}
+					<label class="checkbox">
+					<input type="checkbox" name="candidato" class="" value={{pk}}>{{candidato}}
 					 </input> </label>
 {% endfor %}
-				No tenemos los contactos de muchos de estos candidatos, si tenés alguno, mandános un mail a {% candidate_info_contact_mail %}
 						<br />
 						<br />
 					<span class="help-block"> <small> <em> <strong>
-						
-						* Tu pregunta será enviada al mail del candidato
-						<br/>
-						** Tu pregunta será enviada al mail del partido del candidato
-						<br/>
-						*** No tenemos el mail del candidato 
-						<br />
 						
 					</strong></em> </small></span>
 
