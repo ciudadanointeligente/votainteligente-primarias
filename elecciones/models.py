@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from popit.models import Person
+from writeit.models import Message as WriteItMessage
 # Create your models here.
 
 
@@ -226,13 +227,16 @@ class Pregunta(models.Model):
 		candidatos = Candidato.objects.filter(pregunta=self)
 		current_site = Site.objects.get_current()
 
-		for candidato in candidatos:
-			texto_introduccion = u'Estimado(a) ' + candidato.nombre + ',\reste mensaje ha sido enviado desde '+current_site.domain+' por un ciudadano con el deseo de informarse sobre su candidatura:'
-			texto_cierre = u'\r\r--\r*para responder a esta pregunta responda este mismo correo sin cambiar el asunto/subject. Gracias.\rLa respuesta quedará publicada en http://'+current_site.domain
-			mensaje = texto_introduccion + u'\r\rYo, ' + self.remitente + ' quiero saber: \r\r' + self.texto_pregunta + texto_cierre
-			destinaciones = Contacto.objects.filter(candidato=candidato)
-			for destinacion in destinaciones:
-				store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
+
+		texto_introduccion = u'Estimado(a) ,\reste mensaje ha sido enviado desde '+current_site.domain+' por un ciudadano con el deseo de informarse sobre su candidatura:'
+		texto_cierre = u'\r\r--\r*para responder a esta pregunta responda este mismo correo sin cambiar el asunto/subject. Gracias.\rLa respuesta quedará publicada en http://'+current_site.domain
+		mensaje = texto_introduccion + u'\r\rYo, ' + self.remitente + ' quiero saber: \r\r' + self.texto_pregunta + texto_cierre
+		message = WriteItMessage.objects.create(
+			author_name=self.remitente,
+			author_email=settings.DEFAULT_FROM_EMAIL,
+			subject= subject,
+			content=mensaje
+			)
 
 			
 

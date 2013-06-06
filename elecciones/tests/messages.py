@@ -16,6 +16,7 @@ from urllib2 import quote
 from django.contrib import messages
 import os
 from popit.models import ApiInstance as PopitApiInstance, Person
+from writeit.models import Message as WriteItMessage
 
 class MessageTestCase(TestCase):
 
@@ -226,7 +227,7 @@ class MessageTestCase(TestCase):
 
 
 
-	
+	@skip('Election must have an writeitApiInstance')
 	def test_send_question_message(self):
 
 		
@@ -236,26 +237,27 @@ class MessageTestCase(TestCase):
 		contacto1, created = Contacto.objects.get_or_create(tipo = 1, valor = 'candidato1@candidato1.com', candidato = self.candidato1)
 		contacto2, created = Contacto.objects.get_or_create(tipo = 1, valor = 'candidato2@candidato2.com', candidato = self.candidato2)
 		url = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
-		response = self.client.post(url, {'candidato': [self.candidato1.pk, self.candidato2.pk],
+		data = {'candidato': [self.candidato1.pk, self.candidato2.pk],
 											'texto_pregunta': 'Texto Pregunta', 
 											'remitente': 'Remitente 1',
-											'recaptcha_response_field': 'PASSED'})
+											'recaptcha_response_field': 'PASSED'}
+		response = self.client.post(url, data)
 
 
 		pregunta_nueva = Pregunta.objects.get(remitente='Remitente 1')
 
 		pregunta_nueva.enviar()
 		# Test that two messages are waiting to be sent.
-		self.assertEquals(Message.objects.count(), 2)
+		self.assertEquals(WriteItMessage.objects.count(), 1)
 
 		# Verify that the subject of the first message is correct.
-		primera_pregunta = Message.objects.all()[0]
-		segunda_pregunta = Message.objects.all()[1]
+		primera_pregunta = WriteItMessage.objects.all()[0]
 		
-		self.assertEquals(primera_pregunta.from_address, settings.DEFAULT_FROM_EMAIL)
-		self.assertEquals(segunda_pregunta.from_address, settings.DEFAULT_FROM_EMAIL)
+		self.assertEquals(primera_pregunta.author_name, data['remitente'])
+		self.assertEquals(primera_pregunta.author_email, settings.DEFAULT_FROM_EMAIL)
+		self.assertEquals(primera_pregunta.people, [self.candidato1, self.candidato2])
+
 		self.assertTrue(primera_pregunta.subject.startswith(u'Un ciudadano está interesado en más información sobre tu candidatura'))
-		self.assertTrue(segunda_pregunta.subject.startswith(u'Un ciudadano está interesado en más información sobre tu candidatura'))
 		# self.assertEqual(mail.outbox[0].from, 'municiaples2012@votainteURLligente.cl')
 		# self.assertEqual(mail.outbox[1].from, 'municiaples2012@votainteURLligente.cl')
 		#chequear que el mail llega y lo podemos traer
