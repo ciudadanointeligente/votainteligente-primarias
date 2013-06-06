@@ -37,6 +37,22 @@ class CandidatoTestCase(TestCase):
 		self.assertEquals(candidato.web, u"http://votainteURLligente.cl")
 		self.assertEquals(candidato.twitter, "candidato")
 
+	def test_create_candidato_without_election(self):
+
+		candidato, created = Candidato.objects.get_or_create(
+			api_instance=self.popit_api_instance,
+															 nombre=u"el candidato",\
+															 partido=u"API",\
+															 web=u"http://votainteURLligente.cl",\
+															 twitter=u"candidato")
+
+		self.assertTrue(created)
+		self.assertEquals(candidato.nombre, u"el candidato")
+		self.assertEquals(candidato.partido, u"API")
+		self.assertEquals(candidato.web, u"http://votainteURLligente.cl")
+		self.assertEquals(candidato.twitter, "candidato")
+
+
 	@skip("not this aproach")
 	def test_when_I_create_a_popit_person_then_it_creates_a_candidato(self):
 		popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
