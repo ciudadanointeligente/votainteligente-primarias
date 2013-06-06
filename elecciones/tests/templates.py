@@ -85,13 +85,11 @@ class TemplatesViewsTestCase(TestCase):
 		self.assertEquals(response.context['title'],u"Gracias a TODOS")
 
 	def test_get_perfil_intereses(self):
-		url = reverse('intereses', kwargs={'slug':self.eleccion1.slug})
+		url = reverse('intereses')
 		response = self.client.get(url)
 
 		self.assertTemplateUsed(response, 'elecciones/perfiles_intereses.html')
 		self.assertEquals(response.status_code, 200)
-		self.assertTrue('title' in response.context)
-		self.assertEquals(response.context['title'],u"Perfil de intereses")
 
 	
 
