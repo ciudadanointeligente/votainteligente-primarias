@@ -149,7 +149,6 @@ INSTALLED_APPS = (
     'markdown_deux',
     'django_contactme',
     'south',
-    'writeit',
     'popit',
 )
 
