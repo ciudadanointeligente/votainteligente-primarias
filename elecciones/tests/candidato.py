@@ -12,11 +12,14 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import Person, ApiInstance
 
 
 class CandidatoTestCase(TestCase):
 	def setUp(self):
 		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='oliwi')
 
 	def test_create_candidato(self):
 		candidato, created = Candidato.objects.get_or_create(eleccion=self.eleccion1,\
@@ -31,6 +34,18 @@ class CandidatoTestCase(TestCase):
 		self.assertEquals(candidato.partido, u"API")
 		self.assertEquals(candidato.web, u"http://votainteURLligente.cl")
 		self.assertEquals(candidato.twitter, "candidato")
+
+	def test_create_candidato_with_a_person(self):
+		candidato, created = Candidato.objects.get_or_create(eleccion=self.eleccion1,\
+															 nombre=u"el candidato",\
+															 partido=u"API",\
+															 person=self.person,
+															 web=u"http://votainteURLligente.cl",\
+															 twitter=u"candidato")
+
+		self.assertTrue(created)
+		self.assertEquals(candidato.person, self.person)
+
 
 
 	def test_create_candidato_without_twitter(self):
@@ -50,6 +65,8 @@ class CandidatoTestCase(TestCase):
 															 twitter=u"")
 		self.assertTrue(created)
 		self.assertFalse(candidato.twitter)
+
+
 
 
 	def test_preguntas_del_candidato(self):

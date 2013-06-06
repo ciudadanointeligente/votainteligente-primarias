@@ -11,6 +11,7 @@ from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from popit.models import Person
 # Create your models here.
 
 
@@ -110,6 +111,7 @@ class Candidato(models.Model):
 	partido = models.CharField(max_length=255, null=True, blank=True)
 	web = models.CharField(max_length=255, blank=True, null=True)
 	twitter = models.CharField(max_length=255, null=True, blank=True)
+	person = models.ForeignKey(Person, null=True)
 
 	#managers
 	objects = models.Manager()
