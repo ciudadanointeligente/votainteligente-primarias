@@ -227,7 +227,6 @@ class MessageTestCase(TestCase):
 
 
 
-	@skip('Election must have an writeitApiInstance')
 	def test_send_question_message(self):
 
 		
