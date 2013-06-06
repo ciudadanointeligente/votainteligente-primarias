@@ -237,7 +237,8 @@ class Pregunta(models.Model):
 			mensaje = texto_introduccion + u'\r\rYo, ' + self.remitente + ' quiero saber: \r\r' + self.texto_pregunta + texto_cierre
 			destinaciones = Contacto.objects.filter(candidato=candidato)
 			for destinacion in destinaciones:
-				store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
+				pass
+				#store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
 
 			
 
