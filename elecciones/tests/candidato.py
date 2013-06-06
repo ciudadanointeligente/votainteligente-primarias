@@ -37,18 +37,22 @@ class CandidatoTestCase(TestCase):
 		self.assertEquals(candidato.web, u"http://votainteURLligente.cl")
 		self.assertEquals(candidato.twitter, "candidato")
 
-	@skip("not this aproach")
-	def test_when_I_create_a_popit_person_then_it_creates_a_candidato(self):
-		popit_api_instance = PopitApiInstance.objects.create(url='http://popit.org/api/v1')
-		person1 = Person.objects.create(
-            api_instance=popit_api_instance, 
-            name= "Felipe", 
-            popit_url= 'http://popit.org/api/v1/persons/3')
+	def test_create_candidato_only_out_of_persons_attributes(self):
+		candidato, created = Candidato.objects.get_or_create(
+			api_instance=self.popit_api_instance,name='the_candidate')
+
+		self.assertTrue(created)
+		self.assertEquals(candidato.nombre,candidato.name)
 
 
-		self.assertEquals(Candidato.objects.count(), 1)
-		el_candidato = Candidato.objects.all()[0]
-		self.assertEquals(el_candidato.nombre, person1.name)
+	def test_create_a_candidato_without_election(self):
+		candidato = Candidato.objects.create(
+			api_instance=self.popit_api_instance,
+															 nombre=u"el candidato",\
+															 partido=u"API",\
+															 web=u"http://votainteURLligente.cl",\
+															 twitter=u"candidato")
+		self.assertTrue(candidato)
 
 
 	def test_create_candidato_without_twitter(self):
@@ -107,3 +111,22 @@ class CandidatoTestCase(TestCase):
 
 		self.assertTrue(candidato.preguntas_respondidas.count(), 1)
 		self.assertTrue(candidato.preguntas_respondidas.all()[0], pregunta)
+
+from popit.tests import instance_helpers
+from mock import patch
+from django.core.management import call_command
+
+
+class CandidatoLoaderFromPopitApiCommand(TestCase):
+	def test_command(self):
+
+		with patch('popit.models.PopItDocument.fetch_all_from_api') as get:
+			get.return_value = 'oli'
+			api_instance, created = PopitApiInstance.objects.get_or_create(url=settings.POPIT_API_URL)
+
+			call_command('get_candidatos_from_popit')
+
+			get.assert_called_with(instance=api_instance)
+
+
+

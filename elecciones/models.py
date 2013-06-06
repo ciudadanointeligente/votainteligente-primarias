@@ -106,7 +106,7 @@ class Colectivo(models.Model):
 class Candidato(Person):
 	nombre = models.CharField(max_length=255)
 	#mail = models.CharField(max_length=255)
-	eleccion = models.ForeignKey(Eleccion)
+	eleccion = models.ForeignKey(Eleccion, null=True)
 	colectivo = models.ForeignKey(Colectivo, null=True, blank=True)
 	partido = models.CharField(max_length=255, null=True, blank=True)
 	web = models.CharField(max_length=255, blank=True, null=True)
@@ -115,6 +115,11 @@ class Candidato(Person):
 	#managers
 	objects = models.Manager()
 	sin_datos = SinDatos()
+
+	def __init__(self, *args, **kwargs):
+		super(Candidato, self).__init__(*args, **kwargs)
+		if not self.nombre:
+			self.nombre = self.name
 
 	def __unicode__(self):
 		return self.nombre

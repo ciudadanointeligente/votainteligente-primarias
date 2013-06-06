@@ -219,7 +219,8 @@ WRITEIT_KEY = 'd4ebfdd0ba67b79006d1763ace28ad8aece423b3'
 
 
 POPIT_API_URL = 'http://popit.org/api/v2'
-
+TEST_POPIT_API_URL = POPIT_API_URL
+SOUTH_TESTS_MIGRATE = False
 
 try:
     from local_settings import *
