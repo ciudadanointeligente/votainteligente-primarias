@@ -12,6 +12,7 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import Person, ApiInstance
 
 
 class TemplateTagsTesting(TestCase):
@@ -39,8 +40,10 @@ class TemplateTagsTesting(TestCase):
 			numero_pie_pagina_3 = u"3",
 			en_carrusel = True
 			)
-		self.candidato = Candidato.objects.create(eleccion=self.eleccion,\
-															 nombre=u"el candidato",\
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
+		self.candidato = Candidato.objects.create(person=self.person,
+															 eleccion=self.eleccion,\
 															 partido=u"API",\
 															 web=u"http://unaurl.cl",\
 															 twitter=u"candidato")

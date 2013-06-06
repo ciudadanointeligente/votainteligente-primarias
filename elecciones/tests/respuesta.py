@@ -14,6 +14,7 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import Person, ApiInstance
 
 
 
@@ -21,8 +22,10 @@ class RespuestaTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
 		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.candidato1 = Candidato.objects.create(eleccion=self.eleccion1,\
-												 nombre=u"el candidato",\
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
+		self.candidato1 = Candidato.objects.create(person=self.person,
+												 eleccion=self.eleccion1,\
 												 partido=u"API",\
 												 web=u"http://votainteURLligente.cl",\
 												 twitter=u"candidato",\
@@ -71,8 +74,11 @@ class AnswerNotificationTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
 		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.candidato1 = Candidato.objects.create(eleccion=self.eleccion1,\
-																		nombre=u"el candidato",\
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
+		self.candidato1 = Candidato.objects.create(person=self.person,
+																		eleccion=self.eleccion1,\
 																		partido=u"API",\
 																		web=u"http://votainteURLligente.cl",\
 																		twitter=u"candidato",\

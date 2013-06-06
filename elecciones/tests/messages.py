@@ -15,6 +15,7 @@ from django.template import Template, Context
 from urllib2 import quote
 from django.contrib import messages
 import os
+from popit.models import Person, ApiInstance
 
 class MessageTestCase(TestCase):
 
@@ -54,9 +55,13 @@ class MessageTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': self.eleccion1, 'partido':self.colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': self.eleccion2, 'partido': self.colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': self.eleccion3, 'partido':self.colectivo2}]
-		self.candidato1 = Candidato.objects.create(nombre=self.data_candidato[0]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
-		self.candidato2 = Candidato.objects.create(nombre=self.data_candidato[1]['nombre'], eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		self.candidato3 = Candidato.objects.create(nombre=self.data_candidato[2]['nombre'], eleccion = self.eleccion2, colectivo = self.data_candidato[2]['partido'])
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.person1 = Person.objects.create(api_instance =  self.popit_api_instance, name=self.data_candidato[0]['nombre'])
+		self.person2 = Person.objects.create(api_instance =  self.popit_api_instance, name=self.data_candidato[1]['nombre'])
+		self.person3 = Person.objects.create(api_instance =  self.popit_api_instance, name=self.data_candidato[2]['nombre'])
+		self.candidato1 = Candidato.objects.create(person=self.person1, eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
+		self.candidato2 = Candidato.objects.create(person=self.person2, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		self.candidato3 = Candidato.objects.create(person=self.person3, eleccion = self.eleccion2, colectivo = self.data_candidato[2]['partido'])
 		self.question1 = "Why can't we be friends?"
 		self.answer1 = "I'd kinda like to be the President, so I can show you how your money's spent"
 		self.question2 = 'Who let the dogs out?'
@@ -106,8 +111,8 @@ class MessageTestCase(TestCase):
 		self.assertEquals(respuesta_no_contestada1.texto_respuesta, settings.NO_ANSWER_DEFAULT_MESSAGE)
 		self.assertEquals(respuesta_no_contestada2.texto_respuesta, settings.NO_ANSWER_DEFAULT_MESSAGE)
 		#Existe la asociación entre preguntas y candidatos?
-		self.assertEquals(Candidato.objects.filter(pregunta=pregunta).filter(nombre=self.candidato1.nombre).count(),1)
-		self.assertEquals(Candidato.objects.filter(pregunta=pregunta).filter(nombre=self.candidato2.nombre).count(),1)
+		self.assertEquals(Candidato.objects.filter(pregunta=pregunta).filter(person__name=self.candidato1.person.name).count(),1)
+		self.assertEquals(Candidato.objects.filter(pregunta=pregunta).filter(person__name=self.candidato2.person.name).count(),1)
 		#Sólo se agregó la pregunta a 2 candidatos?
 		self.assertEquals(Candidato.objects.filter(pregunta=pregunta).count(),2)
 
@@ -203,8 +208,8 @@ class MessageTestCase(TestCase):
 		self.assertEquals(respuesta_no_contestada1.texto_respuesta, settings.NO_ANSWER_DEFAULT_MESSAGE)
 		self.assertEquals(respuesta_no_contestada2.texto_respuesta, settings.NO_ANSWER_DEFAULT_MESSAGE)
 		#Existe la asociación entre preguntas y candidatos
-		self.assertEquals(Candidato.objects.filter(pregunta=pregunta_enviada).filter(nombre=self.candidato1.nombre).count(),1)
-		self.assertEquals(Candidato.objects.filter(pregunta=pregunta_enviada).filter(nombre=self.candidato2.nombre).count(),1)
+		self.assertEquals(Candidato.objects.filter(pregunta=pregunta_enviada).filter(person__name=self.candidato1.person.name).count(),1)
+		self.assertEquals(Candidato.objects.filter(pregunta=pregunta_enviada).filter(person__name=self.candidato2.person.name).count(),1)
 		#Sólo se agregó la pregunta a 2 candidatos
 		self.assertEquals(Candidato.objects.filter(pregunta=pregunta_enviada).count(),2)
 

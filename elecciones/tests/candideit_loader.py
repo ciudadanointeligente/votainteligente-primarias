@@ -66,7 +66,9 @@ class CandideitLoaderTestCase(TestCase):
 
     def test_it_loads_candidate_twitter(self):
         election = Eleccion.objects.create(nombre="laeleccion")
-        candidate = Candidato.objects.create(nombre="Fiera", eleccion=election)
+        popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+        person = Person.objects.create(api_instance =  popit_api_instance, name='person_name')
+        candidate = Candidato.objects.create(person=person, eleccion=election)
         self.syncronizer.sync_twitter(candidate, self.parsed_elections["objects"][0]["candidates"][0]["id"])
         fiera = Candidato.objects.get(nombre="Fiera")
         self.assertEquals(fiera.twitter, "Fiera")

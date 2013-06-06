@@ -104,7 +104,7 @@ class Colectivo(models.Model):
 		return self.sigla
 
 class Candidato(models.Model):
-	nombre = models.CharField(max_length=255)
+	# nombre = models.CharField(max_length=255)
 	#mail = models.CharField(max_length=255)
 	eleccion = models.ForeignKey(Eleccion)
 	colectivo = models.ForeignKey(Colectivo, null=True, blank=True)
@@ -131,6 +131,11 @@ class Candidato(models.Model):
 		return None
 
 	estrellitas = property(_estrellitas)
+
+	def _person_name(self):
+		return self.person.name
+
+	nombre = property(_person_name)
 
 	def numero_preguntas(self):
 		return self.pregunta.filter(aprobada=True).count()
