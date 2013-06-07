@@ -12,12 +12,15 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from popit.models import Person, ApiInstance
+from writeit.models import WriteItInstance
+
 # Create your models here.
 
 
 class Eleccion(models.Model):
 	nombre =  models.CharField(max_length=255)
 	popit_api_instance = models.OneToOneField(ApiInstance)
+	write_it_instance = models.OneToOneField(WriteItInstance, null=True)
 	slug =  models.CharField(max_length=255)
 	main_embedded = models.CharField(max_length=512, blank=True, null=True)
 	messaging_extra_app_url = models.CharField(max_length=512, blank=True, null=True)

@@ -14,12 +14,16 @@ from django.template import Template, Context
 from urllib2 import quote
 from django.db import IntegrityError
 from popit.models import Person, ApiInstance
+from writeit.models import WriteItApiInstance, WriteItInstance
 
 class EleccionModelTestCase(TestCase):
 	def test_create_eleccion(self):
 		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		write_it_api_instance = WriteItApiInstance.objects.create(url="http://witeit.ciudadanointeligente.org/api/v1")
+		write_it_instance = WriteItInstance.objects.create(api_instance = write_it_api_instance, name="new_instance")
 		eleccion, created = Eleccion.objects.get_or_create(nombre=u"La eleccion",
 														popit_api_instance=popit_api_instance,
+														write_it_instance=write_it_instance,
 														slug=u"la-eleccion",
 														main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 														messaging_extra_app_url=u"http://napistejim.cz/address=nachod",
@@ -39,17 +43,22 @@ class EleccionModelTestCase(TestCase):
 		self.assertEquals(eleccion.extra_info_title,u"ver más")
 		self.assertEquals(eleccion.extra_info_content,u"Más Información")
 		self.assertEquals(eleccion.popit_api_instance, popit_api_instance)
+		self.assertEquals(eleccion.write_it_instance, write_it_instance)
 
 
 	def test_eleccion_unicode(self):
 		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
-		eleccion = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, slug=u"la-eleccion")
+		write_it_api_instance = WriteItApiInstance.objects.create(url="http://witeit.ciudadanointeligente.org/api/v1")
+		write_it_instance = WriteItInstance.objects.create(api_instance = write_it_api_instance, name="new_instance")
+		eleccion = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, write_it_instance=write_it_instance, slug=u"la-eleccion")
 
 		self.assertEquals(eleccion.__unicode__(), eleccion.nombre)
 
 	def test_eleccion_has_a_unique_popit_api_instance(self):
 		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
-		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, slug=u"la-eleccion")
+		write_it_api_instance = WriteItApiInstance.objects.create(url="http://witeit.ciudadanointeligente.org/api/v1")
+		write_it_instance = WriteItInstance.objects.create(api_instance = write_it_api_instance, name="new_instance")
+		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, write_it_instance=write_it_instance, slug=u"la-eleccion")
 
 		with self.assertRaises(IntegrityError):
 			eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=popit_api_instance, slug=u"la-eleccion2")
