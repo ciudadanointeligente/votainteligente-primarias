@@ -1,0 +1,48 @@
+
+
+/*Cambia color header y footer*/
+.nombre_eleccion.tit h1 {
+	background: grey;
+	border: none;
+}
+
+.informacion_sobre_eleccion {
+    background: none repeat scroll 0 0 #4F4F4F;
+}
+
+#footerembed {
+	background: grey;
+}
+
+.papel_embeded {
+    max-width: 860px;
+}
+
+/*Para todos los candidatorgs embeded en Vota Inteligente*/
+
+#footerembed img{
+	float: right;
+    position: absolute;
+    right: 153px;
+    width: 15%;
+    top: 5px;
+}
+
+#footerembed p {
+    float: right;
+    left: 0;
+    margin-right: 17px;
+    margin-top: 17px;
+    position: inherit;
+    top: 0;
+}
+
+/*Oculta los botones (herramientas) que no se usan en el Comparatorg*/
+
+.wrap_bt_perfiles {
+	display: none;
+}
+
+.bt_medianaranja {
+	display: none;
+}
