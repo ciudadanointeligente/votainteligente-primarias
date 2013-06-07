@@ -12,7 +12,7 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from popit.models import Person, ApiInstance
-from writeit.models import WriteItInstance
+from writeit.models import WriteItApiInstance, WriteItInstance, Message as WriteItMessage
 
 # Create your models here.
 
@@ -251,6 +251,28 @@ class Pregunta(models.Model):
 			destinaciones = Contacto.objects.filter(candidato=candidato)
 			for destinacion in destinaciones:
 				store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
+				#post to write-it
+		#Esta wea no me gusta
+		eleccion = candidatos[0].eleccion
+		
+
+		writeit_message = WriteItMessage.objects.create(author_name=self.remitente,
+			author_email=settings.DEFAULT_FROM_EMAIL,
+			subject=settings.DEFAULT_WRITEIT_SUBJECT,
+			writeitinstance = eleccion.write_it_instance,
+			api_instance = eleccion.write_it_instance.api_instance,
+			content =  self.texto_pregunta,
+
+			)
+		for candidato in candidatos:
+			writeit_message.people.add(candidato.person)
+
+		writeit_message.save()
+
+		writeit_message.push_to_the_api()
+
+
+
 
 			
 

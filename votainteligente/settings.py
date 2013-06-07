@@ -218,6 +218,7 @@ NO_ANSWER_DEFAULT_MESSAGE = u"No pasa naipe aún loco"
 #Writeit settings
 WRITEIT_USERNAME = 'replace_with_real_username'
 WRITEIT_KEY = 'replace_with_real_key'
+DEFAULT_WRITEIT_SUBJECT = 'The subject'
 #setting to avoid db changes during test
 SOUTH_TESTS_MIGRATE = False
 

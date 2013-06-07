@@ -16,6 +16,8 @@ from urllib2 import quote
 from django.contrib import messages
 import os
 from popit.models import Person, ApiInstance
+from writeit.models import WriteItApiInstance, WriteItInstance, Message as WriteItMessage
+from mock import patch
 
 class MessageTestCase(TestCase):
 
@@ -34,23 +36,30 @@ class MessageTestCase(TestCase):
 
 
 	def setUp(self):
+		self.write_it_api_instance = WriteItApiInstance.objects.create(url="http://witeit.ciudadanointeligente.org/api/v1")
+		self.write_it_instance1 = WriteItInstance.objects.create(api_instance = self.write_it_api_instance, name="new_instance")
+		self.write_it_instance2 = WriteItInstance.objects.create(api_instance = self.write_it_api_instance, name="new_instance")
+		self.write_it_instance3 = WriteItInstance.objects.create(api_instance = self.write_it_api_instance, name="new_instance")
 		self.popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
 		self.popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
 		self.popit_api_instance3 = ApiInstance.objects.create(url='http://popit.org/api/v3')
 		self.eleccion1, created = Eleccion.objects.get_or_create(nombre="eleccion1", 
 			popit_api_instance=self.popit_api_instance1,
+			write_it_instance=self.write_it_instance1,
 			slug="la-eleccion1",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion2, created = Eleccion.objects.get_or_create(nombre="eleccion2", 
 			popit_api_instance=self.popit_api_instance2,
+			write_it_instance=self.write_it_instance2,
 			slug="la-eleccion2",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion3, created = Eleccion.objects.get_or_create(nombre="eleccion3", 
 			popit_api_instance=self.popit_api_instance3,
+			write_it_instance=self.write_it_instance3,
 			slug="la-eleccion3",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
@@ -252,7 +261,10 @@ class MessageTestCase(TestCase):
 
 		pregunta_nueva = Pregunta.objects.get(remitente='Remitente 1')
 
-		pregunta_nueva.enviar()
+		with patch('writeit.models.Message.push_to_the_api') as push:
+			push.return_value = "patito"
+			
+			pregunta_nueva.enviar()
 		# Test that two messages are waiting to be sent.
 		self.assertEquals(Message.objects.count(), 2)
 
@@ -417,3 +429,56 @@ class MessageTestCase(TestCase):
 		url = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
 		response = self.client.get(url)
 		self.assertTemplateUsed(response, 'elecciones/preguntales_passed.html')
+
+	def test_create_write_it_message(self):
+		#hackeamos .virtualenvs/mun12/lib/python2.7/site-packages/captcha/fields.py porque no consideraba settings.debug como true.
+		#Post data
+		settings.DEFAULT_FROM_EMAIL = 'otromail@votainteligente.org'
+		settings.DEFAULT_WRITEIT_SUBJECT = u'Un ciudadano está interesado en más información sobre tu candidatura'
+		url = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
+		response = self.client.post(url, {'candidato': [self.candidato1.pk, self.candidato2.pk],
+											'texto_pregunta': 'Texto Pregunta', 
+											'remitente': 'Remitente 1',
+											'recaptcha_response_field': 'PASSED'})
+
+
+		pregunta_nueva = Pregunta.objects.get(remitente='Remitente 1')
+
+		with patch('writeit.models.Message.push_to_the_api') as push:
+			push.return_value = "patito"
+			
+			pregunta_nueva.enviar()
+
+		# Test that two messages are waiting to be sent.
+
+		self.assertEquals(WriteItMessage.objects.count(), 1)
+
+		# Verify that the subject of the first message is correct.
+		primera_pregunta = WriteItMessage.objects.all()[0]
+
+		self.assertEquals(primera_pregunta.author_email, settings.DEFAULT_FROM_EMAIL)
+		self.assertEquals(primera_pregunta.author_name, pregunta_nueva.remitente)
+		self.assertEquals(primera_pregunta.subject, settings.DEFAULT_WRITEIT_SUBJECT)
+		self.assertEquals(primera_pregunta.content, 'Texto Pregunta')
+		self.assertEquals(primera_pregunta.writeitinstance, self.write_it_instance1)
+		self.assertEquals(primera_pregunta.people.count(), 2)
+
+	
+	def test_it_posts_the_message_to_the_api(self):
+		settings.DEFAULT_FROM_EMAIL = 'otromail@votainteligente.org'
+		settings.DEFAULT_WRITEIT_SUBJECT = u'Un ciudadano está interesado en más información sobre tu candidatura'
+		url = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
+		response = self.client.post(url, {'candidato': [self.candidato1.pk, self.candidato2.pk],
+											'texto_pregunta': 'Texto Pregunta', 
+											'remitente': 'Remitente 1',
+											'recaptcha_response_field': 'PASSED'})
+
+
+		pregunta_nueva = Pregunta.objects.get(remitente='Remitente 1')
+		with patch('writeit.models.Message.push_to_the_api') as push:
+			push.return_value = "patito"
+			
+			pregunta_nueva.enviar()
+
+			push.assert_called_with()
+
