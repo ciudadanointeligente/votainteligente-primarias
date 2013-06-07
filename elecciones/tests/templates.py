@@ -29,6 +29,16 @@ class TemplatesViewsTestCase(TestCase):
 		self.assertEquals(response.context['title'], u"Metodología")
 		self.assertTemplateUsed(response, 'elecciones/metodologia.html')
 
+	def test_get_comparador(self):
+		url = reverse('comparador')
+		response = self.client.get(url)
+
+		self.assertTrue('elecciones' in response.context)
+		self.assertEquals(response.context['elecciones'].count(), 2)
+		self.assertTrue('title' in response.context)
+		self.assertEquals(response.context['title'], u"Comparador")
+		self.assertTemplateUsed(response, 'elecciones/comparador.html')
+
 	def test_get_quienes_somos(self):
 		url = reverse('somos')
 		response = self.client.get(url)
