@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'grappelli',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'south',
     'popit',
     
     # Uncomment the next line to enable admin documentation:
