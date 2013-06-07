@@ -153,6 +153,16 @@ class MetodologiaView(TemplateView):
 		context['elecciones'] = elecciones
 		return context
 
+class ComparadorView(TemplateView):
+	template_name="elecciones/comparador.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(MetodologiaView, self).get_context_data(**kwargs)
+		context['title'] = u"Comparador"
+		elecciones = Eleccion.objects.all()
+		context['elecciones'] = elecciones
+		return context
+
 
 class QuePuedoHacerHacerView(TemplateView):
 	template_name = "elecciones/que_puedo_hacer.html"
