@@ -10,10 +10,12 @@ import slumber
 from slumber import Resource
 import encodings.idna
 from ludibrio.matcher import *
+from popit.models import Person, ApiInstance
 
 
 class CandideitLoaderTestCase(TestCase):
     def setUp(self):
+        popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
         response_json = open("elecciones/tests/sample_data/candideit_api_response.json")
         fiera_candidate_json = open("elecciones/tests/sample_data/fiera_candidate.json")
         fiera_sin_links_json = open("elecciones/tests/sample_data/fiera_sin_links.json")
@@ -57,7 +59,7 @@ class CandideitLoaderTestCase(TestCase):
 
 
     def test_syncronize_candidates(self):
-        election = Eleccion.objects.create(nombre="laeleccion")
+        election = Eleccion.objects.create(nombre="laeleccion", popit_api_instance=popit_api_instance)
         self.syncronizer.sync_candidates(election, self.parsed_elections["objects"][0]["candidates"])
 
         self.assertEquals(Candidato.objects.filter(eleccion=election).count(), 2)
@@ -65,7 +67,7 @@ class CandideitLoaderTestCase(TestCase):
         self.assertEquals(Candidato.objects.get(nombre=u"cand 2").eleccion, election)
 
     def test_it_loads_candidate_twitter(self):
-        election = Eleccion.objects.create(nombre="laeleccion")
+        election = Eleccion.objects.create(nombre="laeleccion", popit_api_instance=popit_api_instance)
         popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
         person = Person.objects.create(api_instance =  popit_api_instance, name='person_name')
         candidate = Candidato.objects.create(person=person, eleccion=election)
@@ -90,7 +92,7 @@ class CandideitLoaderTestCase(TestCase):
             api.candidate(178).get(username=self.username, api_key=self.api_key) >> self.fiera_sin_twitter
 
         self.syncronizer.api = api
-        election = Eleccion.objects.create(nombre="laeleccion")
+        election = Eleccion.objects.create(nombre="laeleccion", popit_api_instance=popit_api_instance)
         candidate = Candidato.objects.create(nombre="Fiera", eleccion=election)
         self.syncronizer.sync_twitter(candidate, 178)
         fiera = Candidato.objects.get(nombre="Fiera")
@@ -100,7 +102,7 @@ class CandideitLoaderTestCase(TestCase):
 
 
     def test_it_does_not_create_twice_a_candidate(self):
-        election = Eleccion.objects.create(nombre="laeleccion")
+        election = Eleccion.objects.create(nombre="laeleccion", popit_api_instance=popit_api_instance)
         self.syncronizer.sync_candidates(election, self.parsed_elections["objects"][0]["candidates"])
         self.syncronizer.sync_candidates(election, self.parsed_elections["objects"][0]["candidates"])
 

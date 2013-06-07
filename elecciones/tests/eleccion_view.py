@@ -12,12 +12,15 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import ApiInstance
 
 class EleccionViewTestCase(TestCase):
 	def setUp(self):
 		self.area = Area.objects.create(nombre=u"Caracterización", clase_en_carrusel=u"fondoCeleste")
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1", extra_info_title=u"ver más", extra_info_content=u"informacion adicional")
-		self.eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", slug=u"la-eleccion2")
+		popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=popit_api_instance1, slug=u"la-eleccion1", extra_info_title=u"ver más", extra_info_content=u"informacion adicional")
+		self.eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=popit_api_instance2, slug=u"la-eleccion2")
 		ingreso_por_persona = Dato.objects.create(nombre=u"Ingreso por persona", imagen="chanchito.png")
 		pobreza = Dato.objects.create(nombre=u"Pobreza", imagen="chanchito.png")
 		self.indice1 = Indice.objects.create(

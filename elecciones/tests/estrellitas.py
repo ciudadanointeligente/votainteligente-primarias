@@ -17,8 +17,8 @@ from popit.models import Person, ApiInstance
 class CandidatosEstrellitas(TestCase):
 	def setUp(self):
 		self.colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion = Eleccion.objects.create(nombre=u"La eleccion", slug="la-eleccion")
 		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=self.popit_api_instance, slug="la-eleccion")
 		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name=u"Un candidato mala onda")
 		self.candidato = Candidato.objects.create(person=self.person, 
 													partido=u"RN", 

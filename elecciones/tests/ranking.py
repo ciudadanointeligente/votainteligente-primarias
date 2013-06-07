@@ -19,17 +19,23 @@ from elecciones.views import Ranking
 class RankingTestCase(TestCase):
 
 	def setUp(self):
-		self.eleccion1, created = Eleccion.objects.get_or_create(nombre="eleccion1", 
+		self.popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
+		self.popit_api_instance3 = ApiInstance.objects.create(url='http://popit.org/api/v3')
+		self.eleccion1, created = Eleccion.objects.get_or_create(nombre="eleccion1",
+			popit_api_instance=self.popit_api_instance1,
 			slug="la-eleccion1",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion2, created = Eleccion.objects.get_or_create(nombre="eleccion2", 
+			popit_api_instance=self.popit_api_instance2,
 			slug="la-eleccion2",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion3, created = Eleccion.objects.get_or_create(nombre="eleccion3", 
+			popit_api_instance=self.popit_api_instance3	,
 			slug="la-eleccion3",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
@@ -40,11 +46,10 @@ class RankingTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': self.eleccion1, 'partido':self.colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': self.eleccion2, 'partido': self.colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': self.eleccion3, 'partido':self.colectivo2}]
-		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
-		person1 = Person.objects.create(api_instance =  popit_api_instance, name="candidato1")
-		person2 = Person.objects.create(api_instance =  popit_api_instance, name="candidato2")
-		person3 = Person.objects.create(api_instance =  popit_api_instance, name="candidato3")
-		person4 = Person.objects.create(api_instance =  popit_api_instance, name="candidato4")
+		person1 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato1")
+		person2 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato2")
+		person3 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato3")
+		person4 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato4")
 		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])

@@ -16,6 +16,12 @@ from popit.models import Person, ApiInstance
 
 
 class HomeTestCase(TestCase):
+	def setUp(self):
+		self.popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
+		self.popit_api_instance3 = ApiInstance.objects.create(url='http://popit.org/api/v3')
+		
+
 	def test_get_the_home_page(self):
 		url = reverse('home')
 		response = self.client.get(url)
@@ -25,9 +31,9 @@ class HomeTestCase(TestCase):
 
 	
 	def test_trae_los_nombres_de_las_elecciones_buscables(self):
-		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", slug=u"la-eleccion2")
-		eleccion3 = Eleccion.objects.create(nombre=u"La eleccion3", slug=u"la-eleccion3",searchable=False)
+		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance1, slug=u"la-eleccion1")
+		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=self.popit_api_instance2, slug=u"la-eleccion2")
+		eleccion3 = Eleccion.objects.create(nombre=u"La eleccion3", popit_api_instance=self.popit_api_instance3, slug=u"la-eleccion3",searchable=False)
 		url = reverse('home')
 		response = self.client.get(url)
 
@@ -37,9 +43,9 @@ class HomeTestCase(TestCase):
 		self.assertFalse(eleccion3 in response.context["elecciones_buscables"])
 	
 	def test_trae_los_nombres_de_las_elecciones_destacadas(self):
-		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", slug=u"la-eleccion2")
-		eleccion3 = Eleccion.objects.create(nombre=u"La eleccion3", slug=u"la-eleccion3",featured=True)
+		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance1, slug=u"la-eleccion1")
+		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=self.popit_api_instance2, slug=u"la-eleccion2")
+		eleccion3 = Eleccion.objects.create(nombre=u"La eleccion3", popit_api_instance=self.popit_api_instance3, slug=u"la-eleccion3",featured=True)
 		url = reverse('home')
 		response = self.client.get(url)
 
@@ -50,17 +56,16 @@ class HomeTestCase(TestCase):
 
 	def test_last_questions(self):
 
-		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", slug=u"la-eleccion2")
+		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance1, slug=u"la-eleccion1")
+		eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=self.popit_api_instance2, slug=u"la-eleccion2")
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre = 'Colectivo 1')
 		colectivo2 = Colectivo.objects.create(sigla='C2', nombre = 'Colectivo 2')
 		data_candidato = [\
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': eleccion1, 'partido':colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': eleccion2, 'partido': colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': eleccion2, 'partido':colectivo2}]
-		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
-		person1 = Person.objects.create(api_instance =  popit_api_instance, name=data_candidato[0]['nombre'])
-		person2 = Person.objects.create(api_instance =  popit_api_instance, name=data_candidato[1]['nombre'])
+		person1 = Person.objects.create(api_instance =  self.popit_api_instance1, name=data_candidato[0]['nombre'])
+		person2 = Person.objects.create(api_instance =  self.popit_api_instance1, name=data_candidato[1]['nombre'])
 		candidato1 = Candidato.objects.create(person=person1, eleccion = eleccion1, colectivo = data_candidato[0]['partido'], web = data_candidato[0]['web'])
 		candidato2 = Candidato.objects.create(person=person2, eleccion = eleccion1, colectivo = data_candidato[1]['partido'])
 		#crea muchas preguntas y respuestas

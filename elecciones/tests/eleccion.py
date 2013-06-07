@@ -12,10 +12,14 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from django.db import IntegrityError
+from popit.models import Person, ApiInstance
 
 class EleccionModelTestCase(TestCase):
 	def test_create_eleccion(self):
-		eleccion, created = Eleccion.objects.get_or_create(nombre=u"La eleccion", 
+		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		eleccion, created = Eleccion.objects.get_or_create(nombre=u"La eleccion",
+														popit_api_instance=popit_api_instance,
 														slug=u"la-eleccion",
 														main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 														messaging_extra_app_url=u"http://napistejim.cz/address=nachod",
@@ -34,7 +38,18 @@ class EleccionModelTestCase(TestCase):
 		self.assertEquals(eleccion.featured_caption,u"Texto Destacado")
 		self.assertEquals(eleccion.extra_info_title,u"ver más")
 		self.assertEquals(eleccion.extra_info_content,u"Más Información")
+		self.assertEquals(eleccion.popit_api_instance, popit_api_instance)
+
+
 	def test_eleccion_unicode(self):
-		eleccion = Eleccion.objects.create(nombre=u"La eleccion", slug=u"la-eleccion")
+		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		eleccion = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, slug=u"la-eleccion")
 
 		self.assertEquals(eleccion.__unicode__(), eleccion.nombre)
+
+	def test_eleccion_has_a_unique_popit_api_instance(self):
+		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		eleccion1 = Eleccion.objects.create(nombre=u"La eleccion", popit_api_instance=popit_api_instance, slug=u"la-eleccion")
+
+		with self.assertRaises(IntegrityError):
+			eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=popit_api_instance, slug=u"la-eleccion2")

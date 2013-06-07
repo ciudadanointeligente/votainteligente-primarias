@@ -21,8 +21,8 @@ from popit.models import Person, ApiInstance
 class RespuestaTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
 		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
 		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
 		self.candidato1 = Candidato.objects.create(person=self.person,
 												 eleccion=self.eleccion1,\
@@ -73,9 +73,8 @@ class RespuestaTestCase(TestCase):
 class AnswerNotificationTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
 		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
 		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
 		self.candidato1 = Candidato.objects.create(person=self.person,
 																		eleccion=self.eleccion1,\

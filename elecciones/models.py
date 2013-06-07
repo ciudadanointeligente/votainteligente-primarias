@@ -11,12 +11,13 @@ from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from popit.models import Person
+from popit.models import Person, ApiInstance
 # Create your models here.
 
 
 class Eleccion(models.Model):
 	nombre =  models.CharField(max_length=255)
+	popit_api_instance = models.OneToOneField(ApiInstance)
 	slug =  models.CharField(max_length=255)
 	main_embedded = models.CharField(max_length=512, blank=True, null=True)
 	messaging_extra_app_url = models.CharField(max_length=512, blank=True, null=True)
@@ -175,6 +176,14 @@ class Candidato(models.Model):
 def preguntas_por_partido(self):
 	pass
 	# print Partido.objects.aggregate(nro_preguntas=Sum('candidatos__numero_preguntas'))
+
+@receiver(post_save, sender=Person)
+def create_candidato(sender, instance, created, **kwargs):
+	person = instance
+	if created:
+		election = Eleccion.objects.get(popit_api_instance = person.api_instance)
+		Candidato.objects.create(person=person, eleccion=election)
+
 
 
 

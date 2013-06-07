@@ -19,8 +19,8 @@ from popit.models import Person, ApiInstance
 class MolestaAUnCandidato(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
 		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
 		self.person1 = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name1')
 		self.person2 = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name2')
 		self.candidato_con_twitter = Candidato.objects.create(person=self.person1,

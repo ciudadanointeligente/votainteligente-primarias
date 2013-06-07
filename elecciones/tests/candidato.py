@@ -17,8 +17,8 @@ from popit.models import Person, ApiInstance
 
 class CandidatoTestCase(TestCase):
 	def setUp(self):
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
 		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
 		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
 
 	def test_create_candidato(self):
@@ -112,6 +112,17 @@ class CandidatoTestCase(TestCase):
 		self.assertTrue(candidato.preguntas_respondidas.count(), 1)
 		self.assertTrue(candidato.preguntas_respondidas.all()[0], pregunta)
 
+	#@skip("Elections must be created before")
 	def test_create_candidate_from_person(self):
 		
-		self.assertFalse(True)
+		fiera = Person.objects.create(api_instance=self.popit_api_instance, name='Fiera')
+		candidato = Candidato.objects.get(person=fiera)
+
+		self.assertTrue(candidato)
+		self.assertEquals(candidato.eleccion, self.eleccion1)
+
+	def test_create_candidate_only_once_from_person(self):
+		fiera = Person.objects.create(api_instance=self.popit_api_instance, name='Fiera')
+		fiera.save()
+
+		self.assertEquals(Candidato.objects.filter(person=fiera).count(),1)
