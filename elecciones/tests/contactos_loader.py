@@ -47,7 +47,9 @@ class ContactosLoaderTestCase(TestCase):
 		self.assertEquals(self.candidateloader.failed[0],{u"Algarrobo",u"FIERA FEROZ INTELIGENTE",u"este no es el mail de la Fiera"})
 
 	def test_does_not_create_two_candidates(self):
-		previous_candidate = Candidato.objects.create(nombre=u"FIERA FEROZ", 
+		popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		person = Person.objects.create(api_instance =  self.popit_api_instance, name=u"FIERA FEROZ")
+		previous_candidate = Candidato.objects.create(person=person, 
 			eleccion=self.algarrobo, 
 			partido=u"Partido Feroz", 
 			colectivo=self.colectivo1)

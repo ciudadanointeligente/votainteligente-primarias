@@ -11,11 +11,16 @@ from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from popit.models import Person, ApiInstance
+from writeit.models import WriteItApiInstance, WriteItInstance, Message as WriteItMessage
+
 # Create your models here.
 
 
 class Eleccion(models.Model):
 	nombre =  models.CharField(max_length=255)
+	popit_api_instance = models.OneToOneField(ApiInstance)
+	write_it_instance = models.OneToOneField(WriteItInstance, null=True)
 	slug =  models.CharField(max_length=255)
 	main_embedded = models.CharField(max_length=512, blank=True, null=True)
 	messaging_extra_app_url = models.CharField(max_length=512, blank=True, null=True)
@@ -103,13 +108,14 @@ class Colectivo(models.Model):
 		return self.sigla
 
 class Candidato(models.Model):
-	nombre = models.CharField(max_length=255)
+	# nombre = models.CharField(max_length=255)
 	#mail = models.CharField(max_length=255)
 	eleccion = models.ForeignKey(Eleccion)
 	colectivo = models.ForeignKey(Colectivo, null=True, blank=True)
 	partido = models.CharField(max_length=255, null=True, blank=True)
 	web = models.CharField(max_length=255, blank=True, null=True)
 	twitter = models.CharField(max_length=255, null=True, blank=True)
+	person = models.ForeignKey(Person, null=True)
 
 	#managers
 	objects = models.Manager()
@@ -129,6 +135,11 @@ class Candidato(models.Model):
 		return None
 
 	estrellitas = property(_estrellitas)
+
+	def _person_name(self):
+		return self.person.name
+
+	nombre = property(_person_name)
 
 	def numero_preguntas(self):
 		return self.pregunta.filter(aprobada=True).count()
@@ -168,6 +179,14 @@ class Candidato(models.Model):
 def preguntas_por_partido(self):
 	pass
 	# print Partido.objects.aggregate(nro_preguntas=Sum('candidatos__numero_preguntas'))
+
+@receiver(post_save, sender=Person)
+def create_candidato(sender, instance, created, **kwargs):
+	person = instance
+	if created:
+		election = Eleccion.objects.get(popit_api_instance = person.api_instance)
+		Candidato.objects.create(person=person, eleccion=election)
+
 
 
 
@@ -232,6 +251,28 @@ class Pregunta(models.Model):
 			destinaciones = Contacto.objects.filter(candidato=candidato)
 			for destinacion in destinaciones:
 				store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
+				#post to write-it
+		#Esta wea no me gusta
+		eleccion = candidatos[0].eleccion
+		
+
+		writeit_message = WriteItMessage.objects.create(author_name=self.remitente,
+			author_email=settings.DEFAULT_FROM_EMAIL,
+			subject=settings.DEFAULT_WRITEIT_SUBJECT,
+			writeitinstance = eleccion.write_it_instance,
+			api_instance = eleccion.write_it_instance.api_instance,
+			content =  self.texto_pregunta,
+
+			)
+		for candidato in candidatos:
+			writeit_message.people.add(candidato.person)
+
+		writeit_message.save()
+
+		writeit_message.push_to_the_api()
+
+
+
 
 			
 
