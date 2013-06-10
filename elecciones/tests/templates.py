@@ -36,11 +36,7 @@ class TemplatesViewsTestCase(TestCase):
 		url = reverse('comparador')
 		response = self.client.get(url)
 
-		self.assertTrue('elecciones' in response.context)
-		self.assertEquals(response.context['elecciones'].count(), 2)
-		self.assertTrue('title' in response.context)
-		self.assertEquals(response.context['title'], u"Comparador")
-		self.assertTemplateUsed(response, 'elecciones/comparador.html')
+		self.assertEquals(response.status_code, 200)
 
 	def test_get_quienes_somos(self):
 		url = reverse('somos')
