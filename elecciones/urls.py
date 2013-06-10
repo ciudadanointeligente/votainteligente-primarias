@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from views import HomeTemplateView, EleccionOverview, EleccionIndices, MetodologiaView, QuienesSomosView, EleccionPreguntales, ReportaView,\
+from views import HomeTemplateView, EleccionOverview, EleccionIndices, MetodologiaView, QuienesSomosView, ComparadorView, EleccionPreguntales, ReportaView,\
 QuePuedoHacerHacerView, NosFaltanDatosView, Ranking, EleccionExtraInfo, EnlacesView, VoluntariosView, SenadoresView, InteresesView
 from django.views.generic import TemplateView
 from django.views.decorators.cache import cache_page
@@ -22,6 +22,7 @@ urlpatterns = patterns('',
 	url(r'^ranking/?$', cache_page(Ranking.as_view(), 60 * settings.CACHE_MINUTES), name="ranking"),
 	url(r'^mas_info/?$', TemplateView.as_view(template_name='elecciones/mas_info.html'), name="mas_info"),
 	url(r'^queremos/?$', TemplateView.as_view(template_name='elecciones/queremos.html'), name="queremos"),
+	url(r'^comparador/?$', TemplateView.as_view(template_name='elecciones/comparador.html'), name="comparador"),
 	url(r'^intereses/?$', InteresesView.as_view(), name='intereses'),
 
 
