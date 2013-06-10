@@ -72,6 +72,18 @@
     margin-top: -3px;
 }
 
+.introduccionHome {
+	text-align: left;
+	color: #474747;
+	margin-bottom: 40px;
+	margin-top: 10px;
+	padding-left: 7px;
+	font-family: georgia;
+	font-size: 15.5px;
+	font-style: italic;
+	line-height: 24px;
+}
+
 iframe {
 	border:none;
 	}
