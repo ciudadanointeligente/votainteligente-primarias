@@ -8,7 +8,6 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.db.models import Count
 from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
-from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from popit.models import Person, ApiInstance
@@ -299,13 +298,17 @@ class Respuesta(models.Model):
 
 @receiver(post_save, sender=Respuesta)
 def notify_sender(sender, instance, created, **kwargs):
+	from django.core.mail import send_mail
 	respuesta = instance
 	nombre_candidato = respuesta.candidato.nombre
 	to_address = respuesta.pregunta.email_sender
 	domain_url = Site.objects.get_current().domain
 	#only notify in text changing and user provides an email
 	if instance.is_answered() and respuesta.pregunta.email_sender:
-		send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
+		try:
+			send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
+		except:
+			pass
 
 		
 		

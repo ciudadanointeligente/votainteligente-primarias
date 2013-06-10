@@ -15,6 +15,7 @@ from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
 from popit.models import Person, ApiInstance
+from mock import patch
 
 
 
@@ -114,5 +115,15 @@ class AnswerNotificationTestCase(TestCase):
 		self.respuesta2.texto_respuesta = u"Con Respuesta"
 		self.respuesta2.save()
 		self.assertEquals(len(mail.outbox), 0)
+
+	def test_it_handles_errors(self):
+		respuesta2 = Respuesta.objects.create(candidato = self.candidato1, pregunta = self.pregunta1)
+		with patch('django.core.mail.send_mail')  as send_mail:
+			send_mail.side_effect = Exception()
+			try:
+				respuesta2.texto_respuesta = u"Con Respuesta"
+				respuesta2.save()
+			except:
+				self.fail("Exception")
 
  
