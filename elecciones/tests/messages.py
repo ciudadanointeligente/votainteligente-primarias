@@ -482,3 +482,29 @@ class MessageTestCase(TestCase):
 
 			push.assert_called_with()
 
+
+	def test_it_handles_errors_when_sending_to_the_api(self):
+		settings.DEFAULT_FROM_EMAIL = 'otromail@votainteligente.org'
+		settings.DEFAULT_WRITEIT_SUBJECT = u'Un ciudadano está interesado en más información sobre tu candidatura'
+		url = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
+		
+
+		response = self.client.post(url, {'candidato': [self.candidato1.pk, self.candidato2.pk],
+											'texto_pregunta': 'Texto Pregunta', 
+											'remitente': 'Remitente 1',
+											'recaptcha_response_field': 'PASSED'})
+		
+
+		with patch('writeit.models.Message.push_to_the_api') as push:
+			contacto, created = Contacto.objects.get_or_create(tipo = 1, valor = 'test@test.com', candidato = self.candidato1)
+			pregunta_nueva = Pregunta.objects.get(remitente='Remitente 1')
+			push.side_effect = Exception()
+			try:
+				pregunta_nueva.enviar()
+			except:
+				self.fail('No está manejando errores en la API')
+
+
+
+
+

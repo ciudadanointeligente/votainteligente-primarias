@@ -101,7 +101,7 @@ class AnswerNotificationTestCase(TestCase):
 		domain_url = Site.objects.get_current().domain
 		self.assertEquals(len(mail.outbox), 1)
 		self.assertEquals(mail.outbox[0].subject,  candidato_responde.nombre + u' ha respondido a tu pregunta.')
-		message = self.respuesta1.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://' + domain_url + self.respuesta1.get_absolute_url() + u'\r ¡Saludos!'
+		message = self.respuesta1.pregunta.remitente + u',\rla respuesta la puedes encontrar aquí:\rhttp://' + domain_url + self.respuesta1.get_absolute_url() + u'\r ¡Saludos!'
 		self.assertEquals(mail.outbox[0].body, message)
 		self.assertEquals(mail.outbox[0].from_email, settings.INFO_CONTACT_MAIL)
 		self.assertTrue(mail.outbox[0].to.index(self.pregunta1.email_sender) > -1)

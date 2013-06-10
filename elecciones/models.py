@@ -239,6 +239,7 @@ class Pregunta(models.Model):
 		return self.texto_pregunta
 
 	def enviar(self):
+		from django.core.mail import mail_admins
 		subject= 'Un ciudadano está interesado en más información sobre tu candidatura [ID=#' + str(self.id) + ']'
 		candidatos = Candidato.objects.filter(pregunta=self)
 		current_site = Site.objects.get_current()
@@ -267,8 +268,11 @@ class Pregunta(models.Model):
 			writeit_message.people.add(candidato.person)
 
 		writeit_message.save()
-
-		writeit_message.push_to_the_api()
+		error = False
+		try:
+			writeit_message.push_to_the_api()
+		except:
+			mail_admins('Nos pegamos un cagazo mandando a la API de writeit la pregunta con id '+str(self.id),'Porfa arreglenlo =(')
 
 
 
