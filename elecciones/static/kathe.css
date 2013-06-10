@@ -76,6 +76,20 @@ iframe {
 	border:none;
 	}
 
+.significadoP {
+	text-align: left;
+	font-style: italic;
+	color: grey;
+
+}
+
+.p {
+	font-style: italic;
+	font-size: 18px;
+	font-weight: 600;
+	color: #433333;
+}
+
 .candideitorgPrimarias{
 	margin-top: 20px;
 }
