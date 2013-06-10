@@ -37,20 +37,9 @@ class EleccionOverview(DetailView):
 		return context
 
 		
-class InteresesView(DetailView):
-	model = Eleccion
-
-	def get_template_names(self):
-		return ['elecciones/perfiles_intereses.html']
-
-	def get_context_data(self, **kwargs):
-		context = super(InteresesView, self).get_context_data(**kwargs)
-		indices = self.object.indice_set.all()
-		elecciones = Eleccion.objects.all()
-		context['indices'] = indices
-		context['title'] = u"Perfil de intereses"
-		context['elecciones'] = elecciones
-		return context
+class InteresesView(TemplateView):
+	template_name = 'elecciones/perfiles_intereses.html'
+	
 
 
 
@@ -160,6 +149,16 @@ class MetodologiaView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(MetodologiaView, self).get_context_data(**kwargs)
 		context['title'] = u"Metodología"
+		elecciones = Eleccion.objects.all()
+		context['elecciones'] = elecciones
+		return context
+
+class ComparadorView(TemplateView):
+	template_name="elecciones/comparador.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(MetodologiaView, self).get_context_data(**kwargs)
+		context['title'] = u"Comparador"
 		elecciones = Eleccion.objects.all()
 		context['elecciones'] = elecciones
 		return context

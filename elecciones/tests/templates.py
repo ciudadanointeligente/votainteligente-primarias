@@ -32,6 +32,16 @@ class TemplatesViewsTestCase(TestCase):
 		self.assertEquals(response.context['title'], u"Metodología")
 		self.assertTemplateUsed(response, 'elecciones/metodologia.html')
 
+	def test_get_comparador(self):
+		url = reverse('comparador')
+		response = self.client.get(url)
+
+		self.assertTrue('elecciones' in response.context)
+		self.assertEquals(response.context['elecciones'].count(), 2)
+		self.assertTrue('title' in response.context)
+		self.assertEquals(response.context['title'], u"Comparador")
+		self.assertTemplateUsed(response, 'elecciones/comparador.html')
+
 	def test_get_quienes_somos(self):
 		url = reverse('somos')
 		response = self.client.get(url)
@@ -88,13 +98,11 @@ class TemplatesViewsTestCase(TestCase):
 		self.assertEquals(response.context['title'],u"Gracias a TODOS")
 
 	def test_get_perfil_intereses(self):
-		url = reverse('intereses', kwargs={'slug':self.eleccion1.slug})
+		url = reverse('intereses')
 		response = self.client.get(url)
 
 		self.assertTemplateUsed(response, 'elecciones/perfiles_intereses.html')
 		self.assertEquals(response.status_code, 200)
-		self.assertTrue('title' in response.context)
-		self.assertEquals(response.context['title'],u"Perfil de intereses")
 
 	
 

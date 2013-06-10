@@ -67,10 +67,28 @@
 	margin-top: 5px;
 }
 
+.iconoInfo {
+	margin-right: 2px;
+    margin-top: -3px;
+}
 
 iframe {
 	border:none;
 	}
+
+.significadoP {
+	text-align: left;
+	font-style: italic;
+	color: grey;
+
+}
+
+.p {
+	font-style: italic;
+	font-size: 18px;
+	font-weight: 600;
+	color: #433333;
+}
 
 .candideitorgPrimarias{
 	margin-top: 20px;
@@ -84,7 +102,12 @@ iframe {
 }
 
 .masInfo {
-	font-size: 30px;
+	font-size: 12px;
+	font-variant: small-caps;
+}
+
+.masInfo3 {
+	font-size: 24px;
 	font-variant: small-caps;
 }
 
@@ -92,6 +115,16 @@ iframe {
 	font-family: georgia;
 	font-style: italic;
 	font-weight: 100;
+}
+
+.span3 .masInfo2 h3 {
+	font-size: 14px;
+}
+
+.bannerMasInfo {
+	background-color: #CCCCCC;
+	width: 100%;
+	height: 145px;
 }
 
 .bannerMasInfo a{
@@ -461,7 +494,15 @@ span .casa{
 	font-style: italic;
 }
 
+.queremos {
+	height: 500px;
+	margin-top: 30px;
+}
 
+.somos {
+	height: 500px;
+	margin-top: 30px;
+}
 
 /* -------- MUNICIPALIDADES ---------- */	
 
