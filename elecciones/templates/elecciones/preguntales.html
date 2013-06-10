@@ -50,13 +50,13 @@ $(function () {
 			<div class="row-fluid">
 				<div class="candidatosPreguntale span4">
 					<h5> Candidatos </h5>
-					<label>Marcá sólo los candidatos a los que querés preguntar</label>
+					<label>Marca sólo los candidatos a los que quieres preguntar</label>
 {% for pk, candidato in form.candidato.field.choices %}
 					<label class="checkbox {{ pk|estrellitas_tachado }}">
 					<input type="checkbox" name="candidato" {{ pk|estrellitas_disabled }} class="" value={{pk}}>{{candidato}} {{ pk|estrellitas }}
 					 </input> </label>
 {% endfor %}
-				No tenemos los contactos de muchos de estos candidatos, si tenés alguno, mandános un mail a {% candidate_info_contact_mail %}
+				No tenemos los contactos de muchos de estos candidatos, si tienes alguno, mándanos un mail a {% candidate_info_contact_mail %}
 						<br />
 						<br />
 					<span class="help-block"> <small> <em> <strong>
@@ -79,7 +79,7 @@ $(function () {
 					{{form.remitente.errors}}
 					<label> <strong>Correo (Opcional)</strong></label>
 					{{form.email_sender}}
-					<span class="help-block"> <small> <em> <strong>Dejá tu correo si querés que te avisemos cuando respondan </strong> </em> </small></span>
+					<span class="help-block"> <small> <em> <strong>Dejá tu correo si quieres que te avisemos cuando respondan </strong> </em> </small></span>
 					{{form.email_sender.errors}}
 
 					<label> <strong>Escribe tu pregunta</strong></label>
