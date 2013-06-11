@@ -239,6 +239,7 @@ class Pregunta(models.Model):
 		return self.texto_pregunta
 
 	def enviar(self):
+		from django.core.mail import mail_admins
 		subject= 'Un ciudadano está interesado en más información sobre tu candidatura [ID=#' + str(self.id) + ']'
 		candidatos = Candidato.objects.filter(pregunta=self)
 		current_site = Site.objects.get_current()
@@ -257,7 +258,7 @@ class Pregunta(models.Model):
 
 		writeit_message = WriteItMessage.objects.create(author_name=self.remitente,
 			author_email=settings.DEFAULT_FROM_EMAIL,
-			subject=settings.DEFAULT_WRITEIT_SUBJECT,
+			subject=settings.DEFAULT_WRITEIT_SUBJECT+ u" [ID=#" + str(self.id) + "]",
 			writeitinstance = eleccion.write_it_instance,
 			api_instance = eleccion.write_it_instance.api_instance,
 			content =  self.texto_pregunta,
@@ -267,8 +268,11 @@ class Pregunta(models.Model):
 			writeit_message.people.add(candidato.person)
 
 		writeit_message.save()
-
-		writeit_message.push_to_the_api()
+		error = False
+		try:
+			writeit_message.push_to_the_api()
+		except:
+			mail_admins('Nos pegamos un cagazo mandando a la API de writeit la pregunta con id '+str(self.id),'Porfa arreglenlo =(')
 
 
 
@@ -306,7 +310,7 @@ def notify_sender(sender, instance, created, **kwargs):
 	#only notify in text changing and user provides an email
 	if instance.is_answered() and respuesta.pregunta.email_sender:
 		try:
-			send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
+			send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la puedes encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
 		except:
 			pass
 
