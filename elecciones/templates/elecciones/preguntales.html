@@ -53,7 +53,7 @@ $(function () {
 					<label>Marca sólo los candidatos a los que quieres preguntar</label>
 {% for pk, candidato in form.candidato.field.choices %}
 					<label class="checkbox {{ pk|estrellitas_tachado }}">
-					<input type="checkbox" name="candidato" {{ pk|estrellitas_disabled }} class="" value={{pk}}>{{candidato}} {{ pk|estrellitas }}
+					<input type="checkbox" name="candidato" {{ pk|estrellitas_disabled }} class="" value={{pk}}>{{candidato}}
 					 </input> </label>
 {% endfor %}
 				No tenemos los contactos de muchos de estos candidatos, si tienes alguno, mándanos un mail a {% candidate_info_contact_mail %}
@@ -61,13 +61,7 @@ $(function () {
 						<br />
 					<span class="help-block"> <small> <em> <strong>
 						
-						* Tu pregunta será enviada al mail del candidato
-						<br/>
-						** Tu pregunta será enviada al mail del partido del candidato
-						<br/>
-						*** No tenemos el mail del candidato 
-						<br />
-						
+						* Tu pregunta será enviada al comando del candidato					
 					</strong></em> </small></span>
 
 					{{form.candidato.errors}}
