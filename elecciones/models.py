@@ -258,7 +258,7 @@ class Pregunta(models.Model):
 
 		writeit_message = WriteItMessage.objects.create(author_name=self.remitente,
 			author_email=settings.DEFAULT_FROM_EMAIL,
-			subject=settings.DEFAULT_WRITEIT_SUBJECT,
+			subject=settings.DEFAULT_WRITEIT_SUBJECT+ u" [ID=#" + str(self.id) + "]",
 			writeitinstance = eleccion.write_it_instance,
 			api_instance = eleccion.write_it_instance.api_instance,
 			content =  self.texto_pregunta,

@@ -458,7 +458,7 @@ class MessageTestCase(TestCase):
 
 		self.assertEquals(primera_pregunta.author_email, settings.DEFAULT_FROM_EMAIL)
 		self.assertEquals(primera_pregunta.author_name, pregunta_nueva.remitente)
-		self.assertEquals(primera_pregunta.subject, settings.DEFAULT_WRITEIT_SUBJECT)
+		self.assertEquals(primera_pregunta.subject, settings.DEFAULT_WRITEIT_SUBJECT + u" [ID=#" + str(pregunta_nueva.id) + "]" )
 		self.assertEquals(primera_pregunta.content, 'Texto Pregunta')
 		self.assertEquals(primera_pregunta.writeitinstance, self.write_it_instance1)
 		self.assertEquals(primera_pregunta.people.count(), 2)
