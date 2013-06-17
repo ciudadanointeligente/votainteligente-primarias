@@ -14,6 +14,7 @@ from django.template import Template, Context
 from urllib2 import quote
 from popit.models import Person, ApiInstance
 from elecciones.views import Ranking
+from django.conf import settings
 
 
 class RankingTestCase(TestCase):
@@ -130,6 +131,7 @@ class RankingTestCase(TestCase):
 		self.assertEquals(len(clasificados), 4)
 
 
+
 	def test_obtiene_ranking_candidatos_que_han_respondido_menos(self):
 
 		view = Ranking()
@@ -201,6 +203,22 @@ class RankingTestCase(TestCase):
 		self.assertEquals(los_mas_buenos[2]["pregunta_count"], 3)
 		self.assertEquals(los_mas_buenos[2]["preguntas_respondidas"], 1)
 		self.assertEquals(los_mas_buenos[2]["preguntas_no_respondidas"], 2)
+
+
+	def test_length_of_buenos_and_malos(self):
+		view = Ranking()
+		clasificados = view.clasificados()
+		previous_length_value = settings.RANKING_LENGTH
+		settings.RANKING_LENGTH = 2
+		
+
+
+		los_mas_buenos = view.buenos(clasificados)
+		los_mas_malos = view.malos(clasificados)
+		self.assertTrue(len(los_mas_buenos) <= settings.RANKING_LENGTH)
+		self.assertTrue(len(los_mas_malos) <= settings.RANKING_LENGTH)
+
+		settings.RANKING_LENGTH = previous_length_value
 
 		
 

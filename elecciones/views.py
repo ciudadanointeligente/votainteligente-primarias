@@ -232,10 +232,10 @@ class Ranking(TemplateView):
 		return context
 
 	def malos(self, clasificados):
-		return sorted(clasificados,  key=itemgetter('preguntas_no_respondidas'), reverse=True)[:15]
+		return sorted(clasificados,  key=itemgetter('preguntas_no_respondidas'), reverse=True)[:settings.RANKING_LENGTH]
 
 	def buenos(self, clasificados):
-		ordered_list = sorted(clasificados,  key=itemgetter('preguntas_respondidas'), reverse=True)[:15]
+		ordered_list = sorted(clasificados,  key=itemgetter('preguntas_respondidas'), reverse=True)[:settings.RANKING_LENGTH]
 		los_mas_buenos = []
 		for bueno in ordered_list:
 			if bueno["preguntas_respondidas"] > 0:
