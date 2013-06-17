@@ -15,6 +15,7 @@ from urllib2 import quote
 from popit.models import Person, ApiInstance
 from elecciones.views import Ranking
 from django.conf import settings
+from django.utils import simplejson as json
 
 
 class RankingTestCase(TestCase):
@@ -219,6 +220,17 @@ class RankingTestCase(TestCase):
 		self.assertTrue(len(los_mas_malos) <= settings.RANKING_LENGTH)
 
 		settings.RANKING_LENGTH = previous_length_value
+
+
+	def test_ranking_as_a_json(self):
+		url =  reverse('ranking_json')
+		response = self.client.get(url)
+		self.assertEquals(response.status_code, 200)
+		self.assertEquals(response['Content-Type'], "application/json")
+		buenos_y_malos = json.loads(response.content)
+		
+		
+
 
 		
 
