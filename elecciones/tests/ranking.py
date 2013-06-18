@@ -224,12 +224,11 @@ class RankingTestCase(TestCase):
 
 	def test_ranking_as_a_json(self):
 		url =  reverse('ranking_json')
-		response = self.client.get(url)
+		response = self.client.get(url, {'callback': 'callback'})
 		self.assertEquals(response.status_code, 200)
 		self.assertEquals(response['Content-Type'], "application/json")
-		buenos_y_malos = json.loads(response.content)
-		
-		
+		self.assertTrue(response.content.startswith('callback('))
+		self.assertTrue(response.content.endswith(');'))
 
 
 		

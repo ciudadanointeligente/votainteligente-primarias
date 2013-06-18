@@ -261,6 +261,9 @@ class Ranking(TemplateView):
 class RankingJson(Ranking):
     #Terrible de feo copiar la lógica pero quiero salir rápido
     #luego lo refactorizo
+    def dispatch(self, *args, **kwargs):
+        return super(RankingJson, self).dispatch(*args, **kwargs)
+
     def clasificados(self):
         clasificados = []
         candidatos = Candidato.objects.all().annotate(preguntas_count=Count('pregunta')).exclude(preguntas_count=0)
@@ -275,6 +278,12 @@ class RankingJson(Ranking):
 
         return clasificados
 
+    def get(self, request, *args, **kwargs):
+        self.callback = request.GET['callback']
+        return super(RankingJson, self).get(request, *args, **kwargs)
+
     def render_to_response(self, context, **response_kwargs):
-        return HttpResponse(json.dumps(context), mimetype="application/json")
+        data = json.dumps(context)
+        response_content = self.callback+"("+data+");"
+        return HttpResponse(response_content, mimetype="application/json")
 
