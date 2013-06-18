@@ -222,6 +222,9 @@ DEFAULT_WRITEIT_SUBJECT = 'The subject'
 #setting to avoid db changes during test
 SOUTH_TESTS_MIGRATE = False
 
+#The length of the ranking
+RANKING_LENGTH = 15
+
 try:
     from local_settings import *
     INSTALLED_APPS += EXTRA_APPS
