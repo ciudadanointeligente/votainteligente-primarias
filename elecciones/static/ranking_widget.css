@@ -1,0 +1,67 @@
+.itemListadoCandidatos {
+	 border-bottom: 1px solid #DDDDDD;
+    font-size: 10pt;
+    height: 51px;
+    list-style: decimal outside none;
+    margin-left: 23px;
+    padding-bottom: 5px;
+    padding-top: 0;
+    width: 434px;
+
+}
+
+.itemListadoCandidatos a {
+	color:grey;
+	font-family: georgia;
+	font-style: italic;
+}
+.itemListadoCandidatosMalos {
+
+}
+.contenedorTwitter {
+	float: right;
+	padding-top: 5px;
+}
+.listadoCandidatos {
+	list-style: none;
+	margin-left: 0px;
+	margin-top: 15px;
+}
+.thumbnails {
+  margin-left: -3px;
+  list-style: none;
+  *zoom: 1;
+}
+
+.thumbnails:before,
+.thumbnails:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.thumbnails:after {
+  clear: both;
+}
+
+.row-fluid .thumbnails {
+  margin-left: 0;
+}
+
+.thumbnails > li {
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.tituloRanking {
+	padding: 20px;
+	float:left;
+	width:40%;
+	border:1px solid #d8d8d8;
+	margin-right: 10px;
+}
+.tituloRanking img {
+	margin:0 auto;
+	display: block;
+}
