@@ -1611,6 +1611,12 @@ tr.primeraFila td{
 	margin-top:20px;
 	}
 
+.paginaCompletaRanking {
+	clear:both;
+	margin-top:10%;
+	height: 450px;
+	}
+
 .subMenu {
 	clear: both;
     
