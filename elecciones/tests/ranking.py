@@ -123,7 +123,14 @@ class RankingTestCase(TestCase):
 		#el candidato 4 ha respondido una pregunta
 		self.respuesta3_4.texto_respuesta = u"asdasd"
 		self.respuesta3_4.save()
+
+		#settings.RANKING_LENGTH = 3
 		#el candidato3 es un pajero y no responde niuna cuestion
+
+
+		
+
+
 
 
 	def test_get_clasificados(self):
@@ -132,6 +139,31 @@ class RankingTestCase(TestCase):
 		self.assertEquals(len(clasificados), 4)
 
 
+	def test_ranking_tiene_indice_de_premio(self):
+		view = Ranking()
+		todas_las_preguntas = Respuesta.objects.exclude(texto_respuesta=settings.NO_ANSWER_DEFAULT_MESSAGE).count()
+		respuestas_respondidas = Respuesta.objects.count()
+		coeficiente_de_premio_esperado = float(respuestas_respondidas)/float(todas_las_preguntas)
+		self.assertEquals(view.coeficiente_de_premio, coeficiente_de_premio_esperado)
+
+
+	def test_los_clasificados_tienen_indice(self):
+		view = Ranking()
+		clasificados = view.clasificados()
+
+		self.assertTrue("indice" in clasificados[0])
+		preg = clasificados[0]["pregunta_count"]
+		resp = clasificados[0]["preguntas_respondidas"]
+		expected_index = (view.coeficiente_de_premio + 1)*preg*resp - preg*preg
+		self.assertEquals(clasificados[0]["indice"], expected_index)
+
+	def test_los_clasificados_no_vienen_ordenaditos_por_indice(self):
+		view = Ranking()
+		clasificados = view.clasificados()
+		self.assertEquals(clasificados[0]['indice'], 24.0)
+		self.assertEquals(clasificados[1]['indice'], 13.0)
+		self.assertEquals(clasificados[3]['indice'], 2.0)#aquí no están ordenados
+		self.assertEquals(clasificados[2]['indice'], -9.0)
 
 	def test_obtiene_ranking_candidatos_que_han_respondido_menos(self):
 
@@ -139,7 +171,12 @@ class RankingTestCase(TestCase):
 		clasificados = view.clasificados()
 		los_mas_malos = view.malos(clasificados)
 
-		
+		# el orden es :
+		# candidato3 -9.0
+		# candidato4 2.0
+		# candidato2 13.0
+		# candidato1 24.0
+
 		self.assertEquals(los_mas_malos[0]["candidato"], self.candidato3)
 		self.assertEquals(los_mas_malos[0]["pregunta_count"], 3)
 		self.assertEquals(los_mas_malos[0]["preguntas_respondidas"], 0)
@@ -176,7 +213,7 @@ class RankingTestCase(TestCase):
 		self.assertEquals(response.context["malos"][2]["candidato"], self.candidato2)
 		self.assertEquals(response.context["malos"][3]["candidato"], self.candidato1)
 
-		self.assertEquals(len(response.context["buenos"]), 3)
+		self.assertEquals(len(response.context["buenos"]), 4)
 		self.assertEquals(response.context["buenos"][0]["candidato"], self.candidato1)
 		self.assertEquals(response.context["buenos"][1]["candidato"], self.candidato2)
 		self.assertEquals(response.context["buenos"][2]["candidato"], self.candidato4)
@@ -188,7 +225,13 @@ class RankingTestCase(TestCase):
 		clasificados = view.clasificados()
 		los_mas_buenos = view.buenos(clasificados)
 
-		self.assertEquals(len(los_mas_buenos), 3)
+		# el orden es :
+		# candidato1 24.0
+		# candidato2 13.0
+		# candidato4 2.0
+		# candidato3 -9.0
+
+		self.assertEquals(len(los_mas_buenos), 4)
 		self.assertEquals(los_mas_buenos[0]["candidato"], self.candidato1)
 		self.assertEquals(los_mas_buenos[0]["pregunta_count"], 3)
 		self.assertEquals(los_mas_buenos[0]["preguntas_respondidas"], 3)
@@ -204,6 +247,8 @@ class RankingTestCase(TestCase):
 		self.assertEquals(los_mas_buenos[2]["pregunta_count"], 3)
 		self.assertEquals(los_mas_buenos[2]["preguntas_respondidas"], 1)
 		self.assertEquals(los_mas_buenos[2]["preguntas_no_respondidas"], 2)
+
+		self.assertEquals(los_mas_buenos[3]["candidato"], self.candidato3)
 
 
 	def test_length_of_buenos_and_malos(self):
