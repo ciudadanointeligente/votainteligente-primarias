@@ -12,3 +12,6 @@ django-markdown-deux==1.0.4
 ludibrio==3.0.3
 slumber
 django-contactme==1.0a2
+mock
+-e git://github.com/mysociety/popit-django.git#egg=popit-django
+-e git://github.com/ciudadanointeligente/writeit-django.git#egg=writeit-django

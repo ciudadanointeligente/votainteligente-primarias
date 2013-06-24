@@ -12,11 +12,14 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import Person, ApiInstance
 
 class TemplatesViewsTestCase(TestCase):
 	def setUp(self):
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", slug=u"la-eleccion2")
+		self.popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance1, slug=u"la-eleccion1")
+		self.eleccion2 = Eleccion.objects.create(nombre=u"La eleccion2", popit_api_instance=self.popit_api_instance2, slug=u"la-eleccion2")
 
 
 	def test_get_metodologia(self):
@@ -33,11 +36,7 @@ class TemplatesViewsTestCase(TestCase):
 		url = reverse('comparador')
 		response = self.client.get(url)
 
-		self.assertTrue('elecciones' in response.context)
-		self.assertEquals(response.context['elecciones'].count(), 2)
-		self.assertTrue('title' in response.context)
-		self.assertEquals(response.context['title'], u"Comparador")
-		self.assertTemplateUsed(response, 'elecciones/comparador.html')
+		self.assertEquals(response.status_code, 200)
 
 	def test_get_quienes_somos(self):
 		url = reverse('somos')

@@ -14,15 +14,19 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
+from popit.models import Person, ApiInstance
+from mock import patch
 
 
 
 class RespuestaTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.candidato1 = Candidato.objects.create(eleccion=self.eleccion1,\
-												 nombre=u"el candidato",\
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
+		self.candidato1 = Candidato.objects.create(person=self.person,
+												 eleccion=self.eleccion1,\
 												 partido=u"API",\
 												 web=u"http://votainteURLligente.cl",\
 												 twitter=u"candidato",\
@@ -70,9 +74,11 @@ class RespuestaTestCase(TestCase):
 class AnswerNotificationTestCase(TestCase):
 	def setUp(self):
 		colectivo1 = Colectivo.objects.create(sigla='C1', nombre='Colectivo 1')
-		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", slug=u"la-eleccion1")
-		self.candidato1 = Candidato.objects.create(eleccion=self.eleccion1,\
-																		nombre=u"el candidato",\
+		self.popit_api_instance = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.eleccion1 = Eleccion.objects.create(nombre=u"La eleccion1", popit_api_instance=self.popit_api_instance, slug=u"la-eleccion1")
+		self.person = Person.objects.create(api_instance =  self.popit_api_instance, name='person_name')
+		self.candidato1 = Candidato.objects.create(person=self.person,
+																		eleccion=self.eleccion1,\
 																		partido=u"API",\
 																		web=u"http://votainteURLligente.cl",\
 																		twitter=u"candidato",\
@@ -95,7 +101,7 @@ class AnswerNotificationTestCase(TestCase):
 		domain_url = Site.objects.get_current().domain
 		self.assertEquals(len(mail.outbox), 1)
 		self.assertEquals(mail.outbox[0].subject,  candidato_responde.nombre + u' ha respondido a tu pregunta.')
-		message = self.respuesta1.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://' + domain_url + self.respuesta1.get_absolute_url() + u'\r ¡Saludos!'
+		message = self.respuesta1.pregunta.remitente + u',\rla respuesta la puedes encontrar aquí:\rhttp://' + domain_url + self.respuesta1.get_absolute_url() + u'\r ¡Saludos!'
 		self.assertEquals(mail.outbox[0].body, message)
 		self.assertEquals(mail.outbox[0].from_email, settings.INFO_CONTACT_MAIL)
 		self.assertTrue(mail.outbox[0].to.index(self.pregunta1.email_sender) > -1)
@@ -109,5 +115,15 @@ class AnswerNotificationTestCase(TestCase):
 		self.respuesta2.texto_respuesta = u"Con Respuesta"
 		self.respuesta2.save()
 		self.assertEquals(len(mail.outbox), 0)
+
+	def test_it_handles_errors(self):
+		respuesta2 = Respuesta.objects.create(candidato = self.candidato1, pregunta = self.pregunta1)
+		with patch('django.core.mail.send_mail')  as send_mail:
+			send_mail.side_effect = Exception()
+			try:
+				respuesta2.texto_respuesta = u"Con Respuesta"
+				respuesta2.save()
+			except:
+				self.fail("Exception")
 
  

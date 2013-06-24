@@ -12,24 +12,32 @@ from django.test.client import Client
 from django.utils.unittest import skip
 from django.template import Template, Context
 from urllib2 import quote
-
+from popit.models import Person, ApiInstance
 from elecciones.views import Ranking
+from django.conf import settings
+from django.utils import simplejson as json
 
 
 class RankingTestCase(TestCase):
 
 	def setUp(self):
-		self.eleccion1, created = Eleccion.objects.get_or_create(nombre="eleccion1", 
+		self.popit_api_instance1 = ApiInstance.objects.create(url='http://popit.org/api/v1')
+		self.popit_api_instance2 = ApiInstance.objects.create(url='http://popit.org/api/v2')
+		self.popit_api_instance3 = ApiInstance.objects.create(url='http://popit.org/api/v3')
+		self.eleccion1, created = Eleccion.objects.get_or_create(nombre="eleccion1",
+			popit_api_instance=self.popit_api_instance1,
 			slug="la-eleccion1",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion2, created = Eleccion.objects.get_or_create(nombre="eleccion2", 
+			popit_api_instance=self.popit_api_instance2,
 			slug="la-eleccion2",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
 			mapping_extra_app_url="http://vecino.ciudadanointeligente.org/around?latitude=-33.429042;longitude=-70.611278")
 		self.eleccion3, created = Eleccion.objects.get_or_create(nombre="eleccion3", 
+			popit_api_instance=self.popit_api_instance3	,
 			slug="la-eleccion3",
 			main_embedded=u"http://www.candideit.org/lfalvarez/rayo-x-politico/embeded",
 			messaging_extra_app_url="http://napistejim.cz/address=nachod",
@@ -40,23 +48,27 @@ class RankingTestCase(TestCase):
 		{'nombre': 'candidato1', 'mail': 'candidato1@test.com', 'mail2' : 'candidato1@test2.com', 'mail3' : 'candidato1@test3.com', 'eleccion': self.eleccion1, 'partido':self.colectivo1, 'web': 'web1'},\
 		{'nombre': 'candidato2', 'mail': 'candidato2@test.com', 'eleccion': self.eleccion2, 'partido': self.colectivo1},\
 		{'nombre': 'candidato3', 'mail': 'candidato3@test.com', 'eleccion': self.eleccion3, 'partido':self.colectivo2}]
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		person1 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato1")
+		person2 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato2")
+		person3 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato3")
+		person4 = Person.objects.create(api_instance =  self.popit_api_instance1, name="candidato4")
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 		
 
-		self.candidato1 = Candidato.objects.create(nombre=u"candidato1", eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
-		self.candidato2 = Candidato.objects.create(nombre=u"candidato2", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		self.candidato3 = Candidato.objects.create(nombre=u"candidato3", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
-		self.candidato4 = Candidato.objects.create(nombre=u"candidato4", eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
+		self.candidato1 = Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[0]['partido'], web = self.data_candidato[0]['web'])
+		self.candidato2 = Candidato.objects.create(person=person2, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		self.candidato3 = Candidato.objects.create(person=person3, eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
+		self.candidato4 = Candidato.objects.create(person=person4, eleccion = self.eleccion1, colectivo = self.data_candidato[2]['partido'])
 		
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
-		Candidato.objects.create(nombre=u"candidato_molesto", eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
+		Candidato.objects.create(person=person1, eleccion = self.eleccion1, colectivo = self.data_candidato[1]['partido'])
 
 		self.pregunta1 = Pregunta.objects.create(
 											remitente='remitente1', 
@@ -118,6 +130,7 @@ class RankingTestCase(TestCase):
 		view = Ranking()
 		clasificados = view.clasificados()
 		self.assertEquals(len(clasificados), 4)
+
 
 
 	def test_obtiene_ranking_candidatos_que_han_respondido_menos(self):
@@ -191,6 +204,32 @@ class RankingTestCase(TestCase):
 		self.assertEquals(los_mas_buenos[2]["pregunta_count"], 3)
 		self.assertEquals(los_mas_buenos[2]["preguntas_respondidas"], 1)
 		self.assertEquals(los_mas_buenos[2]["preguntas_no_respondidas"], 2)
+
+
+	def test_length_of_buenos_and_malos(self):
+		view = Ranking()
+		clasificados = view.clasificados()
+		previous_length_value = settings.RANKING_LENGTH
+		settings.RANKING_LENGTH = 2
+		
+
+
+		los_mas_buenos = view.buenos(clasificados)
+		los_mas_malos = view.malos(clasificados)
+		self.assertTrue(len(los_mas_buenos) <= settings.RANKING_LENGTH)
+		self.assertTrue(len(los_mas_malos) <= settings.RANKING_LENGTH)
+
+		settings.RANKING_LENGTH = previous_length_value
+
+
+	def test_ranking_as_a_json(self):
+		url =  reverse('ranking_json')
+		response = self.client.get(url, {'callback': 'callback'})
+		self.assertEquals(response.status_code, 200)
+		self.assertEquals(response['Content-Type'], "application/json")
+		self.assertTrue(response.content.startswith('callback('))
+		self.assertTrue(response.content.endswith(');'))
+
 
 		
 

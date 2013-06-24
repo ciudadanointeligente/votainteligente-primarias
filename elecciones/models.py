@@ -8,14 +8,18 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.db.models import Count
 from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
-from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from popit.models import Person, ApiInstance
+from writeit.models import WriteItApiInstance, WriteItInstance, Message as WriteItMessage
+
 # Create your models here.
 
 
 class Eleccion(models.Model):
 	nombre =  models.CharField(max_length=255)
+	popit_api_instance = models.OneToOneField(ApiInstance)
+	write_it_instance = models.OneToOneField(WriteItInstance, null=True)
 	slug =  models.CharField(max_length=255)
 	main_embedded = models.CharField(max_length=512, blank=True, null=True)
 	messaging_extra_app_url = models.CharField(max_length=512, blank=True, null=True)
@@ -103,13 +107,14 @@ class Colectivo(models.Model):
 		return self.sigla
 
 class Candidato(models.Model):
-	nombre = models.CharField(max_length=255)
+	# nombre = models.CharField(max_length=255)
 	#mail = models.CharField(max_length=255)
 	eleccion = models.ForeignKey(Eleccion)
 	colectivo = models.ForeignKey(Colectivo, null=True, blank=True)
 	partido = models.CharField(max_length=255, null=True, blank=True)
 	web = models.CharField(max_length=255, blank=True, null=True)
 	twitter = models.CharField(max_length=255, null=True, blank=True)
+	person = models.ForeignKey(Person, null=True)
 
 	#managers
 	objects = models.Manager()
@@ -129,6 +134,11 @@ class Candidato(models.Model):
 		return None
 
 	estrellitas = property(_estrellitas)
+
+	def _person_name(self):
+		return self.person.name
+
+	nombre = property(_person_name)
 
 	def numero_preguntas(self):
 		return self.pregunta.filter(aprobada=True).count()
@@ -168,6 +178,14 @@ class Candidato(models.Model):
 def preguntas_por_partido(self):
 	pass
 	# print Partido.objects.aggregate(nro_preguntas=Sum('candidatos__numero_preguntas'))
+
+@receiver(post_save, sender=Person)
+def create_candidato(sender, instance, created, **kwargs):
+	person = instance
+	if created:
+		election = Eleccion.objects.get(popit_api_instance = person.api_instance)
+		Candidato.objects.create(person=person, eleccion=election)
+
 
 
 
@@ -221,6 +239,7 @@ class Pregunta(models.Model):
 		return self.texto_pregunta
 
 	def enviar(self):
+		from django.core.mail import mail_admins
 		subject= 'Un ciudadano está interesado en más información sobre tu candidatura [ID=#' + str(self.id) + ']'
 		candidatos = Candidato.objects.filter(pregunta=self)
 		current_site = Site.objects.get_current()
@@ -232,6 +251,31 @@ class Pregunta(models.Model):
 			destinaciones = Contacto.objects.filter(candidato=candidato)
 			for destinacion in destinaciones:
 				store_mail(subject, mensaje, settings.DEFAULT_FROM_EMAIL,[destinacion.valor])
+				#post to write-it
+		#Esta wea no me gusta
+		eleccion = candidatos[0].eleccion
+		
+
+		writeit_message = WriteItMessage.objects.create(author_name=self.remitente,
+			author_email=settings.DEFAULT_FROM_EMAIL,
+			subject=settings.DEFAULT_WRITEIT_SUBJECT+ u" [ID=#" + str(self.id) + "]",
+			writeitinstance = eleccion.write_it_instance,
+			api_instance = eleccion.write_it_instance.api_instance,
+			content =  self.texto_pregunta,
+
+			)
+		for candidato in candidatos:
+			writeit_message.people.add(candidato.person)
+
+		writeit_message.save()
+		error = False
+		try:
+			writeit_message.push_to_the_api()
+		except:
+			mail_admins('Nos pegamos un cagazo mandando a la API de writeit la pregunta con id '+str(self.id),'Porfa arreglenlo =(')
+
+
+
 
 			
 
@@ -258,13 +302,17 @@ class Respuesta(models.Model):
 
 @receiver(post_save, sender=Respuesta)
 def notify_sender(sender, instance, created, **kwargs):
+	from django.core.mail import send_mail
 	respuesta = instance
 	nombre_candidato = respuesta.candidato.nombre
 	to_address = respuesta.pregunta.email_sender
 	domain_url = Site.objects.get_current().domain
 	#only notify in text changing and user provides an email
 	if instance.is_answered() and respuesta.pregunta.email_sender:
-		send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la podés encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
+		try:
+			send_mail( nombre_candidato + u' ha respondido a tu pregunta.', respuesta.pregunta.remitente + u',\rla respuesta la puedes encontrar aquí:\rhttp://'+ domain_url + respuesta.get_absolute_url() + u'\r ¡Saludos!', settings.INFO_CONTACT_MAIL,[to_address], fail_silently=False)
+		except:
+			pass
 
 		
 		
