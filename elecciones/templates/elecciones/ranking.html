@@ -2,6 +2,13 @@
 {% load twitter_tags %}
 {% block content %}
 <div class="paginaCompletaRanking container">
+<div class="span12"> 
+                 <h3> El ranking se calcula de la siguiente forma:</h3>
+                 <p> Se calcula el porcentaje de respuestas sobre el total de preguntas que ha recibido el candidato. En caso que entre candidatos haya porcentaje similar, quienes tengan más preguntas sin contestar quedan más abajo en el ranking.  </br> </br> </p>
+                
+</div>
+
+
 <div class="row-fluid">
 
 <div class="span6">
@@ -16,6 +23,9 @@
 	</li>
 
 <br/>
+ 
+     
+ 
 	{% endfor %}
 
 
@@ -32,13 +42,23 @@
 </li>
 	
 <br/>
-	{% endfor %}
 
+
+	{% endfor %}
+ 
 
 </ul>
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="paginaCompletaRanking container">
+<div class="row-fluid">
+        <div class="span12"> 
+          <a href="http://votainteligente.cl/presidenciales/preguntales" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/bannerPreguntaleGrande.png"></a>
+      </div>
 </div>
 </div>
 {% endblock content %}
