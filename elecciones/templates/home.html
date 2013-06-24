@@ -22,13 +22,17 @@
     <div class="span12" style="text-align:center">
       <div class="candideitorgPrimarias"> 
         <p class="introduccionHome"> Bienvenido a Vota Inteligente, el sitio electoral de <a href="http://twitter.com/ciudadanoi">@ciudadanoi</a>. En esta oportunidad dejamos a tu disposición el especial de Elecciones Primarias 2013, y te extendemos la invitación a participar, debatir, preguntar, compartir y fomentar el #VotoInformado.</p>
-        <iframe src="http://www.candideit.org/dtejada/primarias/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
-        <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p>
+        
+         <iframe src="http://www.candideit.org/dtejada/comparador-de-programas/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
+         <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p>
+
+       <!--  <iframe src="http://www.candideit.org/dtejada/primarias/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
+        <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p> -->
       </div>
       </br>
       </br>
 
-<!--  <div class="row-fluid">
+<div class="row-fluid">
         <ul class="thumbnails home-py tt-wrapper">
   
       <li class="span6"> 
@@ -41,7 +45,7 @@
       </li>
 
     </ul>
-  </div> -->
+  </div> 
       
      
          
@@ -52,18 +56,18 @@
             <li class="span3"><a class="tt-preguntales thumbnail" href="#"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg"></a>
             <h5>¡Pregúntales lo que quieras saber!</h5>
           </li>
-          <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2"> </a>
+         <!--  <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2"> </a>
 
             <h5>Compara Programas de Gobierno</h5>
-          </li> 
+          </li>  -->
 
 
          
 
 
 
-          <!-- <li class="span3"><a href="vicepresidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/perfilesCandidatos.png" alt="Vice-Presidente" name="over2"> </a>
-            <h5>Revisa los perfiles de los candidatos</h5> -->
+          <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/perfilesCandidatos.png" alt="Vice-Presidente" name="over2"> </a>
+            <h5>Revisa los perfiles de los candidatos</h5> 
           
          
 
