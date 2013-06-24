@@ -225,6 +225,12 @@ class ReportaView(TemplateView):
 class Ranking(TemplateView):
     template_name = "elecciones/ranking.html"
 
+    def __init__(self, *args, **kwargs):
+        pr = Respuesta.objects.exclude(texto_respuesta=settings.NO_ANSWER_DEFAULT_MESSAGE).count()
+        rr = Respuesta.objects.count()
+        self.coeficiente_de_premio = float(rr)/float(pr)
+        return super(Ranking, self).__init__(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super(Ranking, self).get_context_data(**kwargs)
         clasificados = self.clasificados()
@@ -233,29 +239,26 @@ class Ranking(TemplateView):
         return context
 
     def malos(self, clasificados):
-        return sorted(clasificados,  key=itemgetter('preguntas_no_respondidas'), reverse=True)[:settings.RANKING_LENGTH]
+        return sorted(clasificados,  key=itemgetter('indice'), reverse=False)[:settings.RANKING_LENGTH]
 
     def buenos(self, clasificados):
-        ordered_list = sorted(clasificados,  key=itemgetter('preguntas_respondidas'), reverse=True)[:settings.RANKING_LENGTH]
-        los_mas_buenos = []
-        for bueno in ordered_list:
-            if bueno["preguntas_respondidas"] > 0:
-                los_mas_buenos.append(bueno)
-        return los_mas_buenos
+        return sorted(clasificados,  key=itemgetter('indice'), reverse=True)[:settings.RANKING_LENGTH]
 
 
     def clasificados(self):
         clasificados = []
         candidatos = Candidato.objects.all().annotate(preguntas_count=Count('pregunta')).exclude(preguntas_count=0)
         for candidato in candidatos:
+            preg = candidato.numero_preguntas()
+            resp = candidato.numero_respuestas()
             element = {
             'candidato':candidato,
-            'pregunta_count':candidato.numero_preguntas(),
-            'preguntas_respondidas':candidato.numero_respuestas(),
-            'preguntas_no_respondidas':candidato.numero_preguntas() - candidato.numero_respuestas()
+            'pregunta_count':preg,
+            'preguntas_respondidas':resp,
+            'preguntas_no_respondidas':candidato.numero_preguntas() - candidato.numero_respuestas(),
+            'indice':(self.coeficiente_de_premio + 1)*preg*resp - preg*preg
             }
             clasificados.append(element)
-
         return clasificados
 
 class RankingJson(Ranking):
@@ -265,18 +268,13 @@ class RankingJson(Ranking):
         return super(RankingJson, self).dispatch(*args, **kwargs)
 
     def clasificados(self):
-        clasificados = []
-        candidatos = Candidato.objects.all().annotate(preguntas_count=Count('pregunta')).exclude(preguntas_count=0)
-        for candidato in candidatos:
-            element = {
-            'candidato':candidato.nombre,
-            'pregunta_count':candidato.numero_preguntas(),
-            'preguntas_respondidas':candidato.numero_respuestas(),
-            'preguntas_no_respondidas':candidato.numero_preguntas() - candidato.numero_respuestas()
-            }
-            clasificados.append(element)
+        clasificados = super(RankingJson, self).clasificados()
+        resultado = []
+        for clasificado in clasificados:
+            clasificado["candidato"] = clasificado["candidato"].nombre
+            resultado.append(clasificado)
 
-        return clasificados
+        return resultado
 
     def get(self, request, *args, **kwargs):
         self.callback = request.GET['callback']
