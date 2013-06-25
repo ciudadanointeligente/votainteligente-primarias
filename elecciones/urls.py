@@ -34,6 +34,6 @@ urlpatterns = patterns('',
 	url(r'^(?P<slug>[-\w]+)/indices/?$', EleccionIndices.as_view(), name='eleccion-index-detail'),
 	url(r'^(?P<slug>[-\w]+)/mas-info/?$', EleccionExtraInfo.as_view(), name='eleccion-extra-info'),
 	url(r'^(?P<slug>[-\w]+)/?$', EleccionOverview.as_view(), name="eleccion-overview"),
-	url(r'^(?P<slug>[-\w]+)/preguntales/?$', cache_page(EleccionPreguntales.as_view(), 60 * settings.CACHE_MINUTES), name="eleccion-preguntales"),
+	url(r'^(?P<slug>[-\w]+)/preguntales/?$', EleccionPreguntales.as_view(), name="eleccion-preguntales"),
 	
 	)
