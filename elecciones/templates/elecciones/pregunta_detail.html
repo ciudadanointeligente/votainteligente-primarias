@@ -1,0 +1,39 @@
+{% extends "base_sub_menu_fijo.html" %}
+{% block content %}
+{% load twitter_tags %}
+{% load settingsvars_tags %}
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+<div class="container paginaCompleta">
+	<div class="container pregunta-detalle">
+		<div class="accordion-groupPreguntale">
+	<div class="accordion-heading tituloAcordion">
+					
+			<div id="{{pregunta.id}}"class="preguntaPreguntale">{{pregunta}} <br/>
+				<div class="preguntadoPor"> <small><strong>Preguntado por:</strong> <em>{{pregunta.remitente}}</em></small></div>
+				<br/> <br/>
+			</div>
+		</div>
+			<div class="accordion-body">
+			{% for respuesta in pregunta.respuesta_set.all %}
+					<div class="nombreRespuestaPreguntale"> 
+						<div class="headerRespuesta" id="R{{respuesta.pk}}">
+							<h5 class="nombreCandidato">{{respuesta.candidato}}</h5> 
+							<div class="twitteales">{{ respuesta|twittrespuesta }}</div> 
+						</div>
+						<br/>
+						<div class="separacionTwitter">
+							<div class="respuestaPreguntale">{{respuesta.texto_respuesta}}</div>
+							
+							
+						</div>
+						<br/>
+					</div>
+			{% endfor %}
+			</div>
+	</div>
+	</div>
+</div>
+
+{% endblock %}

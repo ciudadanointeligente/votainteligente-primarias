@@ -97,6 +97,7 @@ $(function () {
 			{% for pregunta in preguntas %}
 <div class="accordion-groupPreguntale">
 	<div class="accordion-heading tituloAcordion">
+			<div class='pregunta-detalle-link'> <a href="{% url pregunta-detalle pk=pregunta.id %}" class="icon-share"></a></div>
 					
 			<div id="{{pregunta.id}}"class="preguntaPreguntale">{{pregunta}} <br/>
 				<div class="preguntadoPor"> <small><strong>Preguntado por:</strong> <em>{{pregunta.remitente}}</em></small></div>

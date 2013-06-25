@@ -22,30 +22,55 @@
     <div class="span12" style="text-align:center">
       <div class="candideitorgPrimarias"> 
         <p class="introduccionHome"> Bienvenido a Vota Inteligente, el sitio electoral de <a href="http://twitter.com/ciudadanoi">@ciudadanoi</a>. En esta oportunidad dejamos a tu disposición el especial de Elecciones Primarias 2013, y te extendemos la invitación a participar, debatir, preguntar, compartir y fomentar el #VotoInformado.</p>
-        <iframe src="http://www.candideit.org/dtejada/primarias/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
-        <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p>
+        
+         <iframe src="http://www.candideit.org/dtejada/comparador-de-programas/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
+         <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p>
+
+       <!--  <iframe src="http://www.candideit.org/dtejada/primarias/embeded" style="width:100%;" height="450" frameborder="0" scrolling="no"> </iframe>
+        <p class="significadoP"> *** <span class="p">P </span>en la esquina superior izquierda significa que esos candidatos van a Elecciones Primarias.</p> -->
       </div>
       </br>
       </br>
 
-      <div class="row-fluid">
+<div class="row-fluid">
         <ul class="thumbnails home-py tt-wrapper">
+  
+      <li class="span6"> 
+          <a href="http://www.votainteligente.cl/ranking" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/rankingCandidatos.jpg"></a>
+      </li>
+    
+     
+        <li class="span6"> 
+          <a href="http://www.quientefinancia.cl" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/bannerQtfChico.jpg"></a>
+      </li>
+
+    </ul>
+  </div> 
+      
+     
+         
+ <div class="row-fluid">
+        <ul class="thumbnails home-py tt-wrapper">
+
+
+            <li class="span3"><a class="tt-preguntales thumbnail" href="http://www.votainteligente.cl/presidenciales/preguntales" target="blank"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg"></a>
+            <h5>¡Pregúntales lo que quieras saber!</h5>
+          </li>
+         <!--  <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2"> </a>
+
+            <h5>Compara Programas de Gobierno</h5>
+          </li>  -->
+
+
          
 
 
-          <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/bannerCompara.jpg" alt="Vice-Presidente" name="over2"> </a>
 
-            <h5>Compara Programas de Gobierno</h5>
-          </li> 
-
-
-
-          <!-- <li class="span3"><a href="vicepresidentea" class="thumbnail"><img src="{{ STATIC_URL }}images/perfilesCandidatos.png" alt="Vice-Presidente" name="over2"> </a>
-            <h5>Revisa los perfiles de los candidatos</h5> -->
+          <li class="span3"><a href="{% url comparador %}" class="thumbnail"><img src="{{ STATIC_URL }}images/perfilesCandidatos.png" alt="Vice-Presidente" name="over2"> </a>
+            <h5>Revisa los perfiles de los candidatos</h5> 
           
-           <li class="span3"><a class="tt-preguntales thumbnail" href="/presidenciales/preguntales"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg"></a>
-            <h5>¡Pregúntales lo que quieras saber!</h5>
-          </li>
+         
+
 
           <li class="span3"><a href="{% url intereses %}" class="thumbnail" ><img src="{{ STATIC_URL }}images/bannerPerfiles.jpg" alt="Senadores" name="over3"> </a>
             <h5>Perfiles de Interés</h5>
@@ -55,21 +80,31 @@
             <h5>Más Información</h5> 
           </li>
 
-         <!--  <li class="span3"><a class="tt-preguntales thumbnail" href="#"><img src="{{ STATIC_URL }}images/bannerPreguntales.jpg" alt="Presidentes" name="over1"><span>Ingresa en el buscador el nombre de tu comuna y ahí podrás hacer tus preguntas.</span></a>
-            <h5>¡Pregúntales!</h5>
-          </li> -->
           
         </ul>
       </div>
-      
-<!--BANNER QUIEN TE FINANCIA -->
-    <!-- <div class="contenedorCentro">
+
+      <!--BANNER QUIEN TE FINANCIA GRANDE
+    <div class="contenedorCentro">
       <div class="row-fluid">
-        <div class="span12 thumbnail"> 
-        <h5>¿Quién te Financia?</h5>
+        <div class="span12"> 
+          <a href="http://www.quientefinancia.cl" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/bannersQtf.jpg"></a>
       </div>
     </div> -->
+      
+<!--BANNER QUIEN TE FINANCIA  2 y 2-->
+
     
+    <!--BANNER QUIEN TE FINANCIA  3 y 1
+      <div class="row-fluid">
+        <div class="span9"> 
+    <div class="contenedorCentro">
+          <a href="http://www.quientefinancia.cl" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/bannerQTFGrande.png"></a>
+      </div>
+      <div class="span3"> 
+          <a href="http://www.votainteligente.cl/ranking" class="thumbnail" target="blank">  <img src="{{ STATIC_URL }}images/prueba.png"></a>
+      </div>
+    </div> -->
     
   
     
@@ -82,6 +117,27 @@
         });
     });
     </script> 
+
+    <!-- growl -->
+    <script type="text/javascript">
+      var notice = '<div class="notice">'
+        +'<div class="notice-body">'
+          + '<p>¿Andas en busca de otras elecciones pasadas de nuestro Vota Inteligente? </p>'
+        + '</div>'
+        + '<div class="notice-bottom">'
+          + '<p><a class="btn btn-info" href="http://home.votainteligente.cl/" target="_blank">Encuéntralo aquí</a></p>'
+        + '</div>'
+    + '</div>';
+      $( notice ).purr(
+        {
+          isSticky: true,
+          fadeInSpeed: 4000,
+          fadeOutSpeed: 1000,
+          usingTransparentPNG: true
+        }
+      );
+    </script>
+<!-- growl -->
     
   </div>
 </div>

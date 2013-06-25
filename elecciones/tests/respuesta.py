@@ -49,8 +49,12 @@ class RespuestaTestCase(TestCase):
 		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
 
 		url = respuesta.get_absolute_url()
-		url_preguntales = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
-		self.assertEquals(url, url_preguntales+"#"+str(respuesta.id))
+		self.assertTrue(url)
+		url_pregunta = reverse('pregunta-detalle', kwargs={'pk':respuesta.pregunta.id})
+		self.assertEquals(url, url_pregunta+'#R'+str(respuesta.id))
+
+	#este test ya no es necesario por que respuesta no tiene una página de detalle
+	#se va a ver bacán en el github como justifico borrar un test
 
 	def test_is_not_answered(self):
 		respuesta = Respuesta.objects.create(candidato = self.candidato1, pregunta = self.pregunta1)
