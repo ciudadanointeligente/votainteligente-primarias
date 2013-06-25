@@ -4,6 +4,7 @@
 {% block content %}
 {% load twitter_tags %}
 {% load settingsvars_tags %}
+{% load pagination_tags %}
  
 <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
 <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
@@ -94,6 +95,7 @@ $(function () {
 	<div class="container">
 		<h4 class="tituloPreguntale"> Preguntas Recientes</h4>
 		<div class="accordion" id="accordion2">
+			{% autopaginate preguntas 10 %}
 			{% for pregunta in preguntas %}
 <div class="accordion-groupPreguntale">
 	<div class="accordion-heading tituloAcordion">
@@ -125,7 +127,7 @@ $(function () {
 {% endfor %}
 		</div>
 	</div>
-
+{% paginate %}
 
 </div>
 {% endblock %}
