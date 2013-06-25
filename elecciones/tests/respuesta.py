@@ -54,7 +54,6 @@ class RespuestaTestCase(TestCase):
 		self.assertTrue(url_respuesta)
 		self.assertEquals(url, url_respuesta)
 
-	#ahora si
 	def test_get_to_respuesta_object_html(self):
 		#no se me ocurre otro nombre para este test
 		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
