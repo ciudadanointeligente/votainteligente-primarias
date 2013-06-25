@@ -53,16 +53,8 @@ class RespuestaTestCase(TestCase):
 		url_pregunta = reverse('pregunta-detalle', kwargs={'pk':respuesta.pregunta.id})
 		self.assertEquals(url, url_pregunta+'#'+str(respuesta.id))
 
-	def test_get_to_respuesta_object_html(self):
-		#no se me ocurre otro nombre para este test
-		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
-
-		url_respuesta = respuesta.get_absolute_url()
-
-		response = self.client.get(url_respuesta)
-		self.assertEquals(response.status_code, 200)
-		self.assertTrue('respuesta' in response.context)
-		self.assertEquals(response.context["respuesta"], respuesta)
+	#este test ya no es necesario por que respuesta no tiene una página de detalle
+	#se va a ver bacán en el github como justifico borrar un test
 
 	def test_is_not_answered(self):
 		respuesta = Respuesta.objects.create(candidato = self.candidato1, pregunta = self.pregunta1)

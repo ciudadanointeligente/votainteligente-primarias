@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from views import HomeTemplateView, EleccionOverview, EleccionIndices, MetodologiaView, QuienesSomosView, ComparadorView, EleccionPreguntales, ReportaView,\
 QuePuedoHacerHacerView, NosFaltanDatosView, Ranking, RankingJson, EleccionExtraInfo, EnlacesView, VoluntariosView, SenadoresView, InteresesView,\
-RespuestaDetail, PreguntaDetail
+PreguntaDetail
 from django.views.generic import TemplateView, DetailView
 from django.views.decorators.cache import cache_page
 from models import Respuesta
@@ -31,7 +31,6 @@ urlpatterns = patterns('',
 
 
  	url(r'^contact/', include('django_contactme.urls'))	,
- 	url(r'^respuesta/(?P<pk>\d+)/?$', RespuestaDetail.as_view(), name="eleccion-respuesta"),
  	url(r'^pregunta/(?P<pk>\d+)/?$', PreguntaDetail.as_view(), name="pregunta-detalle"),
 
 	#pages depending on the eleccion

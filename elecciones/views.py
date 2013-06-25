@@ -270,9 +270,6 @@ class RankingJson(Ranking):
         return HttpResponse(response_content, mimetype="application/json")
 
 
-class RespuestaDetail(DetailView):
-    model = Respuesta
-
 
 class PreguntaDetail(DetailView):
     model = Pregunta

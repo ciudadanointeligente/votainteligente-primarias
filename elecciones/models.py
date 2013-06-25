@@ -294,9 +294,11 @@ class Respuesta(models.Model):
 	def __unicode__(self):
 		return self.texto_respuesta
 
-	@models.permalink
 	def get_absolute_url(self):
-		return ('eleccion-respuesta', (), {'pk':self.id})
+		
+		url = reverse('pregunta-detalle', kwargs={'pk':self.pregunta.id})
+		url = url + "#" + str(self.id)
+		return url
 	
 
 	def is_answered(self):
