@@ -98,24 +98,8 @@ class EleccionPreguntales(CreateView):
         candidatos_eleccion = Candidato.objects.filter(eleccion = eleccion)
         contactos_candidato = Contacto.objects.filter(candidato__in = candidatos_eleccion)
         candidatos = candidatos_eleccion.filter(contacto__in = contactos_candidato)
-        preguntas = Pregunta.objects.filter(candidato__in = candidatos_eleccion).filter(aprobada = True).distinct()
-        conversaciones = {}
-        for pregunta in preguntas:
-            texto_pregunta = pregunta.texto_pregunta
-            mensaje = {}
-            respuestas = {}
-            respuestas_pregunta = Respuesta.objects.filter(pregunta=pregunta)
-            for respuesta_pregunta in respuestas_pregunta:
-                nombre_candidato = respuesta_pregunta.candidato.nombre
-                respuestas[nombre_candidato] = respuesta_pregunta
-            nombre_emisor = pregunta.remitente
-            mensaje[texto_pregunta] = respuestas
-            conversaciones[nombre_emisor] = mensaje
-
-
-
+        preguntas = Pregunta.objects.filter(candidato__in = candidatos_eleccion).filter(aprobada = True).distinct().select_related('respuesta_set')
         context['preguntas'] = preguntas
-        context['conversaciones'] = conversaciones
         context['candidatos'] = candidatos
         todas_las_elecciones = Eleccion.objects.all()
         context['elecciones'] = todas_las_elecciones

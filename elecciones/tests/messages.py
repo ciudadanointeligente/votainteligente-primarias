@@ -292,32 +292,32 @@ class MessageTestCase(TestCase):
 
 		self.assertEquals(response.status_code, 200)
 		#Check conversaciones
-		self.assertTrue('conversaciones' in response.context)
+		self.assertFalse('conversaciones' in response.context)
 
 		self.assertTrue('preguntas' in response.context)
 		self.assertEquals(response.context['preguntas'].count(),0)
 
 
 		#Conversaciones aren't displayed if not allowed
-		self.assertEquals(response.context['conversaciones'], {})
+		#self.assertEquals(response.context['conversaciones'], {})
 		#Conversaciones are displayed if allowed
 		pregunta = Pregunta.objects.filter(candidato=self.candidato1).filter(remitente='remitente1')[0]
 		pregunta.aprobada = True
 		pregunta.save()
 		response = self.client.get(url)
-		conversaciones = response.context['conversaciones']
+		#conversaciones = response.context['conversaciones']
 		#Creo que no es necesario hacer esto;Se puede acceder a todas las variables de una Pregunta en el template
-		expected_conversaciones = {u"remitente1":{u"texto_pregunta1":{u"candidato1":respuesta1,u"candidato2":respuesta2}}}
+		#expected_conversaciones = {u"remitente1":{u"texto_pregunta1":{u"candidato1":respuesta1,u"candidato2":respuesta2}}}
 		self.assertEquals(response.context['preguntas'].count(),1)
 		self.assertEquals(response.context['preguntas'][0],pregunta1)
-		self.assertEquals(conversaciones, expected_conversaciones)
-		nombre_remitente, pregunta = conversaciones.popitem()
-		texto_pregunta, respuestas = pregunta.popitem()
-		candidato, texto_respuesta = respuestas.popitem()
-		self.assertTrue(nombre_remitente)
-		self.assertTrue(texto_pregunta)
-		self.assertTrue(candidato)
-		self.assertTrue(texto_respuesta)
+		#self.assertEquals(conversaciones, expected_conversaciones)
+		#nombre_remitente, pregunta = conversaciones.popitem()
+		# texto_pregunta, respuestas = pregunta.popitem()
+		# candidato, texto_respuesta = respuestas.popitem()
+		# self.assertTrue(nombre_remitente)
+		# self.assertTrue(texto_pregunta)
+		# self.assertTrue(candidato)
+		# self.assertTrue(texto_respuesta)
 	
 	def test_questions_by_eleccion_count(self):
 		pregunta1 = Pregunta.objects.create(texto_pregunta='texto_pregunta1', remitente='remitente1',aprobada=True)
