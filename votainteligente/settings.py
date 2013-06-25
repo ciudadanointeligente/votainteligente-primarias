@@ -103,6 +103,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django_mobile.middleware.MobileDetectionMiddleware',
     'django_mobile.middleware.SetFlavourMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
