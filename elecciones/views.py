@@ -269,3 +269,7 @@ class RankingJson(Ranking):
         response_content = self.callback+"("+data+");"
         return HttpResponse(response_content, mimetype="application/json")
 
+
+class RespuestaDetail(DetailView):
+    model = Respuesta
+

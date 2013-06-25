@@ -50,17 +50,17 @@ class RespuestaTestCase(TestCase):
 
 		url = respuesta.get_absolute_url()
 		self.assertTrue(url)
-		url_respuesta = reverse('eleccion-respuesta', kwargs={'id':respuesta.id})
+		url_respuesta = reverse('eleccion-respuesta', kwargs={'pk':respuesta.id})
 		self.assertTrue(url_respuesta)
 		self.assertEquals(url, url_respuesta)
 
-	@skip("todavía no")
+	#ahora si
 	def test_get_to_respuesta_object_html(self):
 		#no se me ocurre otro nombre para este test
 		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
 
 		url_respuesta = respuesta.get_absolute_url()
-		
+
 		response = self.client.get(url_respuesta)
 		self.assertEquals(response.status_code, 200)
 		self.assertTrue('respuesta' in response.context)
