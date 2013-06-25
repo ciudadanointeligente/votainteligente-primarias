@@ -1,4 +1,4 @@
-{% extends "base_sub_menu.html" %}
+{% extends "base_sub_menu_fijo.html" %}
 {% block content %}
 {% load twitter_tags %}
 {% load settingsvars_tags %}
@@ -18,13 +18,13 @@
 			<div class="accordion-body">
 			{% for respuesta in pregunta.respuesta_set.all %}
 					<div class="nombreRespuestaPreguntale"> 
-						<div class="headerRespuesta">
+						<div class="headerRespuesta" id="R{{respuesta.pk}}">
 							<h5 class="nombreCandidato">{{respuesta.candidato}}</h5> 
 							<div class="twitteales">{{ respuesta|twittrespuesta }}</div> 
 						</div>
 						<br/>
 						<div class="separacionTwitter">
-							<div class="respuestaPreguntale"id="{{respuesta.pk}}">{{respuesta.texto_respuesta}}</div>
+							<div class="respuestaPreguntale">{{respuesta.texto_respuesta}}</div>
 							
 							
 						</div>

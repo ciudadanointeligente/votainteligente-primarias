@@ -51,7 +51,7 @@ class RespuestaTestCase(TestCase):
 		url = respuesta.get_absolute_url()
 		self.assertTrue(url)
 		url_pregunta = reverse('pregunta-detalle', kwargs={'pk':respuesta.pregunta.id})
-		self.assertEquals(url, url_pregunta+'#'+str(respuesta.id))
+		self.assertEquals(url, url_pregunta+'#R'+str(respuesta.id))
 
 	#este test ya no es necesario por que respuesta no tiene una página de detalle
 	#se va a ver bacán en el github como justifico borrar un test

@@ -297,7 +297,7 @@ class Respuesta(models.Model):
 	def get_absolute_url(self):
 		
 		url = reverse('pregunta-detalle', kwargs={'pk':self.pregunta.id})
-		url = url + "#" + str(self.id)
+		url = url + "#R" + str(self.id)
 		return url
 	
 
