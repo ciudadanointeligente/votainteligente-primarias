@@ -49,8 +49,22 @@ class RespuestaTestCase(TestCase):
 		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
 
 		url = respuesta.get_absolute_url()
-		url_preguntales = reverse('eleccion-preguntales', kwargs={'slug':self.eleccion1.slug})
-		self.assertEquals(url, url_preguntales+"#"+str(respuesta.id))
+		self.assertTrue(url)
+		url_respuesta = reverse('eleccion-respuesta', kwargs={'id':respuesta.id})
+		self.assertTrue(url_respuesta)
+		self.assertEquals(url, url_respuesta)
+
+	@skip("todavía no")
+	def test_get_to_respuesta_object_html(self):
+		#no se me ocurre otro nombre para este test
+		respuesta, created = Respuesta.objects.get_or_create(candidato = self.candidato1, pregunta = self.pregunta1)
+
+		url_respuesta = respuesta.get_absolute_url()
+		
+		response = self.client.get(url_respuesta)
+		self.assertEquals(response.status_code, 200)
+		self.assertTrue('respuesta' in response.context)
+		self.assertEquals(response.context["respuesta"], respuesta)
 
 	def test_is_not_answered(self):
 		respuesta = Respuesta.objects.create(candidato = self.candidato1, pregunta = self.pregunta1)
