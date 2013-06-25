@@ -1,0 +1,187 @@
+{% load elecciones_templatetags %}
+{% load settingsvars_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--[if lt IE 9]>
+    <script src="http://d25m5ercbv4o2x.cloudfront.net/js/html5shiv.js"></script>
+    <![endif]-->
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta property="og:description" content="Bienvenido a Vota Inteligente, el sitio electoral de @ciudadanoi. En esta oportunidad dejamos a tu disposición el especial de Elecciones Primarias, y te extendemos la invitación a participar, debatir, preguntar, compartir y fomentar el #VotoInformado."/>
+<meta name="description" content="Todo lo que necesitas saber para votar informado en las elecciones 2013">
+<meta name="keywords" content="elecciones, presidenciales, primarias, 2013, vota inteligente, candidatos">
+<meta property="og:image" content="{{ STATIC_URL }}images/header-naranja-fb.png"/>
+<title>Vota Inteligente - Elecciones Primarias 2013{% if title %} - {{title}}{% endif %}</title>
+<link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico"/>
+
+<!-- Bootstrap -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.23.css" rel="stylesheet">
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.purr.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.easy-ticker.js"></script>
+{% ga_script %}
+<link href="{{ STATIC_URL }}kathe.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="bodyRegular">
+  <div class="contenedorCompleto">
+<header>
+               
+
+
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner fijoArriba">
+          <div class="header">
+            <div class="row-fluid">
+              <div class="span12">
+                
+                
+                  <div class="logoHeader"><a href="{% url home %}"><img alt="" src="{{ STATIC_URL }}images/logoVotaPrimarias.png"></a> </div>
+                  <div class="itemHeader">
+                    <a href="{% url somos %}">¿Quiénes Somos?</a>
+                    <a href="{% url queremos %}">¿Qué queremos?</a>
+                  </div>
+              
+              
+            </div>         
+          </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+<div class="contenedorCentro">
+<div class="container-fluid"> 
+  <div class="row-fluid">
+    <div class="span12">
+ 
+  {% block content %}
+  {% endblock content %} 
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+                  <footer class="footer"> 
+                    <div class="contenedorCentro">
+                    <div class="container-fluid">
+                       <div class="row-fluid">
+                        <div class="span12">
+                         
+                                              <div class="footerLinks">
+                                                  <a href="http://www.elvaso.cl/2013/06/especial-vota-inteligente-primarias-2013/"> Primarias en el Vaso    </a>
+                                                  <a href="http://www.servel.cl/controls/neochannels/neo_ch275/neochn275.aspx"> Servel: ¡Infórmate donde y cómo votar!  </a> 
+                                                  <a href="#"> Pronto Presidenciales </a>     
+                                              </div>
+                     
+                                            
+                     
+                                             <div>
+                                                  
+                                                    <div class="footerOtro"> <p>Otro proyecto de:</p>
+                                                      <a href="http://www.ciudadanointeligente.org" target="_blank"> <img src="{{ STATIC_URL }}images/FCILogo.png" style="margin-left: -9px;"/></a> 
+                                                    </div>
+
+
+                                                    <div class="footerAyuda"><p> Con la ayuda de:</p>
+                                                      <a class="itemFooter" href="http://www.educacion2020.cl/" target="_blank"> <img src="{{ STATIC_URL }}images/educacionLogo.png"/></a> 
+                                                      <a class="itemFooter" href="http://www.techo.org/" target="_blank"> <img src="{{ STATIC_URL }}images/techoLogo.png"/> </a>
+                                                      <a class="itemFooter" href="http://www.iguales.cl/" target="_blank"> <img src="{{ STATIC_URL }}images/igualesLogo.png"  style="margin-top: -13px;"/></a>  
+                                                      <a class="itemFooter" href="http://www.casadelapaz.cl/" target="_blank"> <img src="{{ STATIC_URL }}images/casaPazLogo.png" style="margin-right: 20px;"/></a> 
+                                                      <a class="itemFooter" href="http://www.fundaciontacal.cl/" target="_blank"> <img src="{{ STATIC_URL }}images/logoTacal.png" style="margin-right: 10px;"/></a> 
+                                                    </div>
+
+                                                    <div class="footerRedes"> <p>Redes Sociales: </p>
+                                                      <div class="itemFooter"> <a href="https://twitter.com/share" class="twitter-share-button" data-text="¿Conoces a quién votas?... Vota inteligente" data-via="ciudadanoi" data-lang="es" data-hashtags="Votainteligente">Twitter</a>
+                                                      <!--[If lte IE 9]> </div>
+                                                                        <![endif]--> 
+
+                                                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                                                      </script> 
+                                                      </div>
+                      
+                                                      <div class="itemFooter" style="margin-top: -2px;">
+                                                      <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fvotainteligente.cl&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=167673216633674" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true">
+                                                      </iframe> 
+                                                      </div>
+                                                    </div>
+
+                                            </div>
+                      </div>
+                                         
+                                                  
+                                                    
+                                                    
+                                                   
+                                                   
+                                                    <div>
+                                                    
+                                                  </div>
+                                                
+                                             </div>
+
+                      </div>
+                    </div>
+                   </div>
+                 </div>
+                  </footer>
+
+
+                    <script>
+                    $(function() {
+                      var availableTags = [{% elecciones_search %}];
+                      $( ".elecciones-search" ).autocomplete({
+                        delay:0,
+                        source: availableTags,
+                        autoFocus: true
+                      });
+
+                      $( ".elecciones-search" ).autocomplete({
+                         select: function(event, ui) { 
+                          console.log('selected');
+                          console.log(ui.item);
+                          $( "#elecciones-search" ).val( ui.item.label );
+                            window.location = '/'+ui.item.value; 
+                            return false;
+                         }
+                      });
+                      $('.form-search-eleccion').submit(function(){
+                        var input = $(this).children('.elecciones-search');
+
+                        $(this).children('.eleccion-search-error').effect("highlight", {color:"white", mode:"hide"}, 3000); 
+                        return false;
+                      })
+                    });
+                    </script> 
+                    {% block extra_js %}
+                    {% endblock extra_js %} 
+                    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script> 
+                    <script type="text/javascript"> 
+                    var $buoop = {vs:{i:8,f:3.6,o:10.6,s:4,n:9}} 
+                    $buoop.ol = window.onload; 
+                    window.onload=function(){ 
+                     try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+                     var e = document.createElement("script"); 
+                     e.setAttribute("type", "text/javascript"); 
+                     e.setAttribute("src", "http://browser-update.org/update.js"); 
+                     document.body.appendChild(e); 
+                    } 
+                    </script> 
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    </script>
+                    <!--[If IE]>  </div><![endif]-->
+
+
+</body>
+</html>
