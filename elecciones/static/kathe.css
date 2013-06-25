@@ -701,7 +701,9 @@ span .casa{
 .pregunta-detalle {
 	padding-top: 17px;
 }
-
+.pregunta-detalle-link {
+	float: right;
+}
 
 /* VErde */
 

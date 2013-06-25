@@ -50,9 +50,8 @@ class RespuestaTestCase(TestCase):
 
 		url = respuesta.get_absolute_url()
 		self.assertTrue(url)
-		url_respuesta = reverse('eleccion-respuesta', kwargs={'pk':respuesta.id})
-		self.assertTrue(url_respuesta)
-		self.assertEquals(url, url_respuesta)
+		url_pregunta = reverse('pregunta-detalle', kwargs={'pk':respuesta.pregunta.id})
+		self.assertEquals(url, url_pregunta+'#'+str(respuesta.id))
 
 	def test_get_to_respuesta_object_html(self):
 		#no se me ocurre otro nombre para este test
