@@ -274,6 +274,10 @@ class Pregunta(models.Model):
 		except:
 			mail_admins('Nos pegamos un cagazo mandando a la API de writeit la pregunta con id '+str(self.id),'Porfa arreglenlo =(')
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('pregunta-detalle', (), {'pk':self.pk})
+
 
 
 

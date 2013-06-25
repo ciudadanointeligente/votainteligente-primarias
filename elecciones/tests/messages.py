@@ -145,7 +145,7 @@ class MessageTestCase(TestCase):
 											texto_pregunta='texto_pregunta1',
 											email_sender='mail@mail.er')
 
-		expected_url = reverse('pregunta-detalle', kwargs={'id':pregunta.id})
+		expected_url = reverse('pregunta-detalle', kwargs={'pk':pregunta.id})
 
 		self.assertTrue(expected_url)
 

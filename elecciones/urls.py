@@ -32,6 +32,7 @@ urlpatterns = patterns('',
 
  	url(r'^contact/', include('django_contactme.urls'))	,
  	url(r'^respuesta/(?P<pk>\d+)/?$', RespuestaDetail.as_view(), name="eleccion-respuesta"),
+ 	url(r'^pregunta/(?P<pk>\d+)/?$', TemplateView.as_view(template_name="cualquiercosapapasareltest.html"), name="pregunta-detalle"),
 
 	#pages depending on the eleccion
 	url(r'^(?P<slug>[-\w]+)/indices/?$', EleccionIndices.as_view(), name='eleccion-index-detail'),
