@@ -153,6 +153,19 @@ class MessageTestCase(TestCase):
 
 		self.assertTrue(actual_url, expected_url)
 
+
+	def test_detalle_pregunta(self):
+		pregunta = Pregunta.objects.create(remitente='remitente1', 
+											texto_pregunta='texto_pregunta1',
+											email_sender='mail@mail.er')
+		url = reverse('pregunta-detalle', kwargs={'pk':pregunta.id})
+		response = self.client.get(url)
+
+		self.assertEquals(response.status_code, 200)#pagina bacán
+		self.assertTrue('pregunta' in response.context)#viene la pregunta
+		self.assertEquals(response.context['pregunta'], pregunta)
+
+
 		
 
 	def test_create_answer_message(self):

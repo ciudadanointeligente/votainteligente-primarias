@@ -273,3 +273,7 @@ class RankingJson(Ranking):
 class RespuestaDetail(DetailView):
     model = Respuesta
 
+
+class PreguntaDetail(DetailView):
+    model = Pregunta
+
