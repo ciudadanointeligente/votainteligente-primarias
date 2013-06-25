@@ -150,7 +150,8 @@ INSTALLED_APPS = (
     'captcha',
     'mailer',
     'markdown_deux',
-    'django_contactme'
+    'django_contactme',
+    'pagination'
 )
 
 # A sample logging configuration. The only tangible logging

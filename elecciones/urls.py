@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, include, url
 from views import HomeTemplateView, EleccionOverview, EleccionIndices, MetodologiaView, QuienesSomosView, ComparadorView, EleccionPreguntales, ReportaView,\
-QuePuedoHacerHacerView, NosFaltanDatosView, Ranking, RankingJson, EleccionExtraInfo, EnlacesView, VoluntariosView, SenadoresView, InteresesView
-from django.views.generic import TemplateView
+QuePuedoHacerHacerView, NosFaltanDatosView, Ranking, RankingJson, EleccionExtraInfo, EnlacesView, VoluntariosView, SenadoresView, InteresesView,\
+PreguntaDetail
+from django.views.generic import TemplateView, DetailView
 from django.views.decorators.cache import cache_page
+from models import Respuesta
 from django.conf import settings 
 
 urlpatterns = patterns('',
@@ -29,6 +31,7 @@ urlpatterns = patterns('',
 
 
  	url(r'^contact/', include('django_contactme.urls'))	,
+ 	url(r'^pregunta/(?P<pk>\d+)/?$', PreguntaDetail.as_view(), name="pregunta-detalle"),
 
 	#pages depending on the eleccion
 	url(r'^(?P<slug>[-\w]+)/indices/?$', EleccionIndices.as_view(), name='eleccion-index-detail'),

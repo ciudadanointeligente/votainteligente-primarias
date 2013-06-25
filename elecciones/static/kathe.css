@@ -706,6 +706,12 @@ span .casa{
 		  font-family: 'bebas_neueregular';
     font-size: 26px;
 }
+.pregunta-detalle {
+	padding-top: 17px;
+}
+.pregunta-detalle-link {
+	float: right;
+}
 
 /* VErde */
 
@@ -2545,4 +2551,5 @@ margin-left: 0;
 	}
 	
 }
+
 

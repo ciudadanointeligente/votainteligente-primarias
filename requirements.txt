@@ -16,3 +16,4 @@ django-contactme==1.0a2
 mock
 -e git://github.com/mysociety/popit-django.git#egg=popit-django
 -e git://github.com/ciudadanointeligente/writeit-django.git#egg=writeit-django
+django-pagination==1.0.5

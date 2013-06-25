@@ -274,6 +274,10 @@ class Pregunta(models.Model):
 		except:
 			mail_admins('Nos pegamos un cagazo mandando a la API de writeit la pregunta con id '+str(self.id),'Porfa arreglenlo =(')
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('pregunta-detalle', (), {'pk':self.pk})
+
 
 
 
@@ -291,8 +295,10 @@ class Respuesta(models.Model):
 		return self.texto_respuesta
 
 	def get_absolute_url(self):
-		url = reverse('eleccion-preguntales', kwargs={'slug':self.candidato.eleccion.slug})
-		return url+"#"+str(self.id)
+		
+		url = reverse('pregunta-detalle', kwargs={'pk':self.pregunta.id})
+		url = url + "#R" + str(self.id)
+		return url
 	
 
 	def is_answered(self):
