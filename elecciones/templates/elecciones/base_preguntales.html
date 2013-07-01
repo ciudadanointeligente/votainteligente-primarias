@@ -52,6 +52,7 @@ $(function () {
 		<h4 class="tituloPreguntale"> Preguntas Recientes</h4>
 		<div class="accordion" id="accordion2">
 			{% autopaginate preguntas 10 %}
+			{% paginate %}
 			{% for pregunta in preguntas %}
 <div class="accordion-groupPreguntale">
 	<div class="accordion-heading tituloAcordion">
