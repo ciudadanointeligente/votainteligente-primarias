@@ -1,0 +1,90 @@
+
+{% extends "base_sub_menu_fijo.html" %}
+{% load estrellitas %}
+{% block content %}
+{% load twitter_tags %}
+{% load settingsvars_tags %}
+{% load pagination_tags %}
+ 
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js" ></script>
+<script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script> 
+<script>
+$(function () {
+    $('body').off('click.collapse.data-api', '[data-toggle=collapse]');
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+      if($this.parentsUntil('.dropdown-menu').length!==0){
+          return false;
+      }
+    });
+});
+</script>
+             
+             
+
+<div class="container paginaCompleta">
+
+	 <h3>Preguntas a los candidatos de <span><a href="{% url eleccion-overview slug=eleccion.slug %}"> {{eleccion.nombre}} </a></span> </h3>
+
+
+
+
+
+	<h4 class="tituloPreguntale"> ¡Preguntales!       Ellos Responden...</h4>
+
+	{% if messages %} 
+	<div class="alert alert-success">
+		{% for message in messages %}    
+			{{ message }}
+		{% endfor %}    
+	</div>
+	{% endif %}
+
+{% block form %}
+{% endblock form %}
+	<div class="container">
+		<h4 class="tituloPreguntale"> Preguntas Recientes</h4>
+		<div class="accordion" id="accordion2">
+			{% autopaginate preguntas 10 %}
+			{% paginate %}
+			{% for pregunta in preguntas %}
+<div class="accordion-groupPreguntale">
+	<div class="accordion-heading tituloAcordion">
+			<div class='pregunta-detalle-link'> <a href="{% url pregunta-detalle pk=pregunta.id %}" class="icon-share"></a></div>
+					
+			<div id="{{pregunta.id}}"class="preguntaPreguntale">{{pregunta}} <br/>
+				<div class="preguntadoPor"> <small><strong>Preguntado por:</strong> <em>{{pregunta.remitente}}</em></small></div>
+				<br/> <br/>
+			</div>
+		</div>
+			<div class="accordion-body">
+			{% for respuesta in pregunta.respuesta_set.all %}
+					<div class="nombreRespuestaPreguntale"> 
+						<div class="headerRespuesta">
+							<h5 class="nombreCandidato">{{respuesta.candidato}}</h5> 
+							<div class="twitteales">{{ respuesta|twittrespuesta }}</div> 
+						</div>
+						<br/>
+						<div class="separacionTwitter">
+							<div class="respuestaPreguntale"id="{{respuesta.pk}}">{{respuesta.texto_respuesta}}</div>
+							
+							
+						</div>
+						<br/>
+					</div>
+			{% endfor %}
+			</div>
+	</div>
+{% endfor %}
+		</div>
+	</div>
+{% paginate %}
+
+</div>
+{% endblock %}
